@@ -1,0 +1,68 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "机器学习：AI驱动的学习与应用"
+  author: "陆海波 - 上海应用技术大学 经济与管理学院"
+  date: "today"
+  chapters:
+    - index.qmd
+    - part: "序章：新世界的生存法则"
+      chapters:
+        # 第1章 欢迎来到AI-First时代
+        - 01-welcome/index.qmd
+        - 01-welcome/01-not-another-ml-book.qmd
+        - 01-welcome/02-ai-conductor.qmd
+        - 01-welcome/03-learning-philosophy.qmd
+        - 01-welcome/04-what-you-will-get.qmd
+        # 第2章 本书使用指南与AI协同的艺术
+        - 02-guide/index.qmd
+        - 02-guide/01-golden-circle.qmd
+        - 02-guide/02-prompt-engineering.qmd
+        - 02-guide/03-first-ai-task.qmd
+        - 02-guide/04-ai-learning-coach.qmd
+        # 第3章 搭建你的AI协同开发环境
+        - 03-environment/index.qmd
+        - 03-environment/01-python-anaconda.qmd
+        - 03-environment/02-jupyter-vscode.qmd
+        - 03-environment/03-install-libraries.qmd
+        - 03-environment/04-ai-debug-toolbox.qmd
+    # - part: "第一部分：传统机器学习 —— AIGC时代的新应用"
+    #   chapters:
+        # 第4章 项目启动：我们的AIGC产品需要一个"质检员"
+        # - 04-project-kickoff/index.qmd
+        # - 04-project-kickoff/01-why-crisis.qmd
+        # - 04-project-kickoff/02-how-what-mission.qmd
+        # - 04-project-kickoff/03-practice-eda.qmd
+    - references.qmd
+  
+  page-footer:
+    left: |
+      机器学习：AI驱动的学习与应用
+    right: |
+      本书使用 Quarto 构建
+
+bibliography: references.bib
+
+lang: zh
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    number-depth: 2
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    highlight-style: github
+    fig-width: 8
+    fig-height: 6
+    mermaid:
+      theme: default
+
+
+

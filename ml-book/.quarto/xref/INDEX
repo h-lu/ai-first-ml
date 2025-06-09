@@ -1,0 +1,56 @@
+{
+  "index.qmd": {
+    "index.html": "7fc53efb"
+  },
+  "01-welcome/index.qmd": {
+    "index.html": "470f67b9"
+  },
+  "01-welcome/01-not-another-ml-book.qmd": {
+    "01-not-another-ml-book.html": "59996932"
+  },
+  "01-welcome/02-ai-conductor.qmd": {
+    "02-ai-conductor.html": "a7f029ee"
+  },
+  "01-welcome/03-learning-philosophy.qmd": {
+    "03-learning-philosophy.html": "f7774693"
+  },
+  "01-welcome/04-what-you-will-get.qmd": {
+    "04-what-you-will-get.html": "1d8391f7"
+  },
+  "02-guide/index.qmd": {
+    "index.html": "a8bc275c"
+  },
+  "references.qmd": {
+    "references.html": "0ecb85b1"
+  },
+  "02-guide/01-golden-circle.qmd": {
+    "01-golden-circle.html": "bf204114"
+  },
+  "02-guide/02-prompt-engineering.qmd": {
+    "02-prompt-engineering.html": "407b4d9f"
+  },
+  "02-guide/03-first-ai-task.qmd": {
+    "03-first-ai-task.html": "3cf0696c"
+  },
+  "02-guide/04-ai-learning-coach.qmd": {
+    "04-ai-learning-coach.html": "d3483e18"
+  },
+  "03-environment/index.qmd": {
+    "index.html": "ba29fe1c"
+  },
+  "04-project-kickoff/index.qmd": {
+    "index.html": "50d880b3"
+  },
+  "03-environment/01-python-anaconda.qmd": {
+    "01-python-anaconda.html": "209d1da5"
+  },
+  "03-environment/02-jupyter-vscode.qmd": {
+    "02-jupyter-vscode.html": "f3d0fd64"
+  },
+  "03-environment/03-install-libraries.qmd": {
+    "03-install-libraries.html": "897f2556"
+  },
+  "03-environment/04-ai-debug-toolbox.qmd": {
+    "04-ai-debug-toolbox.html": "65d041d3"
+  }
+}
