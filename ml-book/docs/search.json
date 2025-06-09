@@ -272,69 +272,91 @@
     ]
   },
   {
-    "objectID": "03-environment/index.html#环境搭建清单-checklist",
-    "href": "03-environment/index.html#环境搭建清单-checklist",
-    "title": "第3章 搭建你的AI协同开发环境",
+    "objectID": "03-environment/01-python-anaconda.html",
+    "href": "03-environment/01-python-anaconda.html",
+    "title": "3.1 Python与Anaconda：一石二鸟之计",
     "section": "",
-    "text": "1. 安装Python\n\n目标：确保你的电脑里有Python 3.8或更高版本。\n操作：\n\n打开你的终端（在macOS上是Terminal，在Windows上是Command Prompt或PowerShell）。\n输入命令 python --version 或 python3 --version 并回车。\n如果 你看到了一个版本号（如 Python 3.9.6），那么恭喜你，可以跳到下一步。\n如果 系统提示找不到命令，或者版本低于3.8，请向你的AI伙伴发出指令：\n\n\n\n给AI的指令剧本： “我需要在我的 [请填写你的操作系统，如：macOS Sonoma / Windows 11] 电脑上安装最新版本的Python。请给我提供一个清晰、分步的安装指南。”\n\n\n\n2. 安装JupyterLab\n\n目标：安装JupyterLab，这是我们进行探索性数据分析和模型实验的核心工具。\n操作：在你的终端里，直接向AI”委托”这个任务。\n\n\n给AI的指令剧本： “请给我一条在我的电脑上使用pip（Python的包管理器）安装JupyterLab的终端命令。”\n\nAI很可能会给你这条命令：pip install jupyterlab。执行它。\n\n\n3. 安装核心数据科学库\n\n目标：安装我们第一个项目需要用到的核心Python库：pandas, scikit-learn, matplotlib, 和 seaborn。\n操作：我们可以一次性安装所有这些库。\n\n\n给AI的指令剧本： “请给我一条使用pip一次性安装以下几个Python库的命令：pandas, scikit-learn, matplotlib, seaborn。”\n\nAI可能会返回 pip install pandas scikit-learn matplotlib seaborn。执行它。\n\n\n4. 启动并验证环境\n\n目标：确保一切都已正确安装。\n操作：\n\n在终端输入 jupyter lab 并回车。\n你的默认浏览器应该会自动打开一个JupyterLab界面。\n点击启动器（Launcher）中的 “Python 3 (ipykernel)” 图标，创建一个新的Notebook。\n在新Notebook的第一个单元格中，输入以下代码，然后按 Shift + Enter 运行：\nimport pandas as pd\nimport sklearn\nimport matplotlib\nimport seaborn\n\nprint(\"所有库都已准备就绪！\")\nprint(f\"Pandas version: {pd.__version__}\")\nprint(f\"Scikit-learn version: {sklearn.__version__}\")\n如果你看到了”所有库都已准备就绪！“以及各个库的版本号，那么恭喜你，你的AI协同开发环境已成功搭建！\n\n\n\n\n\n\n\n\n【AI协同工具箱】终极技巧：应对任何安装错误\n\n\n\n场景： 你在执行任何pip install命令时，终端输出了一大段红色的错误信息。\n旧思维： 感到沮丧，去搜索引擎上零散地粘贴部分错误信息，希望能找到答案。\n新思维（AI指挥家）：\n\n保持冷静：错误是学习的催化剂。\n完整复制：从头到尾，完整地复制终端里所有的错误信息，一个字都不要漏。\n使用RCTF框架提问：向你的AI伙伴发出一个高质量的求助Prompt。\n\n求助Prompt模板：\n\n# 角色 你是一位精通Python环境配置和故障排查的专家。\n# 上下文 我正在尝试在我的 [你的操作系统] 上安装 [你尝试安装的库名，如：pandas] 库。 我执行的命令是：pip install pandas\n# 任务与问题 我遇到了以下完整的错误信息，请帮我分析： 1. 这个错误的核心原因是什么？请用通俗的语言解释。 2. 我应该如何解决这个问题？请提供具体的操作步骤。\n# 错误信息\n[在这里粘贴你从终端完整复制的错误信息]\n\n掌握这个方法，你将能自信地解决未来遇到的99%的环境配置问题。\n\n\n环境搭建完成！现在，我们拥有了坚实的基地，可以正式开启第一个项目的探险了。",
+    "text": "Why：为什么选择Anaconda？\n对于Python初学者来说，最头疼的问题之一就是”包管理”和”环境隔离”。你可能听说过pip、virtualenv、pyenv等工具，它们都很好，但组合起来对新手不够友好。\nAnaconda则是一个”全家桶”式的解决方案，它为你一次性做好了三件事：\n对于我们的学习之旅而言，Anaconda是起点最低、最稳妥的选择。",
     "crumbs": [
-      "第一部分：传统机器学习 —— AIGC时代的新应用",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第3章 搭建你的AI协同开发环境</span>"
+      "序章：新世界的生存法则",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>3.1 Python与Anaconda：一石二鸟之计</span>"
     ]
   },
   {
-    "objectID": "04-project-kickoff/index.html",
-    "href": "04-project-kickoff/index.html",
-    "title": "第4章 项目启动：我们的AIGC产品需要一个”质检员”",
+    "objectID": "03-environment/01-python-anaconda.html#why为什么选择anaconda",
+    "href": "03-environment/01-python-anaconda.html#why为什么选择anaconda",
+    "title": "3.1 Python与Anaconda：一石二鸟之计",
     "section": "",
-    "text": "Why：一场迫在眉睫的”公关危机”\n想象一下，你是一家名为”IdeaSpark”的初创公司的技术负责人。公司的核心产品是一款面向内容创作者的AI写作助手，它能极大地提高创作效率，一经推出便广受欢迎。\n但好景不长，最近公司的客服邮箱和社交媒体上，开始涌入大量用户的抱怨：\n问题已经摆在眼前： 如果不能有效控制生成内容的质量和安全性，产品口碑和公司声誉将岌岌可危。",
+    "text": "安装了Python本体：你无需再单独安装Python。\n自带强大的包管理器 conda：conda 在处理复杂的科学计算库（如机器学习相关库）时，比pip更稳定、更不容易出错。\n内置环境隔离功能：你可以轻松创建多个独立的Python环境，避免不同项目之间的库版本冲突。",
     "crumbs": [
-      "第一部分：传统机器学习 —— AIGC时代的新应用",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第4章 项目启动：我们的AIGC产品需要一个\"质检员\"</span>"
+      "序章：新世界的生存法则",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>3.1 Python与Anaconda：一石二鸟之计</span>"
     ]
   },
   {
-    "objectID": "04-project-kickoff/index.html#why一场迫在眉睫的公关危机",
-    "href": "04-project-kickoff/index.html#why一场迫在眉睫的公关危机",
-    "title": "第4章 项目启动：我们的AIGC产品需要一个”质检员”",
+    "objectID": "03-environment/01-python-anaconda.html#practice指挥ai引导你安装",
+    "href": "03-environment/01-python-anaconda.html#practice指挥ai引导你安装",
+    "title": "3.1 Python与Anaconda：一石二鸟之计",
+    "section": "Practice：指挥AI引导你安装",
+    "text": "Practice：指挥AI引导你安装\n安装软件的界面和步骤总是在更新，任何静态的截图教程都可能很快过时。因此，我们采用最智能的方式：让AI给你提供最新的、针对你操作系统的安装指南。\n\n\n\n\n\n\n动手练习与挑战\n\n\n\n任务：安装Anaconda\n\n打开你的AI助手。\n使用下面的Prompt模板，向它提问：\n\n\n# 角色 你是一位熟悉软件安装和环境配置的IT支持专家。\n# 任务 我需要为我的机器学习项目安装Anaconda。\n# 上下文 * 我的操作系统是 [请在这里填写你的操作系统，如：Windows 11 / macOS Sonoma / Ubuntu 22.04]。 * 我是一个编程初学者，需要最详细、最不容易出错的步骤。\n# 输出格式要求 请为我提供一个端到端的安装指南，包括： 1. 应该从哪个官方网站下载Anaconda？请给出直接的链接。 2. 下载时，我应该选择哪个版本？（例如，Python 3.11版本还是最新版？） 3. 安装过程中，有哪些需要特别注意的选项？（例如，在Windows上是否要勾选”Add Anaconda to my PATH environment variable”） 4. 安装完成后，我应该如何验证安装是否成功？请提供可以复制到终端（Terminal/CMD）里运行的命令。\n\n\n跟随AI的指引：严格按照AI生成的步骤进行操作。这个过程能很好地锻炼你理解和执行技术指令的能力。\n\n\n\n通过这个练习，你不仅安装了软件，更重要的是，你完成了一次高质量的AI协同任务。",
+    "crumbs": [
+      "序章：新世界的生存法则",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>3.1 Python与Anaconda：一石二鸟之计</span>"
+    ]
+  },
+  {
+    "objectID": "03-environment/02-jupyter-vscode.html",
+    "href": "03-environment/02-jupyter-vscode.html",
+    "title": "3.2 VS Code与Jupyter：现代化的实验场",
     "section": "",
-    "text": "“生成的文章逻辑混乱，语句不通，根本没法用！”\n“为什么我让它写一首关于春天的诗，它却给了一段关于战争的描述？太吓人了！”\n更糟糕的是，有用户发现，AI助手在某些情况下甚至会生成一些带有偏见或攻击性的”有害内容”，这在社交媒体上引发了一场小小的公关危机。",
+    "text": "Why：我们选择什么样的”代码编辑器”？\n代码编辑器，或者说IDE（集成开发环境），是”AI指挥家”日常工作的”驾驶舱”。对于数据科学和机器学习任务，我们的”驾驶舱”需要具备强大的交互性，能够让我们方便地执行一小段代码、立刻看到结果、并进行可视化。\nJupyter Notebook 是为此而生的王者。它允许我们将代码、文本、图片、公式都组织在一个文档中，非常适合进行探索性的数据分析。\n而 Visual Studio Code (VS Code) 是目前最受欢迎的现代化代码编辑器。它拥有一个强大的Jupyter插件，可以让我们在功能齐全的IDE中，享受Jupyter Notebook的所有便利。\nVS Code + Jupyter 插件 的组合，就是我们为本次旅程选择的、兼具强大功能和易用性的”驾驶舱”。",
     "crumbs": [
-      "第一部分：传统机器学习 —— AIGC时代的新应用",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第4章 项目启动：我们的AIGC产品需要一个\"质检员\"</span>"
+      "序章：新世界的生存法则",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>3.2 VS Code与Jupyter：现代化的实验场</span>"
     ]
   },
   {
-    "objectID": "04-project-kickoff/index.html#how与ceo的紧急会议",
-    "href": "04-project-kickoff/index.html#how与ceo的紧急会议",
-    "title": "第4章 项目启动：我们的AIGC产品需要一个”质检员”",
-    "section": "How：与CEO的紧急会议",
-    "text": "How：与CEO的紧急会议\n\n\n\n\n\n\n与AI的探索之旅\n\n\n\nCEO： (眉头紧锁) “我们的产品正在失控！用户就是我们的生命线，我们不能让他们失望。我需要一个解决方案，一个能把那些’垃圾内容’和’危险内容’挡在外面的方案，而且要快！”\n你 (技术负责人)： “我完全理解您的担忧。这确实是AIGC应用落地的典型挑战。我们不可能人工审核每一篇生成的内容，这不现实。我们需要一个自动化的‘内容质检员’。”\nCEO： “‘内容质检员’？说说你的想法。”\n你： “我们可以利用机器学习技术。首先，我们需要一批已经标注好的数据，比如一个文件，里面有上千篇文章，每一篇都被标记为’优质’、‘低质’或’有害’。然后，我们用这些数据训练一个分类模型。这个模型就像一个经验丰富的编辑，它能学会识别不同类别内容的特征。”\nCEO： “听起来可行。训练好之后呢？”\n你： “之后，当AI写作助手每生成一篇文章，我们都先把它交给这个模型’过目’。模型会快速给出一个分类判断。如果是’低质’或’有害’的，我们可以选择不展示给用户，或者进行预警。这样，我们就为我们的AIGC产品建立起了一道质量和安全的防线。”\nCEO： “很好！就这么办。这个项目交给你了，需要什么资源尽管说。”",
+    "objectID": "03-environment/02-jupyter-vscode.html#practice指挥ai指导你配置",
+    "href": "03-environment/02-jupyter-vscode.html#practice指挥ai指导你配置",
+    "title": "3.2 VS Code与Jupyter：现代化的实验场",
+    "section": "Practice：指挥AI指导你配置",
+    "text": "Practice：指挥AI指导你配置\n和安装Anaconda一样，我们将继续使用”AI协同”的模式来完成配置。\n\n\n\n\n\n\n动手练习与挑战\n\n\n\n任务：配置VS Code的Jupyter环境\n\n安装VS Code：\n\n向你的AI助手提问：“请给我VS Code的官方下载链接，并告诉我如何为我的操作系统（[你的系统]）进行安装。”\n\n安装Jupyter插件：\n\n打开安装好的VS Code。\n向AI提问：“请告诉我如何在VS Code中找到并安装’Jupyter’官方插件？最好能配上截图说明。”\n\n创建你的第一个Notebook文件：\n\n向AI提问：“我已经在VS Code里装好了Jupyter插件，如何创建一个新的Jupyter Notebook文件（.ipynb文件）？”\n\n关联Anaconda环境：\n\n这是最关键的一步。你需要告诉VS Code里的Jupyter，使用我们刚才安装的Anaconda环境中的Python。\n向AI提问（这个问题需要提供更详细的上下文）：\n\n\n\n# 角色 你是VS Code和Jupyter方面的专家。\n# 任务 我需要将我在VS Code中打开的Jupyter Notebook，与我之前安装的Anaconda环境关联起来。\n# 上下文 * 我已经安装了Anaconda和VS Code，以及VS Code的Jupyter插件。 * 我已经在VS Code中创建并打开了一个.ipynb文件。\n# 输出格式要求 请用图文并茂的方式，一步步告诉我： 1. 我应该在VS Code的哪个位置选择或切换Jupyter的”内核”(Kernel)? 2. 如何确保我选择的内核，是指向我通过Anaconda安装的那个Python解释器？\n\n\n运行你的第一行代码：\n\n在新建的Notebook的第一个代码单元格（cell）中，输入 print(\"Hello, AI Conductor!\")。\n按 Shift + Enter 运行它。如果你能看到下方输出了 Hello, AI Conductor!，那么恭喜你，你的现代化实验场已经搭建完毕！\n\n\n\n\n这个过程可能比单纯安装一个软件要复杂，但它完美地模拟了真实开发中”配置工具链”的场景。请耐心、细致地与AI对话，解决你遇到的每一个小问题。",
     "crumbs": [
-      "第一部分：传统机器学习 —— AIGC时代的新应用",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第4章 项目启动：我们的AIGC产品需要一个\"质检员\"</span>"
+      "序章：新世界的生存法则",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>3.2 VS Code与Jupyter：现代化的实验场</span>"
     ]
   },
   {
-    "objectID": "04-project-kickoff/index.html#what明确我们的项目目标",
-    "href": "04-project-kickoff/index.html#what明确我们的项目目标",
-    "title": "第4章 项目启动：我们的AIGC产品需要一个”质检员”",
-    "section": "What：明确我们的项目目标",
-    "text": "What：明确我们的项目目标\n通过这次会议，我们的项目目标已经非常清晰：\n\n总目标：利用传统的机器学习模型，构建一个高效的文本分类器，用于自动检测AIGC内容的质量与安全。\n输入：一段由AI生成的文本。\n输出：该文本的类别标签（例如：“优质”、“低质”、“有害”）。\n\n这是一个典型且极具商业价值的监督学习-文本分类任务。",
+    "objectID": "03-environment/03-install-libraries.html",
+    "href": "03-environment/03-install-libraries.html",
+    "title": "3.3 安装项目所需库：扩充你的武器库",
+    "section": "",
+    "text": "Why：为项目准备弹药\n我们已经搭建好了开发环境，就像一个士兵拥有了一把好枪。但要上战场，还需要配备各种不同类型的”弹药”——也就是Python的第三方库。\n在接下来的项目中，我们将主要依赖以下几个核心的库，它们是数据科学和机器学习领域的”瑞士军刀”：\n现在，让我们来把这些”弹药”装填进我们的武器库。",
     "crumbs": [
-      "第一部分：传统机器学习 —— AIGC时代的新应用",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第4章 项目启动：我们的AIGC产品需要一个\"质检员\"</span>"
+      "序章：新世界的生存法则",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>3.3 安装项目所需库：扩充你的武器库</span>"
     ]
   },
   {
-    "objectID": "04-project-kickoff/index.html#practice加载并初步探索我们的原材料",
-    "href": "04-project-kickoff/index.html#practice加载并初步探索我们的原材料",
-    "title": "第4章 项目启动：我们的AIGC产品需要一个”质检员”",
-    "section": "Practice：加载并初步探索我们的”原材料”",
-    "text": "Practice：加载并初步探索我们的”原材料”\n在开始训练我们的”质检员”之前，我们首先要熟悉我们的”原材料”——数据集。\n假设我们已经有了一个名为 aigc_text_data.csv 的数据集文件，它包含两列：text (AI生成的文本内容) 和 label (对应的标签)。\n现在，让我们启动JupyterLab，创建一个新的Notebook，开始我们的第一次实践。\n给AI的指令剧本：\n\n# 角色 你是一位熟练的Python数据分析师。\n# 上下文 我正在进行一个AIGC内容质检项目。我有一个名为 aigc_text_data.csv 的数据文件，它在我的Jupyter Notebook的同一目录下。这个文件包含 text 和 label 两列。\n# 任务 请帮我完成以下步骤： 1. 使用 pandas 库加载这个CSV文件到一个名为 df 的DataFrame中。 2. 显示这个DataFrame的前5行，让我对数据有个初步印象。 3. 统计 label 列中，每个类别的数量分别是多少。 4. 使用 seaborn 或 matplotlib，将每个类别的数量用饼图进行可视化，并给图表一个合适的标题。\n# 输出格式要求 请直接提供完整的、可直接在Jupyter Notebook单元格中运行的Python代码。\n\n\n\n\n\n\n\n\nChallenge：你的第一个数据洞察\n\n\n\n当你拿到AI生成的代码并成功运行后，请观察输出的饼图，并尝试回答以下问题：\n\n我们的数据集中，是否存在”样本不均衡”的问题？（即，某个类别的样本数量远远多于或少于其他类别）\n如果存在，你认为这可能会对我们未来的模型训练产生什么样的潜在影响？\n\n带着这个问题，我们将在后续章节中深入探讨。欢迎来到机器学习项目实战的第一步！",
+    "objectID": "03-environment/03-install-libraries.html#why为项目准备弹药",
+    "href": "03-environment/03-install-libraries.html#why为项目准备弹药",
+    "title": "3.3 安装项目所需库：扩充你的武器库",
+    "section": "",
+    "text": "Pandas：用于数据读取、清洗、处理和分析的王者。\nScikit-learn：提供大量经典机器学习算法、预处理工具和评估指标，是入门机器学习的首选。\nSeaborn & Matplotlib：用于数据可视化的强大组合，能帮你将枯燥的数据转化为直观的图表。",
     "crumbs": [
-      "第一部分：传统机器学习 —— AIGC时代的新应用",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第4章 项目启动：我们的AIGC产品需要一个\"质检员\"</span>"
+      "序章：新世界的生存法则",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>3.3 安装项目所需库：扩充你的武器库</span>"
+    ]
+  },
+  {
+    "objectID": "03-environment/03-install-libraries.html#practice指挥ai为你生成安装命令",
+    "href": "03-environment/03-install-libraries.html#practice指挥ai为你生成安装命令",
+    "title": "3.3 安装项目所需库：扩充你的武器库",
+    "section": "Practice：指挥AI为你生成安装命令",
+    "text": "Practice：指挥AI为你生成安装命令\n我们将使用Anaconda的包管理器 conda 来安装这些库。conda 在处理复杂的库依赖关系时表现非常出色。\n\n\n\n\n\n\n动手练习与挑战\n\n\n\n任务：安装核心机器学习库\n\n打开你的系统终端（Terminal / Anaconda Prompt）。\n向你的AI助手提问：\n\n\n# 角色 你是一位Python环境配置专家，尤其精通conda命令。\n# 任务 我需要使用conda命令，一次性安装几个用于机器学习的Python库。\n# 上下文 * 我已经成功安装了Anaconda。 * 我需要安装的库包括：pandas, scikit-learn, seaborn, matplotlib。\n# 输出格式要求 请直接给我一条单行的、可以直接复制粘贴到终端里运行的conda install命令。请确保命令格式正确无误，并使用-y参数来跳过确认步骤，让安装自动进行。\n\n\n复制并执行：从AI的回答中复制那条命令，粘贴到你的终端里，然后按Enter执行。\n观察输出：终端会开始下载并安装这些库。你可以看到安装的过程信息滚动。如果没有出现红色的”Error”字样，就代表安装顺利。\n\n\n\n\n\n\n\n\n\n核心概念：Conda vs. Pip\n\n\n\n你可能听说过pip，它是Python官方的包管理器。pip和conda是什么关系？\n\n管理范围：pip只能管理Python包。conda不仅能管理Python包，还能管理非Python的依赖（如C++编译的库），甚至Python解释器本身。\n依赖解析：conda在安装前会检查所有包的依赖关系，确保它们之间不会冲突，这在科学计算领域尤为重要。pip的依赖解析能力相对较弱。\n通用规则：一个好的实践是，在一个conda环境中，尽量只使用conda来安装包。只有当一个包在conda的仓库中不存在时，才考虑使用pip作为补充。\n\n在本教程中，我们将优先使用conda。",
+    "crumbs": [
+      "序章：新世界的生存法则",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>3.3 安装项目所需库：扩充你的武器库</span>"
     ]
   },
   {
