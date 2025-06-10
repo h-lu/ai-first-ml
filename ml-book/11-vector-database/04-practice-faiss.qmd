@@ -1,0 +1,158 @@
+# 11.4 Practice: 指挥AI使用FAISS构建索引并查询
+
+理论的殿堂已经参观完毕，现在是时候亲手为我们的"记忆"建造宫殿了。
+
+在这个实践环节，我们将使用`faiss-cpu`，这是一个由Facebook AI研究院（FAIR）开发的高效相似度搜索库。它非常轻量，适合在本地CPU上运行，是入门学习和快速构建原型的绝佳选择。
+
+我们将完成两个核心任务：
+1.  **构建索引**: 将我们上一章生成的文档向量，添加到一个FAISS索引中。
+2.  **执行查询**: 将一个用户问题也转换为向量，然后在这个索引中搜索最相似的Top-K个文档块。
+
+## AI协同实践：一个指令剧本
+
+请再次打开你的AI编程助手或Jupyter Notebook，我们将复用上一章的代码，并在此基础上进行构建。
+
+---
+
+### 第一幕：安装FAISS
+
+:::{.callout-caution title="第一步：请求AI给出安装指令" icon="fas fa-download"}
+**👤 你的指令:**
+
+> "你好，我需要一个能在CPU上高效进行向量检索的库。请给我一条使用pip安装`faiss-cpu`的命令。"
+:::
+
+**🤖 AI的预期回答:**
+当然，FAISS是一个非常好的选择。请在你的终端中运行以下命令来安装它的CPU版本：
+```bash
+pip install faiss-cpu
+```
+**重要提示:** 如果你拥有支持CUDA的NVIDIA显卡，也可以安装GPU版本`faiss-gpu`以获得更极致的性能，但这对于我们当前的练习来说并非必需。
+
+---
+
+### 第二幕：构建索引与执行查询
+
+现在，我们将把所有部分串联起来。这个指令将复用和整合我们之前的所有成果。
+
+:::{.callout-tip title="第二步：请求AI编写完整的索引、查询代码" icon="fas fa-cogs"}
+**👤 你的指令:**
+
+> "太棒了！现在请帮我编写一个完整的Python脚本。这个脚本需要整合我们之前的所有工作。
+>
+> **请在脚本中完成以下所有步骤：**
+> 1.  **复用代码**: 包含我们上一章实现的`embed_document`函数，以及加载`all-MiniLM-L6-v2`模型的代码。
+> 2.  **准备数据**:
+>     -   定义一个`documents`列表，里面包含几段关于不同主题的示例文本（例如，关于RAG，关于Python，关于机器学习）。
+>     -   将这个`documents`列表中的所有文本，都**分割并向量化**，得到一个`doc_embeddings`向量列表。
+> 3.  **构建FAISS索引**:
+>     -   导入`faiss`库。
+>     -   获取向量的维度（dimension）。
+>     -   创建一个`faiss.IndexFlatL2`类型的索引。这是一个基础的、使用L2距离（欧氏距离）进行精确搜索的索引。
+>     -   将`doc_embeddings`添加到这个索引中。
+> 4.  **执行查询**:
+>     -   定义一个用户问题`query`，例如"什么是RAG？"。
+>     -   将这个`query`也**向量化**，得到`query_embedding`。
+>     -   使用`index.search()`方法，在索引中搜索与`query_embedding`最相似的**3个**（k=3）文档块。
+> 5.  **展示结果**:
+>     -   打印出检索到的文档块的索引（indices）和它们的相似度得分（distances）。
+>     -   根据索引，从原始的文档块列表中，找到并打印出这些最相关文档块的**原文**。
+>
+> 请为整个脚本提供清晰的注释，确保我能理解每一步的作用。"
+:::
+
+**🤖 AI的预期回答:**
+没问题。这是一个将文本预处理、向量化、索引构建和查询串联起来的完整工作流。下面是完整的代码：
+
+```python
+import numpy as np
+import faiss
+from sentence_transformers import SentenceTransformer
+from sklearn.text import RecursiveCharacterTextSplitter
+
+# === 第1步: 加载模型和准备文本分割器 ===
+print("加载句向量模型...")
+model_name = 'all-MiniLM-L6-v2'
+embedding_model = SentenceTransformer(model_name)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)
+
+# === 第2步: 准备和处理文档 ===
+print("准备和处理文档...")
+documents = [
+    """Retrieval-Augmented Generation (RAG) is a powerful technique that combines the strengths of large language models (LLMs) with external knowledge retrieval. The core idea is to retrieve relevant information from a knowledge base before generating a response. This approach helps to reduce hallucinations and improve factual accuracy.""",
+    """Python is a high-level, interpreted, general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming.""",
+    """Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn' – that is, methods that leverage data to improve performance on some set of tasks. It is seen as a part of artificial intelligence. Machine learning algorithms build a model based on sample data, known as training data, in order to make predictions or decisions without being explicitly programmed to do so."""
+]
+
+# 将所有文档合并，然后分割成块
+all_text = " ".join(documents)
+chunks = text_splitter.split_text(all_text)
+
+# 对所有文本块进行向量化
+print(f"正在将 {len(chunks)} 个文本块转换为向量...")
+doc_embeddings = embedding_model.encode(chunks)
+
+# 将向量列表转换为NumPy数组，因为FAISS需要这种格式
+doc_embeddings_np = np.array(doc_embeddings).astype('float32')
+
+# === 第3步: 构建FAISS索引 ===
+print("构建FAISS索引...")
+# 获取向量的维度
+d = doc_embeddings_np.shape[1]
+
+# 创建一个基础的精确搜索索引，使用L2距离
+# 对于余弦相似度，FAISS建议在使用IndexFlatL2前对向量进行归一化
+faiss.normalize_L2(doc_embeddings_np)
+index = faiss.IndexFlatL2(d)
+
+# 将向量添加到索引中
+index.add(doc_embeddings_np)
+print(f"索引构建完成，共包含 {index.ntotal} 个向量。")
+
+# === 第4步: 执行查询 ===
+print("\n执行查询...")
+# 定义用户问题
+query = "What is RAG?"
+
+# 将问题向量化并转换为NumPy数组
+query_embedding = embedding_model.encode([query])
+query_embedding_np = np.array(query_embedding).astype('float32')
+
+# 对查询向量也进行归一化
+faiss.normalize_L2(query_embedding_np)
+
+# 定义要检索的近邻数量
+k = 3
+
+# 执行搜索
+distances, indices = index.search(query_embedding_np, k)
+
+# === 第5步: 展示结果 ===
+print(f"\n查询 '{query}' 的Top {k} 个最相关的结果：")
+for i in range(k):
+    retrieved_chunk_index = indices[0][i]
+    retrieved_chunk = chunks[retrieved_chunk_index]
+    similarity_score = 1 - distances[0][i] # 将L2距离转换为相似度（非严格）
+    
+    print(f"\n--- 结果 {i+1} ---")
+    print(f"相似度得分 (近似): {similarity_score:.4f}")
+    print(f"文档块索引: {retrieved_chunk_index}")
+    print(f"内容: {retrieved_chunk}")
+
+```
+
+## 本节小结
+
+恭喜你！你已经成功地搭建了一个迷你的、但功能完备的向量检索系统。
+
+### 🎯 核心收获
+1.  **打通了关键流程**: 你亲手将"文档"->"文本块"->"向量"->"索引"->"查询"->"检索结果"这一核心流程完全打通。
+2.  **掌握一个核心库**: 你学会了如何使用`faiss-cpu`库来创建索引、添加向量，并执行`.search()`方法。
+3.  **拥有了一个检索原型**: 你现在拥有了一个可以工作的代码原型。你可以轻易地将`documents`列表替换成你自己的文本数据，来构建一个属于你自己的语义搜索引擎。
+
+### 🤔 为何重要
+这是我们整个RAG项目的一个关键里程碑。我们已经完成了"离线处理"的全部工作，并成功验证了"在线查询"中的"检索"这一核心环节。
+
+我们现在已经能够根据用户的问题，从知识库中精准地"捞取"出最相关的几段信息。但这些信息还只是零散的"原材料"。
+
+在下一章，我们将进入RAG流程的最后，也是最激动人心的部分：**如何将这些检索到的"原材料"，与强大的LLM结合起来，精心设计一个完美的Prompt，最终"烹饪"出一道美味、智能、忠于事实的回答。** 

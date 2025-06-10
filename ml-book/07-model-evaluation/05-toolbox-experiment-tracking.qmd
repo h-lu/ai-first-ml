@@ -1,0 +1,181 @@
+# 7.5 AI协同工具箱：系统化你的模型实验
+
+## 从"一次性脚本"到"可追溯的科学实验"
+
+在上一节，我们基于分析结果，提出了多个模型迭代的假设：
+-   尝试新算法，如LightGBM。
+-   调整模型参数。
+-   使用不同的特征工程方法。
+-   处理类别不平衡问题。
+
+很快，你就会发现自己陷入了一个新的困境：
+-   你尝试了10个不同的模型，哪个效果最好来着？
+-   模型A在"有害"类别上召回率高，但模型B在"低质"类别上精确率高，如何取舍？
+-   我三个月前做的那个效果不错的实验，参数到底是怎么设置的？
+
+如果你的所有实验都只是一些散乱的Jupyter Notebook或Python脚本，那么你的项目很快就会变得混乱不堪、无法管理。
+
+科学的进步依赖于**可复现的实验**。机器学习作为一门实验科学，同样如此。我们需要一个工具来系统地管理我们的实验过程，这就是**实验跟踪（Experiment Tracking）**。
+
+## 什么是实验跟踪？
+
+实验跟踪就是将你每一次模型训练的"四件套"系统地记录下来的过程：
+1.  **代码版本 (Code Version)**：你用了哪个版本的代码？(例如，Git commit hash)
+2.  **输入数据 (Input Data)**：你用了哪个版本的数据集？
+3.  **超参数 (Hyperparameters)**：模型的参数配置是什么？(例如，`LogisticRegression(C=0.5, solver='saga')`)
+4.  **输出结果 (Output)**：模型的性能指标（如F1分数）和产出的模型文件是什么？
+
+像 [MLflow](https://mlflow.org/) 和 [Weights & Biases](https://wandb.ai/) 这样的工具，就是专门为此设计的。它们能帮你创建一个"实验日志"，让你所有的尝试都一目了然，方便你比较、复现和分享。
+
+## 与AI协同，快速搭建一个基础实验跟踪器
+
+虽然在入门阶段我们不一定需要引入一个重型的实验跟踪框架，但我们可以利用AI，快速为我们的代码增加基础的实验跟踪功能。让我们来指挥AI完成这个任务。
+
+:::{.callout-tip title="AI指令模板：为训练脚本添加实验跟踪功能" icon="fas fa-robot"}
+**# 角色**
+你是一位注重代码规范和可复现性的资深机器学习工程师。
+
+**# 上下文**
+我现在有一个模型训练的脚本。它能够训练一个模型并评估其性能。但每次运行，结果都会被覆盖，无法比较不同实验。
+
+**# 任务**
+请帮我重构这段代码，加入一个基础的实验跟踪功能。我希望实现以下目标：
+1.  **创建一个`run_experiment`函数**：将单次模型训练和评估的逻辑封装在这个函数里。
+2.  **记录实验结果**：函数应该返回一个包含关键信息的字典，例如：`model_name`, `accuracy`, `macro_f1_score`，以及详细的 `classification_report`。
+3.  **系统化运行和比较**：
+    *   创建一个列表`results_list`来保存每次实验的结果。
+    *   在一个主流程中，我可以定义不同的模型（比如逻辑回归和LightGBM），然后循环调用`run_experiment`函数。
+    *   最后，将`results_list`转换为一个Pandas DataFrame，并打印出来，这样我就可以清晰地比较不同实验的结果。
+4.  **代码模块化**：请将数据加载和预处理的逻辑也封装成独立的函数，让主脚本更清晰。
+
+**# 原始代码片段 (示意)**
+```python
+# 数据加载...
+# 特征工程...
+# 数据切分...
+
+# 模型1：逻辑回归
+lr = LogisticRegression()
+lr.fit(X_train, y_train)
+y_pred_lr = lr.predict(X_test)
+print(classification_report(y_test, y_pred_lr))
+
+# 模型2：LightGBM (可能之后会加)
+# lgb = lgb.LGBMClassifier()
+# lgb.fit(X_train, y_train)
+# y_pred_lgb = lgb.predict(X_test)
+# print(classification_report(y_test, y_pred_lgb))
+```
+
+**# 输出格式**
+提供一个完整的、重构后的、可以直接运行的Python脚本。
+:::
+
+---
+
+### AI重构后的代码 (预期输出)
+
+一个好的AI助手会返回一个结构清晰、模块化的脚本，如下所示：
+
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from lightgbm import LGBMClassifier
+from sklearn.metrics import classification_report, accuracy_score, f1_score
+from sklearn.preprocessing import LabelEncoder
+
+# --- 1. 数据处理模块 ---
+def load_and_preprocess_data(filepath):
+    """加载数据，处理缺失值，并进行标签编码。"""
+    data = pd.read_csv(filepath)
+    data['content'] = data['content'].fillna('')
+    
+    label_encoder = LabelEncoder()
+    data['label_encoded'] = label_encoder.fit_transform(data['label'])
+    
+    return data, label_encoder
+
+def create_features(data):
+    """使用TF-IDF创建文本特征。"""
+    vectorizer = TfidfVectorizer(max_features=5000, stop_words='english')
+    tfidf_matrix = vectorizer.fit_transform(data['content'])
+    return tfidf_matrix, vectorizer
+
+# --- 2. 实验运行模块 ---
+def run_experiment(model, X_train, y_train, X_test, y_test, label_encoder):
+    """训练一个模型并返回其性能指标。"""
+    model_name = model.__class__.__name__
+    print(f"--- Running experiment for: {model_name} ---")
+    
+    # 训练
+    model.fit(X_train, y_train)
+    
+    # 预测
+    y_pred = model.predict(X_test)
+    
+    # 评估
+    accuracy = accuracy_score(y_test, y_pred)
+    macro_f1 = f1_score(y_test, y_pred, average='macro')
+    report = classification_report(y_test, y_pred, target_names=label_encoder.classes_, output_dict=True)
+    
+    # 记录结果
+    result = {
+        'model_name': model_name,
+        'accuracy': accuracy,
+        'macro_f1_score': macro_f1,
+        'classification_report': report
+    }
+    
+    print(f"--- Experiment for {model_name} finished. Macro F1: {macro_f1:.4f} ---\n")
+    return result
+
+# --- 3. 主流程 ---
+if __name__ == '__main__':
+    # 加载和准备数据
+    data, label_encoder = load_and_preprocess_data('aigc_content.csv')
+    tfidf_matrix, vectorizer = create_features(data)
+    
+    # 切分数据集
+    X_train, X_test, y_train, y_test = train_test_split(
+        tfidf_matrix, 
+        data['label_encoded'], 
+        test_size=0.2, 
+        random_state=42, 
+        stratify=data['label_encoded']
+    )
+    
+    # 定义要尝试的模型
+    models_to_try = [
+        LogisticRegression(max_iter=1000, random_state=42),
+        LGBMClassifier(random_state=42)
+    ]
+    
+    # 运行所有实验并收集结果
+    results_list = []
+    for model in models_to_try:
+        exp_result = run_experiment(model, X_train, y_train, X_test, y_test, label_encoder)
+        results_list.append(exp_result)
+        
+    # 将结果转换为DataFrame以便于比较
+    results_df = pd.DataFrame(results_list)
+    
+    # 提取每个类别的F1分数，方便比较
+    for label in label_encoder.classes_:
+        results_df[f'f1_{label}'] = results_df['classification_report'].apply(lambda x: x[label]['f1-score'])
+        
+    # 打印最终的比较表格 (可以按某个关键指标排序)
+    print("--- Experiment Comparison Summary ---")
+    print(results_df[['model_name', 'accuracy', 'macro_f1_score', 'f1_有害', 'f1_低质', 'f1_优质']].sort_values(by='macro_f1_score', ascending=False))
+
+```
+通过这种方式，你可以轻松地在`models_to_try`列表中添加更多模型或不同参数的同一模型，脚本会自动运行、评估并生成一个清晰的对比表格，让你的模型迭代过程变得前所未有的系统和高效。
+
+## 本章总结
+
+在本章中，你完成了一次从"初级评估"到"专业评估"的认知升级。你不再仅仅满足于一个笼统的准确率，而是学会了使用一整套工具（混淆矩阵、精确率、召回率、F1分数）来全方位地审视你的模型。
+
+更重要的是，你开始像一个真正的科学家一样思考：**如何让我的实验可管理、可追溯、可复现？** 你掌握了使用AI来快速搭建实验跟踪框架的技能，为你未来进行更复杂的模型优化工作铺平了道路。
+
+在下一章，我们将探讨一个同样至关重要的话题——**模型的可解释性**。即使一个模型性能再好，如果它是一个我们完全无法理解的"黑箱"，我们敢放心地将重要决策交托给它吗？让我们一起学习如何打开这个黑箱，让AI为它的决策提供合理的解释。 

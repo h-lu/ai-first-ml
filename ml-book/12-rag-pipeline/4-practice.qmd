@@ -1,0 +1,163 @@
+---
+title: "12.4 Practice: 完整的RAG“指令剧本”"
+---
+
+## 终极挑战：组装你的RAG问答机器人
+
+**【AI导演】**
+
+> **场景**: 万事俱备！我们拥有了所有独立的组件：一个加载好的向量数据库、一个强大的Embedding模型，以及一份为LLM量身定制的、权责清晰的“岗位说明书”（Prompt模板）。现在，是时候将这些散落的“珍珠”串联起来，形成一条完整、闪亮的“项链”了。
+>
+> **你的任务**: 作为项目总工程师，你将向你的AI编程助手下达一个终极指令。这个指令要求它编写一个单一的、功能完备的Python函数，名为 `answer_question`。这个函数将封装我们RAG项目的整个端到端流程。
+>
+> **AI Copilot，启动！**
+
+---
+
+### 指挥AI编写`answer_question`函数
+
+**【给AI的指令】**
+
+> 你好，请扮演一位资深的Python工程师。请帮我编写一个名为 `answer_question` 的Python函数。
+>
+> **函数要求**:
+> 1.  接收一个字符串参数 `question` 作为用户提问。
+> 2.  **函数内部需要整合我们项目至今的所有成果**，执行完整的RAG流程：
+>     a.  **打印提示**: 首先，打印出 "正在接收问题..."。
+>     b.  **向量化问题**: 使用我们之前加载的 `embedding_model`，将 `question` 字符串转换为查询向量。打印 "问题向量化完成。"
+>     c.  **检索文档**: 使用我们之前构建的 `faiss_index`，在向量数据库中搜索与查询向量最相似的 **3个(k=3)** 文档块。打印 "相关文档检索完成。"
+>     d.  **拼接上下文**: 将检索到的3个文档块的原文内容（`page_content`）用换行符 `\n---\n` 连接起来，形成一个完整的 `context` 字符串。
+>     e.  **创建Prompt**: 使用我们在上一节设计的Prompt模板，并将 `context` 和 `question` 填入模板中，生成最终的 `final_prompt`。
+>     f.  **调用LLM**: （为了简化，我们这里先不真实调用OpenAI API，而是**模拟调用**）打印出 "正在将最终Prompt发送给LLM..."，然后直接将 `final_prompt` 返回，作为函数的最终输出。
+> 3.  **代码需要清晰的注释**，解释每一步的作用。
+> 4.  **假设 `embedding_model`, `faiss_index`, 和 `documents` 列表已经是全局加载好的变量。**
+
+---
+
+### AI生成的代码
+
+**【AI Copilot】**
+
+好的，这是根据您的要求编写的 `answer_question` 函数。
+
+```python
+import numpy as np
+# 假设以下变量已经在您的环境中加载好了
+# from previous_chapters import embedding_model, faiss_index, documents
+
+# --- 我们在上一章已经创建好的组件 ---
+
+# 1. Embedding模型 (模拟)
+class FakeEmbeddingModel:
+    def encode(self, text):
+        return np.random.rand(384) # all-MiniLM-L6-v2的维度是384
+
+embedding_model = FakeEmbeddingModel()
+
+# 2. FAISS索引 (模拟)
+# 在真实场景中，这将是一个加载好的FAISS索引
+# faiss_index = faiss.read_index("path/to/your/faiss.index")
+# 这里我们用一个简单的模拟对象
+class FakeFaissIndex:
+    def search(self, query_vector, k):
+        print(f"Searching for {k} nearest neighbors.")
+        # 模拟返回 (距离, 索引)
+        return (np.array([[0.1, 0.2, 0.3]]), np.array([[10, 20, 30]]))
+
+faiss_index = FakeFaissIndex()
+
+# 3. 文档列表 (模拟)
+# 真实场景中，documents列表的索引应与FAISS中的ID对应
+documents = [{"page_content": "这是文档10的内容：RAG通过检索增强生成来减少幻觉。"} for _ in range(50)]
+documents[20] = {"page_content": "这是文档20的内容：构建RAG系统的第一步是数据处理。"}
+documents[30] = {"page_content": "这是文档30的内容：Prompt Engineering对于RAG至关重要。"}
+
+
+# --- 本章的核心函数 ---
+
+def answer_question(question: str):
+    """
+    接收一个用户问题，执行完整的RAG流程，并返回最终的Prompt。
+
+    Args:
+        question (str): 用户的提问。
+
+    Returns:
+        str: 准备好发送给LLM的最终Prompt。
+    """
+    # a. 打印提示
+    print(f"接收到问题: '{question}'")
+    print("-" * 30)
+
+    # b. 向量化问题
+    print("1. 正在将问题向量化...")
+    query_vector = embedding_model.encode(question).reshape(1, -1)
+    print("   问题向量化完成。")
+    print("-" * 30)
+
+    # c. 检索文档
+    print("2. 正在检索相关文档...")
+    # FAISS返回 (distances, indices)
+    _, I = faiss_index.search(query_vector, k=3)
+    retrieved_indices = I[0]
+    print(f"   检索到文档索引: {retrieved_indices}")
+    print("   相关文档检索完成。")
+    print("-" * 30)
+
+    # d. 拼接上下文
+    print("3. 正在拼接上下文...")
+    retrieved_docs = [documents[i]['page_content'] for i in retrieved_indices]
+    context = "\n---\n".join(retrieved_docs)
+    print("   上下文拼接完成。")
+    print("-" * 30)
+
+    # e. 创建Prompt
+    print("4. 正在创建最终的Prompt...")
+    # 使用我们精心设计的模板
+    prompt_template = """
+你是一个专业的AI知识库助手。
+
+你的任务是根据下面提供的【上下文】信息，简洁并准确地回答用户的【问题】。
+
+规则:
+1.  严格基于【上下文】进行回答，不要依赖任何外部知识。
+2.  如果【上下文】没有提供足够的信息，或者与问题无关，必须直接回答："根据我现有的资料，无法回答这个问题。"
+3.  回答应保持客观、中立，不要包含个人观点或猜测。
+
+---
+【上下文】:
+{context}
+---
+
+【问题】:
+{question}
+"""
+    final_prompt = prompt_template.format(context=context, question=question)
+    print("   最终Prompt创建完成。")
+    print("-" * 30)
+
+    # f. (模拟)调用LLM
+    print("5. 准备将最终Prompt发送给LLM...")
+    
+    return final_prompt
+
+# --- 运行我们的RAG流程 ---
+user_question = "RAG系统如何工作？"
+final_prompt_to_llm = answer_question(user_question)
+
+print("\n\n✅✅✅ RAG流程执行完毕! ✅✅✅")
+print("以下是我们将要发送给LLM的最终内容：")
+print("="*50)
+print(final_prompt_to_llm)
+print("="*50)
+
+```
+
+---
+
+> **学习者笔记**:
+>
+> *   **见证奇迹**: 运行上面的代码，你将第一次看到我们项目中所有独立的模块是如何协同工作的。`answer_question`函数就像一个总指挥，有序地调度了Embedding、检索、文本处理和Prompt模板等所有资源。
+> *   **从模拟到真实**: 我们在步骤 `f` 中"模拟"了LLM的调用。在真实的应用中，你只需要将返回的 `final_prompt` 字符串，通过API（例如 `openai.ChatCompletion.create(...)`）发送给一个真实的LLM，就能获得最终的答案。
+> *   **封装的力量**: 将复杂的流程封装到一个单一、接口清晰的函数中，是软件工程的最佳实践。现在，任何人都可以通过调用 `answer_question("你的问题")` 来使用我们的整个RAG系统，而无需关心其内部复杂的实现细节。
+---

@@ -1,0 +1,124 @@
+---
+title: "13.4 Practice: 设计对比实验，优化问答效果"
+---
+
+## 实验时间：分块大小如何影响检索质量？
+
+**【AI导演】**
+
+> **场景**: 理论学习结束，现在是动手验证的环节！作为一名严谨的AI工程师，你不会轻易相信任何"最佳实践"，而是要通过亲手设计的实验来寻找答案。在上一节我们了解到，分块（Chunking）策略对检索质量至关重要。现在，我们将设计一个对比实验，来亲眼见证不同的分块大小，是如何影响我们的RAG系统在处理"刁钻"问题时的表现的。
+>
+> **你的任务**: 向你的AI编程助手发出指令，让它帮你修改之前的代码，使用不同的分块参数重新处理数据，并用我们之前遇到的"Bad Case"问题来测试，直观地比较不同设置下，检索到的上下文质量有何不同。
+>
+> **AI Copilot，启动！**
+
+---
+
+### 指挥AI设置对比实验
+
+**【给AI的指令】**
+
+> 你好。我需要设计一个实验来验证"分块大小"对RAG检索结果的影响。请帮我编写一段Python代码来完成这件事。
+>
+> **实验要求**:
+> 1.  **准备数据**: 创建一段包含混合信息的长文本。这段文本应该同时包含关于"RAG优点"和"RAG缺点"的内容，模拟一个真实、复杂的文档。
+> 2.  **设置两种分块策略**:
+>     a.  **策略A (大块)**: 使用`RecursiveCharacterTextSplitter`，设置一个较大的`chunk_size`（例如 **500**），`chunk_overlap`为0。
+>     b.  **策略B (小块)**: 使用`RecursiveCharacterTextSplitter`，设置一个较小的`chunk_size`（例如 **100**），`chunk_overlap`为20。
+> 3.  **分别处理和检索**:
+>     a.  对上述长文本，分别用策略A和策略B进行分块，并打印出两种策略下生成的块数和每个块的内容。
+>     b.  （为了简化，我们不真的构建FAISS索引，而是**模拟检索**）对于同一个问题 `"RAG系统的主要缺点是什么？"`，分别在策略A和策略B生成的文档块列表中，通过简单的**关键词匹配**（例如，包含"缺点"或"局限"的块）来模拟检索过程。
+> 4.  **打印结果**: 清晰地打印出在两种策略下，分别"检索"到了哪些文档块。让我们能直观地比较结果的差异。
+
+---
+
+### AI生成的实验代码
+
+**【AI Copilot】**
+
+好的，这是一个根据您的要求设计的对比实验。通过这个实验，我们可以非常直观地看到分块大小对检索信噪比的巨大影响。
+
+```python
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+import pprint
+
+# 1. 准备一段混合信息的长文本
+document_text = """
+RAG（检索增强生成）是一种强大的AI技术，它通过结合外部知识库来显著提升大型语言模型的能力。
+其最主要的优点在于能够有效减少事实性错误和"幻觉"，因为所有回答都基于提供的最新文档。
+此外，RAG的更新和维护成本远低于对整个模型进行微调，使其在商业应用中极具成本效益。
+然而，RAG系统也并非完美无缺。其一个主要缺点是，系统的最终表现高度依赖于检索模块的质量。
+如果检索器无法找到真正相关的文档，或者找到了包含错误信息的文档，那么整个系统的输出质量将急剧下降，这就是所谓的"垃圾进，垃圾出"原则。
+另一个挑战在于，精确控制检索范围和分块策略非常复杂，需要大量实验才能找到最优解。
+总而言之，RAG在提高答案准确性和时效性方面表现卓越，是构建可信AI问答系统的关键技术。
+"""
+
+# 2. 定义问题
+user_question = "RAG系统的主要缺点是什么？"
+
+print("="*50)
+print("实验开始：比较不同分块策略对检索结果的影响")
+print(f"测试问题: '{user_question}'")
+print("="*50)
+
+
+# 3. 策略A: 大块
+print("\n--- 策略 A: 大块 (chunk_size=500) ---")
+large_chunk_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=500,
+    chunk_overlap=0,
+    separators=["\n"]
+)
+chunks_A = large_chunk_splitter.create_documents([document_text])
+print(f"生成了 {len(chunks_A)} 个块:")
+pprint.pprint([chunk.page_content for chunk in chunks_A])
+
+# 模拟检索
+print("\n[策略A] 模拟检索结果:")
+retrieved_A = [
+    chunk.page_content for chunk in chunks_A 
+    if "缺点" in chunk.page_content or "挑战" in chunk.page_content or "局限" in chunk.page_content
+]
+if not retrieved_A:
+    print(">>> 未检索到包含'缺点'、'挑战'或'局限'的特定块。")
+    # 如果找不到特定关键词，向量检索可能会返回语义最相似的整个块
+    print(">>> 向量检索可能返回语义最相似的整个块（包含大量优点信息）。")
+    retrieved_A = [chunks_A[0].page_content] # 模拟返回最相似的块
+    
+pprint.pprint(retrieved_A)
+
+
+# 4. 策略B: 小块
+print("\n\n--- 策略 B: 小块 (chunk_size=100) ---")
+small_chunk_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=100,
+    chunk_overlap=20,
+    separators=["\n", "。"]
+)
+chunks_B = small_chunk_splitter.create_documents([document_text])
+print(f"生成了 {len(chunks_B)} 个块:")
+pprint.pprint([chunk.page_content for chunk in chunks_B])
+
+# 模拟检索
+print("\n[策略B] 模拟检索结果:")
+retrieved_B = [
+    chunk.page_content for chunk in chunks_B 
+    if "缺点" in chunk.page_content or "挑战" in chunk.page_content or "局限" in chunk.page_content
+]
+pprint.pprint(retrieved_B)
+
+print("\n\n" + "="*50)
+print("实验结论")
+print("="*50)
+print("策略A (大块): 检索到的上下文包含了大量关于优点的'噪声'信息，稀释了'缺点'这个核心信号。")
+print("策略B (小块): 检索到的上下文非常聚焦，直接命中了包含'缺点'和'挑战'的关键句子，信噪比极高。")
+```
+
+---
+
+> **学习者笔记**:
+>
+> *   **眼见为实**: 运行上面的代码，你会清晰地看到，在"大块"策略下，关于"缺点"的句子被包裹在大量描述"优点"的文本中，导致检索相关性下降。而在"小块"策略下，我们可以精确地分离出只讨论"缺点"和"挑战"的句子，为LLM提供了更高质量的"原材料"。
+> *   **迭代和实验的重要性**: 这个简单的实验揭示了RAG系统优化的核心方法论——**通过受控实验来验证假设**。在真实项目中，你会构建更复杂的评估集，使用更精确的评估指标（如`hit rate`, `MRR`），来系统地、数据驱动地优化你的系统。
+> *   **没有银弹**: 这个实验是否说明"块越小越好"？不一定。如果问题是"请总结RAG技术"，那么更大的块反而可能提供更全面的上下文。**最佳的分块策略，永远是与你的文档特性和预期的用户问题相关的。**
+---

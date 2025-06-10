@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10.2 How: 与AI探索Embedding的几何意义 – 机器学习：AI驱动的学习与应用</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../10-embedding/03-what-word-sentence-embedding.html" rel="next">
+<link href="../10-embedding/01-why-embedding.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09-rag-kickoff/index.html">第二部分：深度学习 —— 构建企业级LLM应用</a></li><li class="breadcrumb-item"><a href="../10-embedding/02-how-embedding-geometry.html"><span class="chapter-title">10.2 How: 与AI探索Embedding的几何意义</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">机器学习：AI驱动的学习与应用</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="搜索"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">欢迎踏上《机器学习：AI驱动的学习与应用》之旅</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">序章：新世界的生存法则</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-welcome/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第1章 欢迎来到AI-First时代</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-welcome/01-not-another-ml-book.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1 这不是另一本机器学习教科书</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-welcome/02-ai-conductor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.2 告别代码搬运工，成为AI指挥家</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-welcome/03-learning-philosophy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.3 本书的学习哲学：AI协同与探索式学习</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-welcome/04-what-you-will-get.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.4 你将获得的三个前沿项目与核心能力</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-guide/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第2章 本书使用指南与AI协同的艺术</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-guide/01-golden-circle.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.1 “机器学习黄金圈”：我们的学习罗盘</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-guide/02-prompt-engineering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.2 如何向AI伙伴有效提问：Prompt Engineering入门</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-guide/03-first-ai-task.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.3 你的第一个AI协同任务：让AI帮你解释一个概念</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-guide/04-ai-learning-coach.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.4 【AI协同工具箱】用AI做你的私人学习教练</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-environment/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第3章 搭建你的AI协同开发环境</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-environment/01-dev-environment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.1 你的工具清单：Python, Jupyter与VS Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-environment/02-ai-copilot-config.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.2 AI协同配置：让Copilot成为你的副驾驶</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-environment/03-install-libraries.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.3 AI辅助安装核心库</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">第一部分：传统机器学习 —— AIGC时代的新应用</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章 项目启动：AIGC产品质量危机</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/01-why-crisis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.1 Why: AIGC的机遇与”胡说八道”的风险</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/02-how-what-mission.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 定义任务：将危机转化为可执行的AI指令</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/03-practice-eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 实践：指挥AI完成首次探索性数据分析(EDA)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/04-challenge-hypothesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 挑战：从数据洞察到可验证的假设</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第5章 从文本到向量：教会机器”阅读”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/01-why-machines-cant-read.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Why: 为什么机器无法直接理解文字？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 How: 与AI的探索之旅——从词袋到TF-IDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/03-what-tfidf-concept.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 What: 核心概念之TF-IDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/04-practice-feature-engineering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Practice: 指挥AI完成文本特征工程</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第6章 你的第一个分类器：AI内容”安检门”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/01-why-first-inspector.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.1 Why: 是时候让第一个”质检员”上岗了</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/02-how-choose-model.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.2 How: 与AI对话，选择合适的入门模型</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/03-what-logistic-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.3 What: 核心概念之逻辑回归</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/04-practice-train-predict-evaluate.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.4 Practice: 指挥AI训练、预测与评估</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/05-toolbox-ai-debug.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5 AI协同工具箱：首次接触AI辅助Debug</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第7章 “我的模型不够好？”——精通评估与迭代</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/01-why-metrics-matter.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.1 Why: 当准确率”说谎”时</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/02-how-precision-recall.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.2 How: 与AI对话，探寻更真实的评估尺度</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/03-what-confusion-matrix-f1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.3 What: 核心概念之混淆矩阵、精确率、召回率与F1分数</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/04-practice-compare-models.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.4 Practice: 指挥AI生成并解读多维度评估报告</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/05-toolbox-experiment-tracking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.5 AI协同工具箱：系统化你的模型实验</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第8章 打开黑箱：让AI解释它的决策</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/01-why-explainability.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.1 Why: 我们为什么需要信任AI的决策？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/02-how-exploring-predictions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 How: 与AI对话，探寻”决策”背后的蛛丝马迹</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/03-what-xai-shap-lime.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.3 What: 核心概念之LIME与SHAP</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/04-practice-shap-plots.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.4 Practice: 指挥AI用SHAP绘制模型解释图</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/05-challenge-refactoring.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 终极挑战：基于AI洞察重构你的项目</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">第二部分：深度学习 —— 构建企业级LLM应用</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-rag-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第9章 项目启动：在海量文档中”海底捞针”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-rag-kickoff/01-why-crisis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Why: 企业知识库的困境与LLM带来的曙光</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-rag-kickoff/02-how-rag-blueprint.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 How: 与AI一起绘制RAG系统蓝图</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-rag-kickoff/03-what-rag-concept.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 What: 核心概念之检索增强生成 (RAG)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-rag-kickoff/04-toolbox-critical-thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 【AI协同工具箱】用AI进行技术方案的批判性评估</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第10章 万物皆可向量化：Embedding的魔力</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/01-why-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.1 Why: 超越TF-IDF，捕捉文本的深层语义</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/02-how-embedding-geometry.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">10.2 How: 与AI探索Embedding的几何意义</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/03-what-word-sentence-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 What: 核心概念之词向量与句向量</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/04-practice-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Practice: 指挥AI调用模型将文档转化为向量</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11-vector-database/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第11章 构建你的记忆宫殿：向量数据库</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11-vector-database/01-why-vector-db.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 Why: 为何需要专门的数据库来存储向量？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11-vector-database/02-how-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 How: 与AI探讨高效向量检索的策略</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11-vector-database/03-what-cosine-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.3 What: 核心概念之相似度计算与近似最近邻(ANN)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11-vector-database/04-practice-faiss.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.4 Practice: 指挥AI使用FAISS构建索引并查询</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../12-rag-pipeline/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第12章：串联成珠：搭建完整的RAG流程</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../12-rag-pipeline/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Why: 将所有组件组装成一个可工作的系统</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../12-rag-pipeline/2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 How: 与AI共同设计核心的Prompt模板</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../12-rag-pipeline/3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 What: 核心概念之Prompt Engineering艺术</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../12-rag-pipeline/4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.4 Practice: 完整的RAG“指令剧本”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第13章：优化你的机器人：从’幻觉’到’忠实’</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.1 Why: “我的机器人有时还是会胡说八道”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.2 How: 与AI一起进行Bad Case分析与策略探讨</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.3 What: 核心优化技术（分块、Top-K、重排）</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.4 Practice: 设计对比实验，优化问答效果</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.5 Challenge: 如何处理知识库的更新与冲突？</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目录</h2>
+   
+  <ul>
+  <li><a href="#一场可视化的探索之旅" id="toc-一场可视化的探索之旅" class="nav-link active" data-scroll-target="#一场可视化的探索之旅">一场可视化的探索之旅</a>
+  <ul class="collapse">
+  <li><a href="#ai指令模板可视化词向量" id="toc-ai指令模板可视化词向量" class="nav-link" data-scroll-target="#ai指令模板可视化词向量">AI指令模板：可视化词向量</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09-rag-kickoff/index.html">第二部分：深度学习 —— 构建企业级LLM应用</a></li><li class="breadcrumb-item"><a href="../10-embedding/02-how-embedding-geometry.html"><span class="chapter-title">10.2 How: 与AI探索Embedding的几何意义</span></a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">10.2 How: 与AI探索Embedding的几何意义</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="一场可视化的探索之旅" class="level2">
+<h2 class="anchored" data-anchor-id="一场可视化的探索之旅">一场可视化的探索之旅</h2>
+<p>理论总是有些枯燥。Embedding到底是什么？它听起来很玄妙。我们能否<strong>亲眼看到</strong>这个所谓的”语义空间”呢？</p>
+<p>当然可以。虽然真实的Embedding向量通常有几百甚至上千个维度，人类无法直接感知。但我们可以借助一种叫做”降维”的数学工具（比如t-SNE或PCA），将这些高维向量投影到我们能理解的二维或三维空间中，就像把一个立体的地球仪，展平成一张平面的世界地图一样。</p>
+<p>现在，让我们与AI伙伴一起，进行一次可视化的探索，看看词语在向量空间中是如何”站队”的。</p>
+<hr>
+<section id="ai指令模板可视化词向量" class="level3">
+<h3 class="anchored">AI指令模板：可视化词向量</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="与AI的探索对话：可视化词向量">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+与AI的探索对话：可视化词向量
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>👤 你:</strong> 你好！我想更直观地理解Embedding。你之前提到，Embedding能将词语映射到一个高维空间中，并且意思相近的词，它们的坐标也相近。这个听起来很神奇，我们能亲眼验证一下吗？</p>
+<p><strong>🤖 AI助手:</strong> 绝佳的想法！眼见为实是最好的学习方式。我们可以做一个有趣的实验。我这里有一个预训练好的、包含了大量常见词汇的词向量模型。我们可以从中挑选几个有代表性的词，获取它们的向量，然后使用降维可视化技术（比如t-SNE），将它们绘制在一张二维的图上。你想探索哪些词之间的关系呢？</p>
+<p><strong>👤 你:</strong> 太棒了！我想看一组经典的例子。请帮我获取以下这组词的向量，并可视化它们的位置： - <code>king</code> (国王) - <code>queen</code> (女王) - <code>man</code> (男人) - <code>woman</code> (女人)</p>
+<p>另外，为了做对比，我们再加几个不同领域的词： - <code>paris</code> (巴黎) - <code>france</code> (法国) - <code>rome</code> (罗马) - <code>italy</code> (意大利)</p>
+<p>我很好奇它们在图上会如何分布。</p>
+<p><strong>🤖 AI助手:</strong> 没问题。这是一个非常经典的实验。我已经获取了这些词的向量，并使用t-SNE将它们降维到了二维空间。请看下图：</p>
+<p><strong>(注意：这是一个通过代码生成的示例图，你也可以让AI帮你生成真实的代码来绘制。)</strong></p>
+<p><img src="https://i.imgur.com/8a6Y0f6.png" class="img-fluid" alt="一个展示词向量关系的t-SNE降维可视化图。图上有8个点，分别代表’king’, ‘queen’, ‘man’, ‘woman’, ‘paris’, ‘france’, ‘rome’, ‘italy’。’king’和’queen’离得很近，’man’和’woman’离得很近。’king’和’man’的连线向量，与’queen’和’woman’的连线向量，大致平行且等长。同样，’paris’和’france’离得很近，’rome’和’italy’离得很近。’paris’和’rome’的连线向量，与’france’和’italy’的连线向量，也大致平行且等长。"> <em>图10.1: 词向量在二维空间中的几何关系（示例图）</em></p>
+<p><strong>👤 你:</strong> 这太神奇了！我从图上看到了几个非常有趣的现象： 1. <strong>聚类现象</strong>：代表”人”的四个词聚集在了一起，而代表”地理位置”的四个词聚集在了另一个区域。 2. <strong>国家与首都</strong>：<code>paris</code> 和 <code>france</code> 靠得很近，<code>rome</code> 和 <code>italy</code> 也靠得很近，这完全符合常识。 3. <strong>性别关系</strong>：<code>king</code> 和 <code>queen</code> 靠得很近，<code>man</code> 和 <code>woman</code> 也靠得很近。</p>
+<p><strong>🤖 AI助手:</strong> 你观察得非常仔细！但这还不是最神奇的地方。请注意向量之间的<strong>方向和关系</strong>。你试着从 <code>man</code> 这个点画一个箭头指向 <code>king</code>，再从 <code>woman</code> 这个点画一个箭头指向 <code>queen</code>。你发现了什么？</p>
+<p><strong>👤 你:</strong> 我明白了！这两条连线（向量）的方向和长度，几乎是<strong>平行且相等</strong>的！这是否意味着，在向量空间中，<code>从"男人"到"国王"的变化</code>，和<code>从"女人"到"女王"的变化</code>，是可以用同一个向量来表示的？</p>
+<p><strong>🤖 AI助手:</strong> 完全正确！你已经洞察到了词向量最深刻的秘密。这种平行的几何关系，在数学上就表现为美妙的<strong>向量运算</strong>。这正是著名的 <code>vector('king') - vector('man') + vector('woman') ≈ vector('queen')</code> 这个公式的几何解释。这个”差值”向量，编码了一种抽象的语义关系——<strong>“皇室”或”权力”</strong>。</p>
+<p>同样地，你也可以看到，<code>从"法国"到"巴黎"的向量</code>，和 <code>从"意大利"到"罗马"的向量</code> 也是几乎平行的。这个向量，编码了<strong>“国家-首都”</strong>这一语义关系。</p>
+<hr>
+<section id="从几何到语义" class="level2">
+<h2 class="anchored" data-anchor-id="从几何到语义">从”几何”到”语义”</h2>
+<p>这次探索之旅告诉我们：</p>
+<ol type="1">
+<li><strong>Embedding不仅仅是编码，更是”理解”</strong>: Embedding模型通过学习海量文本，将人类语言中复杂的语义关系，转化为了高维空间中可以度量的几何关系。</li>
+<li><strong>距离代表相似度</strong>: 在这个空间里，两个向量的<strong>距离</strong>（或夹角）越近，代表它们在语义上越相似。这就是我们RAG系统中”相似度检索”的根本原理。</li>
+<li><strong>向量运算揭示深层关系</strong>: 向量之间的加减法，可以揭示出词语之间更深层次的、类比性的关系（Analogy）。这使得机器能够进行一定程度的”推理”。</li>
+</ol>
+</section>
+<section id="本节小结" class="level2">
+<h2 class="anchored" data-anchor-id="本节小结">本节小结</h2>
+<section id="核心收获" class="level3">
+<h3 class="anchored" data-anchor-id="核心收获">🎯 核心收获</h3>
+<ol type="1">
+<li><strong>一次眼见为实的体验</strong>: 你不再是听说Embedding很神奇，而是亲眼见证了词语在向量空间中富有逻辑的几何排布。</li>
+<li><strong>直观理解向量运算</strong>: 你通过可视化的方式，深刻理解了<code>king - man + woman ≈ queen</code>这个著名公式背后的几何意义。</li>
+<li><strong>掌握核心原理</strong>: 你明白了RAG系统进行语义检索的基础，就是计算查询向量和文档向量在语义空间中的”距离”。</li>
+</ol>
+</section>
+<section id="为何重要" class="level3">
+<h3 class="anchored" data-anchor-id="为何重要">�� 为何重要</h3>
+<p>将抽象的数学概念（高维向量）与直观的几何图形联系起来，是最高效的学习方式。这个几何视角将成为你未来理解所有基于Embedding的技术（包括LLM本身）的”心锚”。当你再听到”语义相似度”时，你的脑海中浮现的将不再是空洞的文字，而是一幅清晰的、点与点之间远近亲疏的几何图像。</p>
+<p>现在我们已经”看到”了Embedding的魔力。在下一节，我们将更深入地探讨它的核心概念，并区分将在我们项目中大显身手的”句向量”和我们刚刚实验的”词向量”有何不同。</p>
+
+
+<!-- -->
+
+</section>
+</section>
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "已复制");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "已复制");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../10-embedding/01-why-embedding.html" class="pagination-link" aria-label="10.1 Why: 超越TF-IDF，捕捉文本的深层语义">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">10.1 Why: 超越TF-IDF，捕捉文本的深层语义</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../10-embedding/03-what-word-sentence-embedding.html" class="pagination-link" aria-label="10.3 What: 核心概念之词向量与句向量">
+        <span class="nav-page-text"><span class="chapter-title">10.3 What: 核心概念之词向量与句向量</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 10.2 How: 与AI探索Embedding的几何意义</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## 一场可视化的探索之旅</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>理论总是有些枯燥。Embedding到底是什么？它听起来很玄妙。我们能否**亲眼看到**这个所谓的"语义空间"呢？</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>当然可以。虽然真实的Embedding向量通常有几百甚至上千个维度，人类无法直接感知。但我们可以借助一种叫做"降维"的数学工具（比如t-SNE或PCA），将这些高维向量投影到我们能理解的二维或三维空间中，就像把一个立体的地球仪，展平成一张平面的世界地图一样。</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>现在，让我们与AI伙伴一起，进行一次可视化的探索，看看词语在向量空间中是如何"站队"的。</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### AI指令模板：可视化词向量</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>:::{.callout-note title="与AI的探索对话：可视化词向量" icon="fas fa-binoculars"}</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>**👤 你:** 你好！我想更直观地理解Embedding。你之前提到，Embedding能将词语映射到一个高维空间中，并且意思相近的词，它们的坐标也相近。这个听起来很神奇，我们能亲眼验证一下吗？</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>**🤖 AI助手:** 绝佳的想法！眼见为实是最好的学习方式。我们可以做一个有趣的实验。我这里有一个预训练好的、包含了大量常见词汇的词向量模型。我们可以从中挑选几个有代表性的词，获取它们的向量，然后使用降维可视化技术（比如t-SNE），将它们绘制在一张二维的图上。你想探索哪些词之间的关系呢？</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>**👤 你:** 太棒了！我想看一组经典的例子。请帮我获取以下这组词的向量，并可视化它们的位置：</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`king`</span> (国王)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`queen`</span> (女王)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`man`</span> (男人)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`woman`</span> (女人)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>另外，为了做对比，我们再加几个不同领域的词：</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`paris`</span> (巴黎)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`france`</span> (法国)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`rome`</span> (罗马)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`italy`</span> (意大利)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>我很好奇它们在图上会如何分布。</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>**🤖 AI助手:** 没问题。这是一个非常经典的实验。我已经获取了这些词的向量，并使用t-SNE将它们降维到了二维空间。请看下图：</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>**(注意：这是一个通过代码生成的示例图，你也可以让AI帮你生成真实的代码来绘制。)**</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="al">![一个展示词向量关系的t-SNE降维可视化图。图上有8个点，分别代表'king', 'queen', 'man', 'woman', 'paris', 'france', 'rome', 'italy'。'king'和'queen'离得很近，'man'和'woman'离得很近。'king'和'man'的连线向量，与'queen'和'woman'的连线向量，大致平行且等长。同样，'paris'和'france'离得很近，'rome'和'italy'离得很近。'paris'和'rome'的连线向量，与'france'和'italy'的连线向量，也大致平行且等长。](https://i.imgur.com/8a6Y0f6.png)</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>*图10.1: 词向量在二维空间中的几何关系（示例图）*</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>**👤 你:** 这太神奇了！我从图上看到了几个非常有趣的现象：</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**聚类现象**：代表"人"的四个词聚集在了一起，而代表"地理位置"的四个词聚集在了另一个区域。</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**国家与首都**：<span class="in">`paris`</span> 和 <span class="in">`france`</span> 靠得很近，<span class="in">`rome`</span> 和 <span class="in">`italy`</span> 也靠得很近，这完全符合常识。</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**性别关系**：<span class="in">`king`</span> 和 <span class="in">`queen`</span> 靠得很近，<span class="in">`man`</span> 和 <span class="in">`woman`</span> 也靠得很近。</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>**🤖 AI助手:** 你观察得非常仔细！但这还不是最神奇的地方。请注意向量之间的**方向和关系**。你试着从 <span class="in">`man`</span> 这个点画一个箭头指向 <span class="in">`king`</span>，再从 <span class="in">`woman`</span> 这个点画一个箭头指向 <span class="in">`queen`</span>。你发现了什么？</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>**👤 你:** 我明白了！这两条连线（向量）的方向和长度，几乎是**平行且相等**的！这是否意味着，在向量空间中，<span class="in">`从"男人"到"国王"的变化`</span>，和<span class="in">`从"女人"到"女王"的变化`</span>，是可以用同一个向量来表示的？</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>**🤖 AI助手:** 完全正确！你已经洞察到了词向量最深刻的秘密。这种平行的几何关系，在数学上就表现为美妙的**向量运算**。这正是著名的 `vector('king') - vector('man') + vector('woman') ≈ vector('queen')` 这个公式的几何解释。这个"差值"向量，编码了一种抽象的语义关系——**"皇室"或"权力"**。</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>同样地，你也可以看到，<span class="in">`从"法国"到"巴黎"的向量`</span>，和 <span class="in">`从"意大利"到"罗马"的向量`</span> 也是几乎平行的。这个向量，编码了**"国家-首都"**这一语义关系。</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## 从"几何"到"语义"</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>这次探索之旅告诉我们：</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Embedding不仅仅是编码，更是"理解"**: Embedding模型通过学习海量文本，将人类语言中复杂的语义关系，转化为了高维空间中可以度量的几何关系。</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**距离代表相似度**: 在这个空间里，两个向量的**距离**（或夹角）越近，代表它们在语义上越相似。这就是我们RAG系统中"相似度检索"的根本原理。</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**向量运算揭示深层关系**: 向量之间的加减法，可以揭示出词语之间更深层次的、类比性的关系（Analogy）。这使得机器能够进行一定程度的"推理"。</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## 本节小结</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 核心收获</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**一次眼见为实的体验**: 你不再是听说Embedding很神奇，而是亲眼见证了词语在向量空间中富有逻辑的几何排布。</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**直观理解向量运算**: 你通过可视化的方式，深刻理解了<span class="in">`king - man + woman ≈ queen`</span>这个著名公式背后的几何意义。</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**掌握核心原理**: 你明白了RAG系统进行语义检索的基础，就是计算查询向量和文档向量在语义空间中的"距离"。</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="fu">### �� 为何重要</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>将抽象的数学概念（高维向量）与直观的几何图形联系起来，是最高效的学习方式。这个几何视角将成为你未来理解所有基于Embedding的技术（包括LLM本身）的"心锚"。当你再听到"语义相似度"时，你的脑海中浮现的将不再是空洞的文字，而是一幅清晰的、点与点之间远近亲疏的几何图像。</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>现在我们已经"看到"了Embedding的魔力。在下一节，我们将更深入地探讨它的核心概念，并区分将在我们项目中大显身手的"句向量"和我们刚刚实验的"词向量"有何不同。 </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>机器学习：AI驱动的学习与应用</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>本书使用 Quarto 构建</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
