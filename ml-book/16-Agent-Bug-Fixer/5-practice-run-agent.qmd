@@ -1,0 +1,161 @@
+---
+title: "16.5 见证奇迹：运行Agent并观察其自主修复过程"
+---
+
+## 启动你的第一个自主智能体
+
+**【AI导演】**
+
+> **场景**: 终极时刻来临。我们已经为Agent准备好了它所需的一切：一个可交互的**世界** (`BuggyProject`)，一套功能强大的**工具** (`read_file`, `write_file`, `ask_llm`)，以及一套明确的**价值观** (我们的奖励函数设计思想)。
+>
+> 现在，我们要把这些零件组装起来，启动这个智能体，并像观察一个精密实验一样，观看它如何一步步地、自主地解决我们交给它的难题。
+>
+> **你的任务**: 指挥AI，将所有组件整合，编写一个简单的、基于规则的Agent主循环。我们将暂时不使用复杂的RL训练算法（如Q-Learning），因为对于这个特定问题，一个清晰的逻辑流更能让我们理解Agent的工作模式。我们将清晰地打印出Agent每一步的"思考过程"。
+
+
+
+### 指令剧本：组装并运行Agent
+
+#### **第一步：定义Agent类和主循环**
+
+**【给AI的提示词】**
+
+> 请帮我把所有部分整合起来。
+>
+> 1.  创建一个名为 `BugFixerAgent` 的类。
+> 2.  在它的 `__init__` 方法中，初始化一个 `BuggyProject` 实例作为它的环境 `self.env`。
+> 3.  创建一个名为 `run` 的方法，这将是Agent的主循环。
+>
+> **在 `run` 方法中，实现以下逻辑：**
+>
+> a. 设置一个最大尝试次数 `max_attempts`，比如5次，防止无限循环。
+> b. 用一个 `for` 循环开始主流程。
+> c. **打印思考过程**: 在循环的每一步，都用清晰的print语句来展示Agent的"内心独白"。
+>
+> **主循环的核心逻辑如下：**
+>
+> 1.  **【观察】**: 调用 `self.env.run_tests()`，获取当前的 `status` 和 `message`。
+> 2.  **【思考 & 决策】**:
+>     *   如果 `status` 是 `'success'`，说明Bug已修复。打印成功信息，并**跳出循环**。
+>     *   如果 `status` 是 `'failure'`，说明需要修复。
+> 3.  **【行动】**:
+>     *   **读取文件**: 调用我们之前定义的 `read_file` 工具，读取 `main.py` 的内容。
+>     *   **求助LLM**: 调用 `ask_llm_for_suggestion` 工具，把当前代码和错误信息传给它，获得 `fixed_code`。
+>     *   **写入文件**: 调用 `write_file` 工具，将 `fixed_code` 写回 `main.py`。
+> 4.  在循环结束后，如果任务仍未成功，打印失败信息。
+
+
+
+<details>
+<summary>点击查看AI可能的完整输出</summary>
+
+```python
+# 假设 BuggyProject 类, read_file, write_file, ask_llm_for_suggestion 函数已在前面定义好
+
+class BugFixerAgent:
+    def __init__(self):
+        self.env = BuggyProject()
+        # 在真实RL Agent中，这里会初始化Q-Table, Policy Network等
+        print("BugFixerAgent initialized.")
+        print("Initial project state:")
+        print("main.py:\n" + self.env.files['main.py'])
+        print("-" * 20)
+
+    def run(self, max_attempts=5):
+        for i in range(max_attempts):
+            print(f"--- ATTEMPT {i + 1} ---")
+            
+            # 1. Observe: 运行测试，观察环境状态
+            print("AGENT: Observing environment by running tests...")
+            status, message = self.env.run_tests()
+            print(f"AGENT: Observation - Status: {status}, Message: {message}")
+
+            # 2. Think & Decide: 基于观察进行思考和决策
+            if status == 'success':
+                print("\nAGENT: Goal achieved! The bug is fixed. Shutting down.")
+                return
+
+            print("AGENT: Thinking... tests failed. I need to formulate a plan.")
+            
+            # 3. Act: 采取一系列行动
+            # Plan: Read file -> Ask LLM -> Write file
+            
+            print("AGENT: Action - Reading the buggy file 'main.py'...")
+            current_code = read_file(self.env, 'main.py')
+            
+            print("AGENT: Action - Asking LLM for a suggestion...")
+            suggested_fix = ask_llm_for_suggestion(current_code, message)
+            
+            print("AGENT: Action - Writing the suggested fix to 'main.py'...")
+            write_file(self.env, 'main.py', suggested_fix)
+            
+            print("AGENT: Action completed. Let's see the new state of main.py:")
+            print(self.env.files['main.py'])
+
+        print("\nAGENT: Failed to fix the bug within the maximum attempts.")
+
+# 启动Agent
+if __name__ == "__main__":
+    agent = BugFixerAgent()
+    agent.run()
+
+```
+</details>
+
+
+
+### 见证奇迹：运行并解读输出
+
+当你运行这段代码时，你将会在控制台看到一段类似下面这样的、清晰的"思考链"：
+
+```text
+BugFixerAgent initialized.
+Initial project state:
+main.py:
+def add(a, b):
+    return a - b # 这是一个经典的、错误的减法实现
+--------------------
+--- ATTEMPT 1 ---
+AGENT: Observing environment by running tests...
+AGENT: Observation - Status: failure, Message: Test Failed: 2 + 3 should be 5
+
+AGENT: Thinking... tests failed. I need to formulate a plan.
+AGENT: Action - Reading the buggy file 'main.py'...
+AGENT: Action - Asking LLM for a suggestion...
+---LLM TOOL CALLED---
+Simulating LLM call with code:
+def add(a, b):
+    return a - b # 这是一个经典的、错误的减法实现
+
+and error:
+Test Failed: 2 + 3 should be 5
+LLM suggested fix:
+def add(a, b):
+    return a + b
+---LLM TOOL END---
+AGENT: Action - Writing the suggested fix to 'main.py'...
+AGENT: Action completed. Let's see the new state of main.py:
+def add(a, b):
+    return a + b
+
+--- ATTEMPT 2 ---
+AGENT: Observing environment by running tests...
+AGENT: Observation - Status: success, Message: All tests passed!
+
+AGENT: Goal achieved! The bug is fixed. Shutting down.
+```
+
+
+> **学习者笔记**:
+>
+> 请仔细阅读并理解上面的输出。这就是一个**自主智能体 (Autonomous Agent)** 的工作过程。
+>
+> 它不再是一个简单的"输入-输出"函数。它在一个**循环 (Loop)** 中运作，执行了一系列连贯的动作，每一步都基于上一步的观察结果，并为了一个最终目标而服务。
+>
+> 即使我们用的是一个基于规则的简单策略，这个 `Observe -> Think -> Act` (观察-思考-行动) 的核心循环，也正是所有高级AI Agent（如AlphaGo, AutoGPT）工作的基本模式。
+>
+> 你已经成功地让一个AI实体，在没有你直接干预的情况下，自主地完成了一个复杂的、多步骤的任务。这是你迈向AI系统设计师的关键一步。
+>
+> 在最后一节，我们将探讨一个更深层次的问题：当Agent变得越来越强大时，我们如何确保它"心怀善意"？
+
+</rewritten_file> 

@@ -95,7 +95,43 @@ book:
         - 13-RAG-Optimization/3-what.qmd
         - 13-RAG-Optimization/4-practice.qmd
         - 13-RAG-Optimization/5-challenge.qmd
-    - references.qmd
+    - part: "第三部分：强化学习——训练自主决策的AI智能体"
+      chapters:
+        - 14-RL-Intro/index.qmd
+        - 14-RL-Intro/1-why.qmd
+        - 14-RL-Intro/2-how.qmd
+        - 14-RL-Intro/3-what.qmd
+        - 14-RL-Intro/4-why-learn-rl.qmd
+        
+        - 15-RL-Pricing-Bot/index.qmd
+        - 15-RL-Pricing-Bot/1-why.qmd
+        - 15-RL-Pricing-Bot/2-practice-simulator.qmd
+        - 15-RL-Pricing-Bot/3-how-what-q-learning.qmd
+        - 15-RL-Pricing-Bot/4-practice-training-viz.qmd
+        - 15-RL-Pricing-Bot/5-challenge.qmd
+        
+        - 16-Agent-Bug-Fixer/index.qmd
+        - 16-Agent-Bug-Fixer/1-why.qmd
+        - 16-Agent-Bug-Fixer/2-design-sandbox.qmd
+        - 16-Agent-Bug-Fixer/3-design-actions.qmd
+        - 16-Agent-Bug-Fixer/4-design-rewards.qmd
+        - 16-Agent-Bug-Fixer/5-practice-run-agent.qmd
+        - 16-Agent-Bug-Fixer/6-challenge-alignment.qmd
+
+        - 17-RL-Frontiers/index.qmd
+        - 17-RL-Frontiers/1-recap.qmd
+        - 17-RL-Frontiers/2-transfer.qmd
+        - 17-RL-Frontiers/3-vision.qmd
+        
+        - 18-Epilogue/index.qmd
+        - 18-Epilogue/1-summary.qmd
+        - 18-Epilogue/2-ethics.qmd
+        - 18-Epilogue/3-next-steps.qmd
+        - 18-Epilogue/4-lifelong-learning.qmd
+        
+        - Appendix/A-AI-Dev-Best-Practice.qmd
+        - Appendix/B-Gradio-Components.qmd
+
   
   page-footer:
     left: |

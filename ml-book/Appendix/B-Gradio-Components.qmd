@@ -1,0 +1,82 @@
+---
+title: "附录B：Gradio核心组件用法查询"
+---
+
+Gradio是我们选择的、用于快速将机器学习模型封装为Web UI的利器。它的学习曲线平缓，代码简洁直观。本附录将作为一份速查手册，列出我们在本书中最常用的一些核心输入/输出组件及其基本用法，方便您在需要时快速查询。
+
+### 核心概念回顾
+
+一个Gradio应用的核心是 `gr.Interface` 对象，它至少需要三个参数：
+1.  `fn`: 你要封装的函数（通常是你的模型预测函数）。
+2.  `inputs`: 一个或一组输入组件，对应 `fn` 函数的参数。
+3.  `outputs`: 一个或一组输出组件，对应 `fn` 函数的返回值。
+
+```python
+import gradio as gr
+
+def greet(name):
+    return "Hello, " + name + "!"
+
+iface = gr.Interface(fn=greet, inputs="text", outputs="text")
+iface.launch()
+```
+
+### 常用输入组件 (`inputs`)
+
+| 组件 (`gr.`) | 用途和场景 | 示例代码 |
+| :--- | :--- | :--- |
+| `Textbox` | 接收**文本**输入。可以设置行数（`lines`）、占位符（`placeholder`）、标签（`label`）。 | `gr.Textbox(lines=2, placeholder="请输入你的问题...")` |
+| `Number` | 接收**数字**输入。可以设置默认值（`value`）。 | `gr.Number(label="输入广告投入", value=100)` |
+| `Slider` | **滑块**输入，用于在一定范围内选择数值。 | `gr.Slider(minimum=0, maximum=100, step=1, label="选择温度")` |
+| `Checkbox` | **复选框**，用于布尔值（True/False）输入。 | `gr.Checkbox(label="是否启用高级模式")` |
+| `CheckboxGroup` | **复选框组**，用于从一组选项中进行多选。 | `gr.CheckboxGroup(choices=["邮件", "短信", "电话"], label="接收通知方式")` |
+| `Radio` | **单选按钮**，用于从一组选项中进行单选。 | `gr.Radio(choices=["7天", "30天", "90天"], label="选择预测周期")` |
+| `Dropdown` | **下拉菜单**，功能与Radio类似，但更节省空间。 | `gr.Dropdown(choices=["逻辑回归", "决策树", "SVM"], label="选择模型")` |
+| `File` | **文件上传**。可以限制文件类型（`file_types`）。返回一个包含文件路径和内容的临时对象。 | `gr.File(label="上传CSV文件", file_types=[".csv"])` |
+| `Image` | **图片上传/输入**。可以设置图片来源（`source`，如`"upload"`或`"webcam"`）。 | `gr.Image(shape=(224, 224), source="upload")` |
+| `DataFrame` | **表格输入**。可以直接在UI上编辑类似Excel的表格。 | `gr.DataFrame(row_count=3, col_count=2, label="输入初始数据")` |
+
+### 常用输出组件 (`outputs`)
+
+大部分输入组件也可以作为输出组件使用。以下是一些最常用于展示结果的组件。
+
+| 组件 (`gr.`) | 用途和场景 | 示例代码 |
+| :--- | :--- | :--- |
+| `Textbox` | 显示**文本**结果。 | `gr.Textbox(label="模型回答")` |
+| `Label` | 显示**分类标签及其置信度**。非常适合分类任务。输入是一个字典，如`{'猫': 0.8, '狗': 0.2}`。 | `gr.Label(label="客户流失预测结果")` |
+| `DataFrame` | 显示**表格**数据（`pandas.DataFrame`）。 | `gr.DataFrame(label="用户分群结果")` |
+| `Image` | 显示**图片**结果。可以是NumPy array, PIL Image, 或文件路径。 | `gr.Image(label="生成的图片")` |
+| `Plot` | 显示**图表**。可以接收 `matplotlib` 或 `plotly` 的图表对象。 | `gr.Plot(label="销售额趋势图")` |
+| `Markdown` | 显示**Markdown格式**的文本，用于格式化输出。 | `gr.Markdown()` |
+| `HTML` | 直接渲染**HTML**内容。 | `gr.HTML()` |
+| `HighlightedText` | **高亮文本**。用于文本标注、解释性任务。输入是(token, score)对的列表。 | `gr.HighlightedText(label="文本归因分析")` |
+| `JSON` | 以可折叠、可浏览的格式显示**JSON**对象。 | `gr.JSON(label="原始API响应")` |
+
+### 布局 (`gr.Blocks`)
+
+当 `gr.Interface` 无法满足你的复杂布局需求时，可以使用 `gr.Blocks` 来自定义UI的排列组合。
+
+```python
+import gradio as gr
+
+with gr.Blocks() as demo:
+    gr.Markdown("## 简单的计算器")
+    with gr.Row():
+        num1 = gr.Number(label="数字1")
+        operator = gr.Radio(choices=["+", "-", "*", "/"], label="运算符")
+        num2 = gr.Number(label="数字2")
+    
+    calculate_btn = gr.Button("计算")
+    result = gr.Textbox(label="结果", interactive=False) # interactive=False 表示用户不能编辑
+    
+    def calculator(n1, op, n2):
+        # ... 计算逻辑 ...
+        return result
+        
+    calculate_btn.click(fn=calculator, inputs=[num1, operator, num2], outputs=result)
+
+demo.launch()
+```
+`gr.Blocks` 提供了 `gr.Row`（行布局）、`gr.Column`（列布局）、`gr.Tab`（选项卡）等多种布局元素，让你可以像搭积木一样构建任意复杂的交互界面。
+
+这份手册只是一个开始。Gradio拥有丰富的组件和强大的定制能力，更详细的用法请随时查阅其官方文档。 

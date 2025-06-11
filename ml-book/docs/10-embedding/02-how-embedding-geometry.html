@@ -520,12 +520,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -539,6 +533,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#一场可视化的探索之旅" id="toc-一场可视化的探索之旅" class="nav-link active" data-scroll-target="#一场可视化的探索之旅">一场可视化的探索之旅</a>
   <ul class="collapse">
   <li><a href="#ai指令模板可视化词向量" id="toc-ai指令模板可视化词向量" class="nav-link" data-scroll-target="#ai指令模板可视化词向量">AI指令模板：可视化词向量</a></li>
+  </ul></li>
+  <li><a href="#从几何到语义" id="toc-从几何到语义" class="nav-link" data-scroll-target="#从几何到语义">从”几何”到”语义”</a></li>
+  <li><a href="#本节小结" id="toc-本节小结" class="nav-link" data-scroll-target="#本节小结">本节小结</a>
+  <ul class="collapse">
+  <li><a href="#核心收获" id="toc-核心收获" class="nav-link" data-scroll-target="#核心收获">🎯 核心收获</a></li>
+  <li><a href="#为何重要" id="toc-为何重要" class="nav-link" data-scroll-target="#为何重要">🎯 为何重要</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -572,7 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>现在，让我们与AI伙伴一起，进行一次可视化的探索，看看词语在向量空间中是如何”站队”的。</p>
 <hr>
 <section id="ai指令模板可视化词向量" class="level3">
-<h3 class="anchored">AI指令模板：可视化词向量</h3>
+<h3 class="anchored" data-anchor-id="ai指令模板可视化词向量">AI指令模板：可视化词向量</h3>
 <div class="callout callout-style-default callout-note callout-titled" title="与AI的探索对话：可视化词向量">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -596,7 +596,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>👤 你:</strong> 我明白了！这两条连线（向量）的方向和长度，几乎是<strong>平行且相等</strong>的！这是否意味着，在向量空间中，<code>从"男人"到"国王"的变化</code>，和<code>从"女人"到"女王"的变化</code>，是可以用同一个向量来表示的？</p>
 <p><strong>🤖 AI助手:</strong> 完全正确！你已经洞察到了词向量最深刻的秘密。这种平行的几何关系，在数学上就表现为美妙的<strong>向量运算</strong>。这正是著名的 <code>vector('king') - vector('man') + vector('woman') ≈ vector('queen')</code> 这个公式的几何解释。这个”差值”向量，编码了一种抽象的语义关系——<strong>“皇室”或”权力”</strong>。</p>
 <p>同样地，你也可以看到，<code>从"法国"到"巴黎"的向量</code>，和 <code>从"意大利"到"罗马"的向量</code> 也是几乎平行的。这个向量，编码了<strong>“国家-首都”</strong>这一语义关系。</p>
+</div>
+</div>
 <hr>
+</section>
+</section>
 <section id="从几何到语义" class="level2">
 <h2 class="anchored" data-anchor-id="从几何到语义">从”几何”到”语义”</h2>
 <p>这次探索之旅告诉我们：</p>
@@ -617,17 +621,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="为何重要" class="level3">
-<h3 class="anchored" data-anchor-id="为何重要">�� 为何重要</h3>
+<h3 class="anchored" data-anchor-id="为何重要">🎯 为何重要</h3>
 <p>将抽象的数学概念（高维向量）与直观的几何图形联系起来，是最高效的学习方式。这个几何视角将成为你未来理解所有基于Embedding的技术（包括LLM本身）的”心锚”。当你再听到”语义相似度”时，你的脑海中浮现的将不再是空洞的文字，而是一幅清晰的、点与点之间远近亲疏的几何图像。</p>
 <p>现在我们已经”看到”了Embedding的魔力。在下一节，我们将更深入地探讨它的核心概念，并区分将在我们项目中大显身手的”句向量”和我们刚刚实验的”词向量”有何不同。</p>
 
 
 <!-- -->
 
-</section>
-</section>
-</div>
-</div>
 </section>
 </section>
 
@@ -1167,28 +1167,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>**🤖 AI助手:** 完全正确！你已经洞察到了词向量最深刻的秘密。这种平行的几何关系，在数学上就表现为美妙的**向量运算**。这正是著名的 `vector('king') - vector('man') + vector('woman') ≈ vector('queen')` 这个公式的几何解释。这个"差值"向量，编码了一种抽象的语义关系——**"皇室"或"权力"**。</span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>同样地，你也可以看到，<span class="in">`从"法国"到"巴黎"的向量`</span>，和 <span class="in">`从"意大利"到"罗马"的向量`</span> 也是几乎平行的。这个向量，编码了**"国家-首都"**这一语义关系。</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## 从"几何"到"语义"</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>这次探索之旅告诉我们：</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Embedding不仅仅是编码，更是"理解"**: Embedding模型通过学习海量文本，将人类语言中复杂的语义关系，转化为了高维空间中可以度量的几何关系。</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**距离代表相似度**: 在这个空间里，两个向量的**距离**（或夹角）越近，代表它们在语义上越相似。这就是我们RAG系统中"相似度检索"的根本原理。</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**向量运算揭示深层关系**: 向量之间的加减法，可以揭示出词语之间更深层次的、类比性的关系（Analogy）。这使得机器能够进行一定程度的"推理"。</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## 本节小结</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 核心收获</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**一次眼见为实的体验**: 你不再是听说Embedding很神奇，而是亲眼见证了词语在向量空间中富有逻辑的几何排布。</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**直观理解向量运算**: 你通过可视化的方式，深刻理解了<span class="in">`king - man + woman ≈ queen`</span>这个著名公式背后的几何意义。</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**掌握核心原理**: 你明白了RAG系统进行语义检索的基础，就是计算查询向量和文档向量在语义空间中的"距离"。</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="fu">### �� 为何重要</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>将抽象的数学概念（高维向量）与直观的几何图形联系起来，是最高效的学习方式。这个几何视角将成为你未来理解所有基于Embedding的技术（包括LLM本身）的"心锚"。当你再听到"语义相似度"时，你的脑海中浮现的将不再是空洞的文字，而是一幅清晰的、点与点之间远近亲疏的几何图像。</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>现在我们已经"看到"了Embedding的魔力。在下一节，我们将更深入地探讨它的核心概念，并区分将在我们项目中大显身手的"句向量"和我们刚刚实验的"词向量"有何不同。 </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## 从"几何"到"语义"</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>这次探索之旅告诉我们：</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Embedding不仅仅是编码，更是"理解"**: Embedding模型通过学习海量文本，将人类语言中复杂的语义关系，转化为了高维空间中可以度量的几何关系。</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**距离代表相似度**: 在这个空间里，两个向量的**距离**（或夹角）越近，代表它们在语义上越相似。这就是我们RAG系统中"相似度检索"的根本原理。</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**向量运算揭示深层关系**: 向量之间的加减法，可以揭示出词语之间更深层次的、类比性的关系（Analogy）。这使得机器能够进行一定程度的"推理"。</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## 本节小结</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 核心收获</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**一次眼见为实的体验**: 你不再是听说Embedding很神奇，而是亲眼见证了词语在向量空间中富有逻辑的几何排布。</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**直观理解向量运算**: 你通过可视化的方式，深刻理解了<span class="in">`king - man + woman ≈ queen`</span>这个著名公式背后的几何意义。</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**掌握核心原理**: 你明白了RAG系统进行语义检索的基础，就是计算查询向量和文档向量在语义空间中的"距离"。</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 为何重要</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>将抽象的数学概念（高维向量）与直观的几何图形联系起来，是最高效的学习方式。这个几何视角将成为你未来理解所有基于Embedding的技术（包括LLM本身）的"心锚"。当你再听到"语义相似度"时，你的脑海中浮现的将不再是空洞的文字，而是一幅清晰的、点与点之间远近亲疏的几何图像。</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>现在我们已经"看到"了Embedding的魔力。在下一节，我们将更深入地探讨它的核心概念，并区分将在我们项目中大显身手的"句向量"和我们刚刚实验的"词向量"有何不同。 </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
