@@ -71,9 +71,6 @@ class PricingSimulator:
 > 1.  将 `self.remaining_days` 设置为 `self.total_days`。
 > 2.  将 `self.remaining_seats` 设置为 `self.total_seats`。
 > 3.  最后，返回初始的状态，这个状态是一个元组：`(self.remaining_days, self.remaining_seats)`。
-:::
-
-
 
 
 ```python

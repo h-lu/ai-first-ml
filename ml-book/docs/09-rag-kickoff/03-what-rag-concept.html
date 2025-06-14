@@ -520,6 +520,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">第三部分：强化学习——训练自主决策的AI智能体</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-RL-Intro/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第14章：新范式：让机器通过“试错”来学习</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -572,13 +588,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="一个精妙的类比开卷考试的超级学霸">一个精妙的类比：开卷考试的超级学霸</h2>
 <p>我们已经有了RAG系统的宏观架构蓝图，但RAG这个概念本身究竟意味着什么？它为什么如此重要？</p>
 <p>为了真正理解其精髓，让我们忘掉那些技术术语，来看一个生动的类比：<strong>一场特殊的考试。</strong></p>
-<hr>
 <section id="考场上的两位考生" class="level3">
 <h3 class="anchored" data-anchor-id="考场上的两位考生">考场上的两位考生</h3>
 <p>想象一下，一场关于”世界历史”的终极考试正在进行。考场上有两位考生：</p>
 <p><strong>考生A：闭卷考试的”博学家”小L (LLM)</strong> - <strong>特点</strong>：小L是一位记忆力超群的通才。他在考前阅读了互联网上几乎所有的历史书籍、文章和资料。他的大脑里存储着海量的信息。 - <strong>答题方式</strong>：当他拿到一道题，比如”请论述古罗马帝国衰亡的主要原因”，他会完全凭借自己的记忆，搜寻大脑中所有相关的知识点，然后洋洋洒洒地写下一篇雄文。 - <strong>潜在风险</strong>： 1. <strong>记忆过时</strong>：他读的资料截止到2023年初。如果题目涉及到最新的考古发现，他就不知道了。 2. <strong>知识混淆</strong>：由于记忆了太多信息，他偶尔会把不同历史事件的细节搞混，比如把汉尼拔的战绩安到凯撒头上。我们称之为”<strong>幻觉 (Hallucination)</strong>”。 3. <strong>无法溯源</strong>：你无法知道他的答案具体是基于哪本书的哪一页。他的知识来源是一个巨大的”黑箱”。</p>
 <p><strong>考生B：开卷考试的”超级学霸”小R (RAG)</strong> - <strong>特点</strong>：小R也很聪明，但他更依赖策略。他被允许带一个”超级书包”进入考场，书包里是本次考试范围内的核心教材和参考资料(<strong>这就是我们的私有知识库</strong>)。 - <strong>答题方式</strong>：当他拿到同样的问题时，他的第一反应不是依赖记忆，而是执行一个高效的流程： 1. <strong>快速检索 (Retrieval)</strong>：他迅速在书包里翻找，找出与”罗马帝国衰亡”最相关的那几页笔记和章节。 2. <strong>整合生成 (Augmented Generation)</strong>：他仔细阅读这些找到的、高度相关的资料，然后<strong>基于这些可靠的材料</strong>，总结、提炼、组织语言，生成一个精准、有理有据的答案。在答案的末尾，他甚至会像写论文一样，标注出”此观点参考自《罗马帝国衰亡史》第5卷第3章”。 - <strong>核心优势</strong>： 1. <strong>知识鲜活</strong>：只要我们更新他书包里的资料，他的知识就永远是最新的。 2. <strong>忠于事实</strong>：他的答案严格基于提供的材料，极大地减少了”凭空想象”或”张冠李戴”的可能性，从而显著<strong>减轻了”幻觉”问题</strong>。 3. <strong>可信溯源</strong>：我们可以清晰地知道他的答案来源是哪些具体文档，这让他的回答变得可验证、可信赖。</p>
-<hr>
 </section>
 </section>
 <section id="rag的核心价值连接llm与现实世界" class="level2">
@@ -1111,57 +1125,55 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>为了真正理解其精髓，让我们忘掉那些技术术语，来看一个生动的类比：**一场特殊的考试。**</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">### 考场上的两位考生</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>想象一下，一场关于"世界历史"的终极考试正在进行。考场上有两位考生：</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>**考生A：闭卷考试的"博学家"小L (LLM)**</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**特点**：小L是一位记忆力超群的通才。他在考前阅读了互联网上几乎所有的历史书籍、文章和资料。他的大脑里存储着海量的信息。</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**答题方式**：当他拿到一道题，比如"请论述古罗马帝国衰亡的主要原因"，他会完全凭借自己的记忆，搜寻大脑中所有相关的知识点，然后洋洋洒洒地写下一篇雄文。</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**潜在风险**：</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">    1.  </span>**记忆过时**：他读的资料截止到2023年初。如果题目涉及到最新的考古发现，他就不知道了。</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">    2.  </span>**知识混淆**：由于记忆了太多信息，他偶尔会把不同历史事件的细节搞混，比如把汉尼拔的战绩安到凯撒头上。我们称之为"**幻觉 (Hallucination)**"。</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">    3.  </span>**无法溯源**：你无法知道他的答案具体是基于哪本书的哪一页。他的知识来源是一个巨大的"黑箱"。</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>**考生B：开卷考试的"超级学霸"小R (RAG)**</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**特点**：小R也很聪明，但他更依赖策略。他被允许带一个"超级书包"进入考场，书包里是本次考试范围内的核心教材和参考资料(**这就是我们的私有知识库**)。</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**答题方式**：当他拿到同样的问题时，他的第一反应不是依赖记忆，而是执行一个高效的流程：</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">    1.  </span>**快速检索 (Retrieval)**：他迅速在书包里翻找，找出与"罗马帝国衰亡"最相关的那几页笔记和章节。</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">    2.  </span>**整合生成 (Augmented Generation)**：他仔细阅读这些找到的、高度相关的资料，然后**基于这些可靠的材料**，总结、提炼、组织语言，生成一个精准、有理有据的答案。在答案的末尾，他甚至会像写论文一样，标注出"此观点参考自《罗马帝国衰亡史》第5卷第3章"。</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**核心优势**：</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">    1.  </span>**知识鲜活**：只要我们更新他书包里的资料，他的知识就永远是最新的。</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">    2.  </span>**忠于事实**：他的答案严格基于提供的材料，极大地减少了"凭空想象"或"张冠李戴"的可能性，从而显著**减轻了"幻觉"问题**。</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">    3.  </span>**可信溯源**：我们可以清晰地知道他的答案来源是哪些具体文档，这让他的回答变得可验证、可信赖。</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">### 考场上的两位考生</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>想象一下，一场关于"世界历史"的终极考试正在进行。考场上有两位考生：</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>**考生A：闭卷考试的"博学家"小L (LLM)**</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**特点**：小L是一位记忆力超群的通才。他在考前阅读了互联网上几乎所有的历史书籍、文章和资料。他的大脑里存储着海量的信息。</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**答题方式**：当他拿到一道题，比如"请论述古罗马帝国衰亡的主要原因"，他会完全凭借自己的记忆，搜寻大脑中所有相关的知识点，然后洋洋洒洒地写下一篇雄文。</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**潜在风险**：</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">    1.  </span>**记忆过时**：他读的资料截止到2023年初。如果题目涉及到最新的考古发现，他就不知道了。</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">    2.  </span>**知识混淆**：由于记忆了太多信息，他偶尔会把不同历史事件的细节搞混，比如把汉尼拔的战绩安到凯撒头上。我们称之为"**幻觉 (Hallucination)**"。</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">    3.  </span>**无法溯源**：你无法知道他的答案具体是基于哪本书的哪一页。他的知识来源是一个巨大的"黑箱"。</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>**考生B：开卷考试的"超级学霸"小R (RAG)**</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**特点**：小R也很聪明，但他更依赖策略。他被允许带一个"超级书包"进入考场，书包里是本次考试范围内的核心教材和参考资料(**这就是我们的私有知识库**)。</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**答题方式**：当他拿到同样的问题时，他的第一反应不是依赖记忆，而是执行一个高效的流程：</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">    1.  </span>**快速检索 (Retrieval)**：他迅速在书包里翻找，找出与"罗马帝国衰亡"最相关的那几页笔记和章节。</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">    2.  </span>**整合生成 (Augmented Generation)**：他仔细阅读这些找到的、高度相关的资料，然后**基于这些可靠的材料**，总结、提炼、组织语言，生成一个精准、有理有据的答案。在答案的末尾，他甚至会像写论文一样，标注出"此观点参考自《罗马帝国衰亡史》第5卷第3章"。</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**核心优势**：</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">    1.  </span>**知识鲜活**：只要我们更新他书包里的资料，他的知识就永远是最新的。</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">    2.  </span>**忠于事实**：他的答案严格基于提供的材料，极大地减少了"凭空想象"或"张冠李戴"的可能性，从而显著**减轻了"幻觉"问题**。</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">    3.  </span>**可信溯源**：我们可以清晰地知道他的答案来源是哪些具体文档，这让他的回答变得可验证、可信赖。</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## RAG的核心价值：连接LLM与现实世界</span></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## RAG的核心价值：连接LLM与现实世界</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>这个类比清晰地揭示了RAG的核心价值：</span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>这个类比清晰地揭示了RAG的核心价值：</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **RAG = 检索 (Retrieval) + 增强生成 (Augmented Generation)**</span></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **RAG = 检索 (Retrieval) + 增强生成 (Augmented Generation)**</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>它不是要创造一个全新的、无所不知的超级模型，而是构建一个**工作流 (Workflow)**，巧妙地将通用大语言模型（那位"博学家"小L）的强大推理和生成能力，与我们自己掌握的、私有的、可信的知识库（"超级学霸"小R的"书包"）连接了起来。</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>它不是要创造一个全新的、无所不知的超级模型，而是构建一个**工作流 (Workflow)**，巧妙地将通用大语言模型（那位"博学家"小L）的强大推理和生成能力，与我们自己掌握的、私有的、可信的知识库（"超级学霸"小R的"书包"）连接了起来。</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### RAG的"增强"体现在哪里？</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**增强了事实性 (Factual Grounding)**：通过强制LLM参考我们提供的上下文，让它的回答"脚踏实地"，而不是"天马行空"。</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**增强了时效性 (Timeliness)**：我们不再需要花费数百万美元去重新训练一个大模型来教它新知识。我们只需要更新我们的知识库文档，RAG系统就能即时掌握最新的信息。</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**增强了透明度 (Transparency)**：通过展示答案的来源，我们打开了LLM决策的"部分黑箱"，让用户可以追溯和验证信息的准确性。</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**增强了专业性 (Domain-Specificity)**：它让通用的LLM能够深入任何一个专业领域（如法律、金融、医疗），并使用该领域的专业术语和知识进行回答，只要我们为它提供了相应的知识库。</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### RAG的"增强"体现在哪里？</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**增强了事实性 (Factual Grounding)**：通过强制LLM参考我们提供的上下文，让它的回答"脚踏实地"，而不是"天马行空"。</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**增强了时效性 (Timeliness)**：我们不再需要花费数百万美元去重新训练一个大模型来教它新知识。我们只需要更新我们的知识库文档，RAG系统就能即时掌握最新的信息。</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**增强了透明度 (Transparency)**：通过展示答案的来源，我们打开了LLM决策的"部分黑箱"，让用户可以追溯和验证信息的准确性。</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**增强了专业性 (Domain-Specificity)**：它让通用的LLM能够深入任何一个专业领域（如法律、金融、医疗），并使用该领域的专业术语和知识进行回答，只要我们为它提供了相应的知识库。</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## 本节小结</span></span>
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## 本节小结</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 核心收获</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**一个生动的心理模型**: 你现在可以用"开卷考试的超级学霸"这个类比，向任何人清晰地解释RAG是什么，以及它为什么比传统的LLM更可靠。</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**理解核心优势**: 你明白了RAG技术的核心价值在于**减轻幻觉、保证知识鲜活、实现答案可溯源**。</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**掌握关键术语**: 你知道了RAG是**检索(Retrieval)**和**增强生成(Augmented Generation)**的结合体。</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🤔 为何重要</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>建立正确的、直觉化的概念认知，是掌握一门新技术的关键。当你真正理解了RAG的"初心"——即为了解决LLM的幻觉和知识局限性问题——你就能在未来进行技术选型和方案设计时，做出更明智的决策。你知道何时应该使用RAG，也知道使用它的根本目的是什么。</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>现在，我们已经对RAG有了宏观的架构认知和深刻的概念理解。但在我们动手实践之前，一个优秀的工程师还需要具备一种关键能力：**批判性思维**。在下一节的【AI协同工具箱】中，我们将学习如何挑战AI给出的"完美"方案。 </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 核心收获</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**一个生动的心理模型**: 你现在可以用"开卷考试的超级学霸"这个类比，向任何人清晰地解释RAG是什么，以及它为什么比传统的LLM更可靠。</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**理解核心优势**: 你明白了RAG技术的核心价值在于**减轻幻觉、保证知识鲜活、实现答案可溯源**。</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**掌握关键术语**: 你知道了RAG是**检索(Retrieval)**和**增强生成(Augmented Generation)**的结合体。</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🤔 为何重要</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>建立正确的、直觉化的概念认知，是掌握一门新技术的关键。当你真正理解了RAG的"初心"——即为了解决LLM的幻觉和知识局限性问题——你就能在未来进行技术选型和方案设计时，做出更明智的决策。你知道何时应该使用RAG，也知道使用它的根本目的是什么。</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>现在，我们已经对RAG有了宏观的架构认知和深刻的概念理解。但在我们动手实践之前，一个优秀的工程师还需要具备一种关键能力：**批判性思维**。在下一节的【AI协同工具箱】中，我们将学习如何挑战AI给出的"完美"方案。 </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
