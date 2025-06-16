@@ -23,24 +23,24 @@ pip install shap
 
 不同的模型类型，SHAP有不同的、经过优化的解释器。对于我们使用的LightGBM这类树模型，`shap.TreeExplainer`是最高效的选择。
 
-:::{.callout-tip title="AI指令模板：初始化SHAP解释器" icon="fas fa-robot"}
-**# 角色**
-你是一位熟悉SHAP库的Python可解释性AI专家。
-
-**# 上下文**
-我已经训练好了一个LightGBM模型（名为`lgb_model`），并有我的训练特征数据`X_train`。
-
-**# 任务**
-请帮我编写一段Python代码，来初始化一个SHAP解释器，并计算所有训练样本的SHAP值。
-1.  导入`shap`库。
-2.  使用`shap.TreeExplainer(lgb_model)`来创建一个针对树模型的解释器。
-3.  调用解释器的`.shap_values()`方法，并传入`X_train`，来计算每个样本、每个特征的SHAP值。
-4.  将返回的SHAP值保存在变量`shap_values`中。
-5.  打印出`shap_values`的形状（shape），并解释其含义。
-
-**# 输出格式**
-提供完整的、带有清晰注释的Python代码。
-:::
+> **AI指令模板：初始化SHAP解释器**
+>
+> **# 角色**
+> 你是一位熟悉SHAP库的Python可解释性AI专家。
+>
+> **# 上下文**
+> 我已经训练好了一个LightGBM模型（名为`lgb_model`），并有我的训练特征数据`X_train`。
+>
+> **# 任务**
+> 请帮我编写一段Python代码，来初始化一个SHAP解释器，并计算所有训练样本的SHAP值。
+> 1.  导入`shap`库。
+> 2.  使用`shap.TreeExplainer(lgb_model)`来创建一个针对树模型的解释器。
+> 3.  调用解释器的`.shap_values()`方法，并传入`X_train`，来计算每个样本、每个特征的SHAP值。
+> 4.  将返回的SHAP值保存在变量`shap_values`中。
+> 5.  打印出`shap_values`的形状（shape），并解释其含义。
+>
+> **# 输出格式**
+> 提供完整的、带有清晰注释的Python代码。
 
 ---
 
@@ -50,28 +50,28 @@ pip install shap
 
 SHAP提供了非常强大的`force_plot`（力图），可以完美地回答这个问题。
 
-:::{.callout-tip title="AI指令模板：生成并解读局部解释图" icon="fas fa-robot"}
-**# 角色**
-你是一位精通SHAP可视化方法的数据科学家。
-
-**# 上下文**
-我已经计算出了`shap_values`，并且有`explainer`对象。我还有TF-IDF的`vectorizer`（知道特征索引和词的对应关系）和原始的`X_train`（稀疏矩阵形式）。我想解释测试集中第`i`个样本（`X_test[i]`）的预测结果。
-
-**# 任务**
-请帮我编写一段可复用的代码，来生成并解读针对**单个样本**的SHAP局部解释图。
-1.  **选择样本**: 假设我们要解释测试集中的第一个样本（索引为0）。
-2.  **加载JS可视化库**: 调用`shap.initjs()`来加载绘图需要的前端资源（这在Jupyter环境中尤其重要）。
-3.  **生成力图 (Force Plot)**:
-    *   调用`shap.force_plot()`函数。
-    *   第一个参数是解释器的期望值（`explainer.expected_value`），对于多分类，我们需要指定其中一个类别的，比如类别0（假设是"有害"）。所以应该是`explainer.expected_value[0]`。
-    *   第二个参数是该样本在该类别上的SHAP值，即`shap_values[0][sample_index, :]`。
-    *   第三个参数是该样本的特征值，即`X_test[sample_index, :]`。
-    *   为了显示真实的词汇而不是特征索引，请设置`feature_names=vectorizer.get_feature_names_out()`。
-4.  **解读力图**: 在代码注释中，请简要地解释如何解读这张图。
-
-**# 输出格式**
-提供完整的代码，并附上解读指南。
-:::
+> **AI指令模板：生成并解读局部解释图**
+>
+> **# 角色**
+> 你是一位精通SHAP可视化方法的数据科学家。
+>
+> **# 上下文**
+> 我已经计算出了`shap_values`，并且有`explainer`对象。我还有TF-IDF的`vectorizer`（知道特征索引和词的对应关系）和原始的`X_train`（稀疏矩阵形式）。我想解释测试集中第`i`个样本（`X_test[i]`）的预测结果。
+>
+> **# 任务**
+> 请帮我编写一段可复用的代码，来生成并解读针对**单个样本**的SHAP局部解释图。
+> 1.  **选择样本**: 假设我们要解释测试集中的第一个样本（索引为0）。
+> 2.  **加载JS可视化库**: 调用`shap.initjs()`来加载绘图需要的前端资源（这在Jupyter环境中尤其重要）。
+> 3.  **生成力图 (Force Plot)**:
+>     *   调用`shap.force_plot()`函数。
+>     *   第一个参数是解释器的期望值（`explainer.expected_value`），对于多分类，我们需要指定其中一个类别的，比如类别0（假设是"有害"）。所以应该是`explainer.expected_value[0]`。
+>     *   第二个参数是该样本在该类别上的SHAP值，即`shap_values[0][sample_index, :]`。
+>     *   第三个参数是该样本的特征值，即`X_test[sample_index, :]`。
+>     *   为了显示真实的词汇而不是特征索引，请设置`feature_names=vectorizer.get_feature_names_out()`。
+> 4.  **解读力图**: 在代码注释中，请简要地解释如何解读这张图。
+>
+> **# 输出格式**
+> 提供完整的代码，并附上解读指南。
 
 #### 解读局部力图 (Force Plot)
 
@@ -95,25 +95,25 @@ SHAP提供了非常强大的`force_plot`（力图），可以完美地回答这�
 
 SHAP的`summary_plot`是进行全局特征重要性分析的利器。
 
-:::{.callout-tip title="AI指令模板：生成并解读全局解释图" icon="fas fa-robot"}
-**# 角色**
-你同样是那位精通SHAP可视化的数据科学家。
-
-**# 上下文**
-我有所有训练样本的`shap_values`和`X_train`。
-
-**# 任务**
-请帮我编写代码，生成并解读SHAP的全局摘要图。
-1.  **生成摘要图 (Summary Plot)**:
-    *   调用`shap.summary_plot()`函数。
-    *   第一个参数是SHAP值，同样，我们需要指定一个类别，例如`shap_values[0]`（代表"有害"这个类别）。
-    *   第二个参数是特征值，即`X_train`。
-    *   设置`feature_names=vectorizer.get_feature_names_out()`。
-2.  **解读图表**: 在代码注释中，详细解释如何解读这张摘要图的三个维度：Y轴、X轴和颜色。
-
-**# 输出格式**
-提供完整的代码，并附上解读指南。
-:::
+> **AI指令模板：生成并解读全局解释图**
+>
+> **# 角色**
+> 你同样是那位精通SHAP可视化的数据科学家。
+>
+> **# 上下文**
+> 我有所有训练样本的`shap_values`和`X_train`。
+>
+> **# 任务**
+> 请帮我编写代码，生成并解读SHAP的全局摘要图。
+> 1.  **生成摘要图 (Summary Plot)**:
+>     *   调用`shap.summary_plot()`函数。
+>     *   第一个参数是SHAP值，同样，我们需要指定一个类别，例如`shap_values[0]`（代表"有害"这个类别）。
+>     *   第二个参数是特征值，即`X_train`。
+>     *   设置`feature_names=vectorizer.get_feature_names_out()`。
+> 2.  **解读图表**: 在代码注释中，详细解释如何解读这张摘要图的三个维度：Y轴、X轴和颜色。
+>
+> **# 输出格式**
+> 提供完整的代码，并附上解读指南。
 
 #### 解读全局摘要图 (Summary Plot)
 

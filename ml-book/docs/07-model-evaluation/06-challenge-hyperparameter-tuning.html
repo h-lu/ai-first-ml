@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7.3 What: 核心概念之混淆矩阵、精确率、召回率与F1分数 – 机器学习：AI驱动的学习与应用</title>
+<title>任务1：AI，什么是”炼丹炉”的”旋钮”？ – 机器学习：AI驱动的学习与应用</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../07-model-evaluation/04-practice-compare-models.html" rel="next">
-<link href="../07-model-evaluation/02-how-precision-recall.html" rel="prev">
+<link href="../08-explainable-ai/index.html" rel="next">
+<link href="../07-model-evaluation/05-toolbox-experiment-tracking.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-project-kickoff/index.html">第一部分：传统机器学习 —— AIGC时代的新应用</a></li><li class="breadcrumb-item"><a href="../07-model-evaluation/03-what-confusion-matrix-f1.html"><span class="chapter-title">7.3 What: 核心概念之混淆矩阵、精确率、召回率与F1分数</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-project-kickoff/index.html">第一部分：传统机器学习 —— AIGC时代的新应用</a></li><li class="breadcrumb-item"><a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
@@ -344,7 +344,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07-model-evaluation/03-what-confusion-matrix-f1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">7.3 What: 核心概念之混淆矩阵、精确率、召回率与F1分数</span></a>
+  <a href="../07-model-evaluation/03-what-confusion-matrix-f1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.3 What: 核心概念之混淆矩阵、精确率、召回率与F1分数</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -359,7 +359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></a>
+  <a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -399,25 +399,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">目录</h2>
-   
-  <ul>
-  <li><a href="#本节小结" id="toc-本节小结" class="nav-link active" data-scroll-target="#本节小结">本节小结</a>
-  <ul class="collapse">
-  <li><a href="#核心概念" id="toc-核心概念" class="nav-link" data-scroll-target="#核心概念">🎯 核心概念</a></li>
-  <li><a href="#为何重要" id="toc-为何重要" class="nav-link" data-scroll-target="#为何重要">🤔 为何重要</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-project-kickoff/index.html">第一部分：传统机器学习 —— AIGC时代的新应用</a></li><li class="breadcrumb-item"><a href="../07-model-evaluation/03-what-confusion-matrix-f1.html"><span class="chapter-title">7.3 What: 核心概念之混淆矩阵、精确率、召回率与F1分数</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-project-kickoff/index.html">第一部分：传统机器学习 —— AIGC时代的新应用</a></li><li class="breadcrumb-item"><a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">7.3 What: 核心概念之混淆矩阵、精确率、召回率与F1分数</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
 </div>
 
 
@@ -434,128 +424,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>为了系统地计算和理解精确率与召回率，我们需要引入一个强大的可视化工具——<strong>混淆矩阵（Confusion Matrix）</strong>。它是一切分类评估指标的基石。</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="核心概念：分类模型评估四件套">
+<div class="callout callout-style-default callout-warning callout-titled" title="动手练习与挑战：成为'炼丹'艺术家——初探超参数调优">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-核心概念：分类模型评估四件套
+动手练习与挑战：成为’炼丹’艺术家——初探超参数调优
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<section id="混淆矩阵让模型的困惑一目了然" class="level3">
-<h3 class="anchored" data-anchor-id="混淆矩阵让模型的困惑一目了然">1. 混淆矩阵：让模型的”困惑”一目了然</h3>
-<p>混淆矩阵这个名字听起来很复杂，但它的思想却异常简单：它就是一个表格，用来展示模型的预测结果与真实标签之间的对比。它告诉我们，模型在哪些地方做对了，在哪些地方<strong>感到”困惑”</strong>（confused）。</p>
-<p>为了方便理解，我们先以一个二分类问题为例，比如判断内容是否为”有害”（正类/Positive）或”无害”（负类/Negative）。</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 41%">
-<col style="width: 41%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: center;"><strong>预测为: 有害 (Predicted Positive)</strong></th>
-<th style="text-align: center;"><strong>预测为: 无害 (Predicted Negative)</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>真实是: 有害 (Actual Positive)</strong></td>
-<td style="text-align: center;"><strong>TP (真正例)</strong><br>True Positive</td>
-<td style="text-align: center;"><strong>FN (假负例)</strong><br>False Negative</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>真实是: 无害 (Actual Negative)</strong></td>
-<td style="text-align: center;"><strong>FP (假正例)</strong><br>False Positive</td>
-<td style="text-align: center;"><strong>TN (真负例)</strong><br>True Negative</td>
-</tr>
-</tbody>
-</table>
-<section id="四个基本概念解读" class="level4">
-<h4 class="anchored" data-anchor-id="四个基本概念解读">四个基本概念解读：</h4>
-<ul>
-<li><strong>TP (True Positive) - 真正例</strong>
-<ul>
-<li><strong>含义</strong>: 真实为”有害”，模型也正确地预测为”有害”。</li>
-<li><strong>俗话</strong>: 模型抓对了坏人。</li>
-</ul></li>
-<li><strong>FN (False Negative) - 假负例</strong>
-<ul>
-<li><strong>含义</strong>: 真实为”有害”，但模型错误地预测为”无害”。</li>
-<li><strong>俗话</strong>: 模型放过了坏人，这是<strong>漏报</strong>！</li>
-<li><strong>对应业务</strong>: “漏网之鱼”，平台安全风险。</li>
-</ul></li>
-<li><strong>FP (False Positive) - 假正例</strong>
-<ul>
-<li><strong>含义</strong>: 真实为”无害”，但模型错误地预测为”有害”。</li>
-<li><strong>俗话</strong>: 模型冤枉了好人，这是<strong>误杀</strong>！</li>
-<li><strong>对应业务</strong>: “错杀”，打击创作者积极性。</li>
-</ul></li>
-<li><strong>TN (True Negative) - 真负例</strong>
-<ul>
-<li><strong>含义</strong>: 真实为”无害”，模型也正确地预测为”无害”。</li>
-<li><strong>俗话</strong>: 模型确认了好人。</li>
-</ul></li>
-</ul>
-<p>一个完美的模型，其FN和FP都应该为0，所有的值都落在对角线（TP和TN）上。<strong>我们的目标就是通过优化模型，让尽可能多的样本落到对角线上。</strong></p>
+<p>在上一节，我们见证了LightGBM的强大威力，它的性能远超逻辑回归。但我们所用的，只是一个”开箱即用”的、使用默认参数的LightGBM。</p>
+<p>在机器学习领域，提升模型性能的最后（也往往是最有效）一公里，常常来自于对模型<strong>超参数（Hyperparameters）</strong>的精细调整。这个过程充满了实验和探索，因此被工程师们戏称为”炼丹”。</p>
+<p>你的挑战是：在AI的指导下，扮演一回”炼丹师”，对我们的LightGBM模型进行你的第一次超参数调优。</p>
+<p>在”炼丹”之前，你必须先理解”炼丹炉”上那些复杂旋钮的含义。</p>
+<p><strong>👉 你的指令剧本：</strong></p>
+<blockquote class="blockquote">
+<p>我正在使用LightGBM模型，并准备对它进行超参数调优。我注意到了这三个参数：<code>n_estimators</code>，<code>learning_rate</code> 和 <code>num_leaves</code>。</p>
+<p>请你用一个生动的比喻（比如把模型训练比作”学生学习”），向我解释这三个超参数分别控制了学习过程的哪个方面？它们调得太高或太低，分别会有什么效果或风险（比如”学得太慢”或”死记硬背”）？</p>
+</blockquote>
+<p>理解了这些，你才能做出有根据的调整，而不是盲目尝试。</p>
+<section id="任务2动手调参观察火焰的变化" class="level4">
+<h4 class="anchored" data-anchor-id="任务2动手调参观察火焰的变化">任务2：动手”调参”，观察火焰的变化</h4>
+<p>现在，让我们亲手拧动一个”旋钮”，看看”火焰”会发生什么变化。我们将从 <code>num_leaves</code> 开始，它控制了模型能学习到的”规则”的复杂度。</p>
+<p><strong>👉 你的指令剧本：</strong></p>
+<blockquote class="blockquote">
+<p>感谢你的解释！我现在想动手实验一下 <code>num_leaves</code> 这个超参数。</p>
+<p>请帮我编写一段Python代码，完成以下任务：</p>
+<ol type="1">
+<li>创建一个 <code>num_leaves</code> 的候选值列表，例如 <code>[10, 20, 31, 40, 50]</code>。</li>
+<li>编写一个<code>for</code>循环，遍历这个列表中的每一个值。</li>
+<li>在循环内部，创建、训练一个新的LightGBM模型，并将当前的候选值赋给 <code>num_leaves</code> 参数。</li>
+<li>在测试集上评估该模型，并打印出当前的 <code>num_leaves</code> 值和它对应的F1分数。</li>
+</ol>
+<p>我想通过这个实验，找到在当前任务中，<code>num_leaves</code> 的最佳取值范围。</p>
+</blockquote>
 </section>
-</section>
-<section id="基于混淆矩阵重新定义指标" class="level3">
-<h3 class="anchored" data-anchor-id="基于混淆矩阵重新定义指标">2. 基于混淆矩阵重新定义指标</h3>
-<p>有了这四个基本量，我们可以用它们来精确地定义之前讨论的所有指标。</p>
-<section id="准确率-accuracy" class="level4">
-<h4 class="anchored" data-anchor-id="准确率-accuracy">准确率 (Accuracy)</h4>
-<p>[ = = ] 准确率关心的是全局的正确率，它对四种情况一视同仁。</p>
-</section>
-<section id="精确率-precision" class="level4">
-<h4 class="anchored" data-anchor-id="精确率-precision">精确率 (Precision)</h4>
-<p>现在，我们聚焦于模型做出的<strong>所有”有害”预测</strong>（预测为正的那一列，即 TP + FP）。在这些预测中，有多少是真确的？ [ = = ] 精确率只看预测为正的那一列，它衡量的是”抓人”这个动作的准确性。</p>
-</section>
-<section id="召回率-recall" class="level4">
-<h4 class="anchored" data-anchor-id="召回率-recall">召回率 (Recall)</h4>
-<p>接着，我们聚焦于<strong>所有真实为”有害”的样本</strong>（真实为正的那一行，即 TP + FN）。在这些样本中，有多少被我们成功地找出来了？ [ = = ] 召回率只看真实为正的那一行，它衡量的是”抓人”这个任务的完成度。</p>
-</section>
-</section>
-<section id="f1分数精确率与召回率的和事佬" class="level3">
-<h3 class="anchored" data-anchor-id="f1分数精确率与召回率的和事佬">3. F1分数：精确率与召回率的”和事佬”</h3>
-<p>我们已经知道，精确率和召回率往往是矛盾的。为了得到一个能够平衡两者的单一指标，我们引入了<strong>F1分数（F1-Score）</strong>。</p>
-<p>F1分数是精确率和召回率的<strong>调和平均数</strong>。 [ F_1 = 2 ]</p>
-<p><strong>为什么要用调和平均数，而不是简单的算术平均数？</strong> 因为调和平均数有一个非常好的特性：它对两个数中较小的那个更敏感。 - <strong>例子1</strong>: Precision = 1.0, Recall = 0.1 - 算术平均数 = (1.0 + 0.1) / 2 = 0.55 - F1分数 ≈ 2 * (1.0 * 0.1) / (1.0 + 0.1) ≈ 0.18 - <strong>例子2</strong>: Precision = 0.6, Recall = 0.5 - 算术平均数 = (0.6 + 0.5) / 2 = 0.55 - F1分数 ≈ 2 * (0.6 * 0.5) / (0.6 + 0.5) ≈ 0.54</p>
-<p>可以看到，在例子1中，尽管算术平均数看起来还不错，但F1分数因为受到了极低的召回率的影响，给出了一个非常低的分数。这正是我们想要的！<strong>F1分数鼓励模型在精确率和召回率上都取得一个较高的、均衡的水平。</strong> 只有当两者都很高时，F1分数才会高。</p>
-</section>
-<section id="扩展到多分类我们的aigc项目" class="level3">
-<h3 class="anchored" data-anchor-id="扩展到多分类我们的aigc项目">扩展到多分类：我们的AIGC项目</h3>
-<p>对于像我们这样的三分类问题（优质、低质、有害），<code>scikit-learn</code>会为<strong>每一个类别</strong>都计算一套完整的评估指标。它会这样做： 1. <strong>处理”有害”类别</strong>：将”有害”视为正类，“优质”和”低质”视为负类，然后计算”有害”类别的Precision, Recall, F1-Score。 2. <strong>处理”低质”类别</strong>：将”低质”视为正类，“优质”和”有害”视为负类，然后计算”低质”类别的Precision, Recall, F1-Score。 3. <strong>处理”优质”类别</strong>：将”优质”视为正类，“低质”和”有害”视为负类，然后计算”优质”类别的Precision, Recall, F1-Score。</p>
-<p>最终，我们会得到一个详细的报告，清晰地展示模型在每个类别上的表现。</p>
-<p>此外，还会提供一些宏观的平均指标： - <strong>Macro Average (宏平均)</strong>：对每个类别的指标值直接求算术平均。它平等地对待每一个类别，无论该类别样本量多少。在类别不平衡时，这是一个非常重要的参考指标。 - <strong>Weighted Average (加权平均)</strong>：根据每个类别的样本量，对指标值进行加权平均。它更关心样本量大的类别的表现。</p>
+<section id="任务3思辨调参是万能灵药吗" class="level4">
+<h4 class="anchored" data-anchor-id="任务3思辨调参是万能灵药吗">任务3：思辨：调参是”万能灵药”吗？</h4>
+<p>调参非常强大，但也容易让人陷入一个误区：盲目追求分数的提升，而忽略了其背后的代价和风险。</p>
+<p><strong>👉 与AI进行一场思辨对话：</strong></p>
+<blockquote class="blockquote">
+<p>我发现通过调优超参数，确实可以提升模型的F1分数。这让我很兴奋，但也有一些疑问。请和我探讨一下：</p>
+<ol type="1">
+<li>是不是超参数调优的过程越复杂、搜索的候选值越多，最终得到的模型就一定越好？</li>
+<li>这个过程有没有可能带来什么负面效果？比如，我听说过一个词叫”过拟合到验证集上”，这是什么意思？它在我们的调参过程中是如何发生的？</li>
+<li>除了提升模型分数，超参数调优还有没有其他我们应该关注的目标？（比如模型的训练速度、预测速度等）</li>
+</ol>
+</blockquote>
+<p>这个思辨将让你对模型优化有一个更成熟、更全面的认识，而不仅仅是盯着评估指标。</p>
 </section>
 </div>
 </div>
-<section id="本节小结" class="level2">
-<h2 class="anchored" data-anchor-id="本节小结">本节小结</h2>
-<section id="核心概念" class="level3">
-<h3 class="anchored" data-anchor-id="核心概念">🎯 核心概念</h3>
-<ul>
-<li><strong>混淆矩阵</strong>：模型评估的基石，展示了四种预测情况（TP, FN, FP, TN）。</li>
-<li><strong>精确率 (Precision)</strong>：<code>TP / (TP + FP)</code>，衡量”误杀”程度，关心预测的准确性。</li>
-<li><strong>召回率 (Recall)</strong>：<code>TP / (TP + FN)</code>，衡量”漏报”程度，关心发现的完备性。</li>
-<li><strong>F1分数</strong>：精确率和召回率的调和平均数，是评估模型综合性能的黄金指标。</li>
-</ul>
-</section>
-<section id="为何重要" class="level3">
-<h3 class="anchored" data-anchor-id="为何重要">🤔 为何重要</h3>
-<p>这套”四件套”评估体系，让我们能够从”我的模型准确率是95%“的模糊认知，跃升到”我的模型在识别’有害’内容上的召回率是90%，精确率是75%，这导致了一定的误杀，我们需要优化……“的专业分析层面。这种精细化的度量，是进行模型迭代和优化的前提。</p>
-<p>现在，你已经掌握了所有必要的理论知识。在下一节，我们将进入实践，指挥AI为我们生成并解读这份详细的”模型体检报告”。</p>
 
 
 <!-- -->
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1031,126 +955,68 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../07-model-evaluation/02-how-precision-recall.html" class="pagination-link" aria-label="7.2 How: 与AI对话，探寻更真实的评估尺度">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">7.2 How: 与AI对话，探寻更真实的评估尺度</span></span>
+      <a href="../07-model-evaluation/05-toolbox-experiment-tracking.html" class="pagination-link" aria-label="7.5 AI协同工具箱：系统化你的模型实验">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">7.5 AI协同工具箱：系统化你的模型实验</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../07-model-evaluation/04-practice-compare-models.html" class="pagination-link" aria-label="7.4 Practice: 指挥AI生成并解读多维度评估报告">
-        <span class="nav-page-text"><span class="chapter-title">7.4 Practice: 指挥AI生成并解读多维度评估报告</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../08-explainable-ai/index.html" class="pagination-link" aria-label="第8章 打开黑箱：让AI解释它的决策">
+        <span class="nav-page-text"><span class="chapter-title">第8章 打开黑箱：让AI解释它的决策</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 7.3 What: 核心概念之混淆矩阵、精确率、召回率与F1分数</span></span>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning title="动手练习与挑战：成为'炼丹'艺术家——初探超参数调优"}</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>为了系统地计算和理解精确率与召回率，我们需要引入一个强大的可视化工具——**混淆矩阵（Confusion Matrix）**。它是一切分类评估指标的基石。</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>在上一节，我们见证了LightGBM的强大威力，它的性能远超逻辑回归。但我们所用的，只是一个"开箱即用"的、使用默认参数的LightGBM。</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip title="核心概念：分类模型评估四件套"}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>在机器学习领域，提升模型性能的最后（也往往是最有效）一公里，常常来自于对模型**超参数（Hyperparameters）**的精细调整。这个过程充满了实验和探索，因此被工程师们戏称为"炼丹"。</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. 混淆矩阵：让模型的"困惑"一目了然</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>你的挑战是：在AI的指导下，扮演一回"炼丹师"，对我们的LightGBM模型进行你的第一次超参数调优。</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>混淆矩阵这个名字听起来很复杂，但它的思想却异常简单：它就是一个表格，用来展示模型的预测结果与真实标签之间的对比。它告诉我们，模型在哪些地方做对了，在哪些地方**感到"困惑"**（confused）。</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 任务1：AI，什么是"炼丹炉"的"旋钮"？</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>为了方便理解，我们先以一个二分类问题为例，比如判断内容是否为"有害"（正类/Positive）或"无害"（负类/Negative）。</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>在"炼丹"之前，你必须先理解"炼丹炉"上那些复杂旋钮的含义。</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>|                | **预测为: 有害 (Predicted Positive)** | **预测为: 无害 (Predicted Negative)** |</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>| :------------- | :----------------------------------: | :----------------------------------: |</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>| **真实是: 有害 (Actual Positive)** |       **TP (真正例)**&lt;br&gt;True Positive        |       **FN (假负例)**&lt;br&gt;False Negative       |</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>| **真实是: 无害 (Actual Negative)** |       **FP (假正例)**&lt;br&gt;False Positive        |       **TN (真负例)**&lt;br&gt;True Negative        |</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 四个基本概念解读：</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**TP (True Positive) - 真正例**</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**含义**: 真实为"有害"，模型也正确地预测为"有害"。</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**俗话**: 模型抓对了坏人。</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**FN (False Negative) - 假负例**</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**含义**: 真实为"有害"，但模型错误地预测为"无害"。</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**俗话**: 模型放过了坏人，这是**漏报**！</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**对应业务**: "漏网之鱼"，平台安全风险。</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**FP (False Positive) - 假正例**</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**含义**: 真实为"无害"，但模型错误地预测为"有害"。</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**俗话**: 模型冤枉了好人，这是**误杀**！</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**对应业务**: "错杀"，打击创作者积极性。</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**TN (True Negative) - 真负例**</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**含义**: 真实为"无害"，模型也正确地预测为"无害"。</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**俗话**: 模型确认了好人。</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>**👉 你的指令剧本：**</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 我正在使用LightGBM模型，并准备对它进行超参数调优。我注意到了这三个参数：</span><span class="in">`n_estimators`</span><span class="at">，</span><span class="in">`learning_rate`</span><span class="at"> 和 </span><span class="in">`num_leaves`</span><span class="at">。</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请你用一个生动的比喻（比如把模型训练比作"学生学习"），向我解释这三个超参数分别控制了学习过程的哪个方面？它们调得太高或太低，分别会有什么效果或风险（比如"学得太慢"或"死记硬背"）？</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>理解了这些，你才能做出有根据的调整，而不是盲目尝试。</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 任务2：动手"调参"，观察火焰的变化</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>现在，让我们亲手拧动一个"旋钮"，看看"火焰"会发生什么变化。我们将从 <span class="in">`num_leaves`</span> 开始，它控制了模型能学习到的"规则"的复杂度。</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>**👉 你的指令剧本：**</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 感谢你的解释！我现在想动手实验一下 </span><span class="in">`num_leaves`</span><span class="at"> 这个超参数。</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请帮我编写一段Python代码，完成以下任务：</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  创建一个 </span><span class="in">`num_leaves`</span><span class="at"> 的候选值列表，例如 </span><span class="in">`[10, 20, 31, 40, 50]`</span><span class="at">。</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  编写一个</span><span class="in">`for`</span><span class="at">循环，遍历这个列表中的每一个值。</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  在循环内部，创建、训练一个新的LightGBM模型，并将当前的候选值赋给 </span><span class="in">`num_leaves`</span><span class="at"> 参数。</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 4.  在测试集上评估该模型，并打印出当前的 </span><span class="in">`num_leaves`</span><span class="at"> 值和它对应的F1分数。</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 我想通过这个实验，找到在当前任务中，</span><span class="in">`num_leaves`</span><span class="at"> 的最佳取值范围。</span></span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>一个完美的模型，其FN和FP都应该为0，所有的值都落在对角线（TP和TN）上。**我们的目标就是通过优化模型，让尽可能多的样本落到对角线上。**</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 任务3：思辨：调参是"万能灵药"吗？</span></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. 基于混淆矩阵重新定义指标</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>调参非常强大，但也容易让人陷入一个误区：盲目追求分数的提升，而忽略了其背后的代价和风险。</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>有了这四个基本量，我们可以用它们来精确地定义之前讨论的所有指标。</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>**👉 与AI进行一场思辨对话：**</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 准确率 (Accuracy)</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>\text{准确率} = \frac{TP + TN}{TP + TN + FP + FN} = \frac{\text{所有预测正确的}}{\text{总样本数}}</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>准确率关心的是全局的正确率，它对四种情况一视同仁。</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 我发现通过调优超参数，确实可以提升模型的F1分数。这让我很兴奋，但也有一些疑问。请和我探讨一下：</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  是不是超参数调优的过程越复杂、搜索的候选值越多，最终得到的模型就一定越好？</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  这个过程有没有可能带来什么负面效果？比如，我听说过一个词叫"过拟合到验证集上"，这是什么意思？它在我们的调参过程中是如何发生的？</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  除了提升模型分数，超参数调优还有没有其他我们应该关注的目标？（比如模型的训练速度、预测速度等）</span></span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 精确率 (Precision)</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>现在，我们聚焦于模型做出的**所有"有害"预测**（预测为正的那一列，即 TP + FP）。在这些预测中，有多少是真确的？</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>\text{精确率} = \frac{TP}{TP + FP} = \frac{\text{抓对的坏人}}{\text{所有被当成坏人抓起来的}}</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>精确率只看预测为正的那一列，它衡量的是"抓人"这个动作的准确性。</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 召回率 (Recall)</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>接着，我们聚焦于**所有真实为"有害"的样本**（真实为正的那一行，即 TP + FN）。在这些样本中，有多少被我们成功地找出来了？</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>\text{召回率} = \frac{TP}{TP + FN} = \frac{\text{抓对的坏人}}{\text{所有真正的坏人总数}}</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>召回率只看真实为正的那一行，它衡量的是"抓人"这个任务的完成度。</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. F1分数：精确率与召回率的"和事佬"</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>我们已经知道，精确率和召回率往往是矛盾的。为了得到一个能够平衡两者的单一指标，我们引入了**F1分数（F1-Score）**。</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>F1分数是精确率和召回率的**调和平均数**。</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>F_1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>**为什么要用调和平均数，而不是简单的算术平均数？**</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>因为调和平均数有一个非常好的特性：它对两个数中较小的那个更敏感。</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**例子1**: Precision = 1.0, Recall = 0.1</span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>算术平均数 = (1.0 + 0.1) / 2 = 0.55</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>F1分数 ≈ 2 * (1.0 * 0.1) / (1.0 + 0.1) ≈ 0.18</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**例子2**: Precision = 0.6, Recall = 0.5</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>算术平均数 = (0.6 + 0.5) / 2 = 0.55</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>F1分数 ≈ 2 * (0.6 * 0.5) / (0.6 + 0.5) ≈ 0.54</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>可以看到，在例子1中，尽管算术平均数看起来还不错，但F1分数因为受到了极低的召回率的影响，给出了一个非常低的分数。这正是我们想要的！**F1分数鼓励模型在精确率和召回率上都取得一个较高的、均衡的水平。** 只有当两者都很高时，F1分数才会高。</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="fu">### 扩展到多分类：我们的AIGC项目</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>对于像我们这样的三分类问题（优质、低质、有害），<span class="in">`scikit-learn`</span>会为**每一个类别**都计算一套完整的评估指标。它会这样做：</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**处理"有害"类别**：将"有害"视为正类，"优质"和"低质"视为负类，然后计算"有害"类别的Precision, Recall, F1-Score。</span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**处理"低质"类别**：将"低质"视为正类，"优质"和"有害"视为负类，然后计算"低质"类别的Precision, Recall, F1-Score。</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**处理"优质"类别**：将"优质"视为正类，"低质"和"有害"视为负类，然后计算"优质"类别的Precision, Recall, F1-Score。</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>最终，我们会得到一个详细的报告，清晰地展示模型在每个类别上的表现。</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>此外，还会提供一些宏观的平均指标：</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Macro Average (宏平均)**：对每个类别的指标值直接求算术平均。它平等地对待每一个类别，无论该类别样本量多少。在类别不平衡时，这是一个非常重要的参考指标。</span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Weighted Average (加权平均)**：根据每个类别的样本量，对指标值进行加权平均。它更关心样本量大的类别的表现。</span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="fu">## 本节小结</span></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 核心概念</span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**混淆矩阵**：模型评估的基石，展示了四种预测情况（TP, FN, FP, TN）。</span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**精确率 (Precision)**：<span class="in">`TP / (TP + FP)`</span>，衡量"误杀"程度，关心预测的准确性。</span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**召回率 (Recall)**：<span class="in">`TP / (TP + FN)`</span>，衡量"漏报"程度，关心发现的完备性。</span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**F1分数**：精确率和召回率的调和平均数，是评估模型综合性能的黄金指标。</span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🤔 为何重要</span></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>这套"四件套"评估体系，让我们能够从"我的模型准确率是95%"的模糊认知，跃升到"我的模型在识别'有害'内容上的召回率是90%，精确率是75%，这导致了一定的误杀，我们需要优化……"的专业分析层面。这种精细化的度量，是进行模型迭代和优化的前提。</span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>现在，你已经掌握了所有必要的理论知识。在下一节，我们将进入实践，指挥AI为我们生成并解读这份详细的"模型体检报告"。 </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>这个思辨将让你对模型优化有一个更成熟、更全面的认识，而不仅仅是盯着评估指标。</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>::: </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

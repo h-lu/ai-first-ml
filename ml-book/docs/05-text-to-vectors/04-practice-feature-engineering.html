@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../06-first-classifier/index.html" rel="next">
+<link href="../05-text-to-vectors/05-challenge-beyond-tfidf.html" rel="next">
 <link href="../05-text-to-vectors/03-what-tfidf-concept.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -239,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章 项目启动：AIGC产品质量危机</span></a>
+  <a href="../04-project-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章 项目启动：我们的AIGC产品需要一个”质检员”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -259,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/04-challenge-hypothesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 挑战：从数据洞察到可验证的假设</span></a>
+  <a href="../04-project-kickoff/04-challenge-data-augmentation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 动手练习与挑战：AI数据增强</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -269,12 +269,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-text-to-vectors/01-why-machines-cant-read.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Why: 为什么机器无法直接理解文字？</span></a>
+  <a href="../05-text-to-vectors/01-why-machines-cant-read.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Why: 我们的“厨师”不认识字</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 How: 与AI的探索之旅——从词袋到TF-IDF</span></a>
+  <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 How: 我们来“发明”TF-IDF</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -285,6 +285,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../05-text-to-vectors/04-practice-feature-engineering.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">5.4 Practice: 指挥AI完成文本特征工程</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/05-challenge-beyond-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 动手练习与挑战：探索词袋模型的“天花板”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -319,6 +324,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/06-challenge-model-zoo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.6 动手练习与挑战：扩充你的模型“武器库”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../07-model-evaluation/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第7章 “我的模型不够好？”——精通评估与迭代</span></a>
   </div>
 </li>
@@ -349,6 +359,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../08-explainable-ai/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第8章 打开黑箱：让AI解释它的决策</span></a>
   </div>
 </li>
@@ -374,304 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../08-explainable-ai/05-challenge-refactoring.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 终极挑战：基于AI洞察重构你的项目</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">第二部分：深度学习 —— 构建企业级LLM应用</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../09-rag-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第9章 项目启动：在海量文档中”海底捞针”</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../09-rag-kickoff/01-why-crisis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Why: 企业知识库的困境与LLM带来的曙光</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../09-rag-kickoff/02-how-rag-blueprint.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 How: 与AI一起绘制RAG系统蓝图</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../09-rag-kickoff/03-what-rag-concept.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 What: 核心概念之检索增强生成 (RAG)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../09-rag-kickoff/04-toolbox-critical-thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 【AI协同工具箱】用AI进行技术方案的批判性评估</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../10-embedding/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第10章 万物皆可向量化：Embedding的魔力</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../10-embedding/01-why-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.1 Why: 超越TF-IDF，捕捉文本的深层语义</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../10-embedding/02-how-embedding-geometry.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 How: 与AI探索Embedding的几何意义</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../10-embedding/03-what-word-sentence-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 What: 核心概念之词向量与句向量</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../10-embedding/04-practice-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Practice: 指挥AI调用模型将文档转化为向量</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../11-vector-database/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第11章 构建你的记忆宫殿：向量数据库</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../11-vector-database/01-why-vector-db.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 Why: 为何需要专门的数据库来存储向量？</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../11-vector-database/02-how-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 How: 与AI探讨高效向量检索的策略</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../11-vector-database/03-what-cosine-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.3 What: 核心概念之相似度计算与近似最近邻(ANN)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../11-vector-database/04-practice-faiss.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.4 Practice: 指挥AI使用FAISS构建索引并查询</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第12章：串联成珠：搭建完整的RAG流程</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Why: 将所有组件组装成一个可工作的系统</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 How: 与AI共同设计核心的Prompt模板</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 What: 核心概念之Prompt Engineering艺术</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.4 Practice: 完整的RAG“指令剧本”</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第13章：优化你的机器人：从’幻觉’到’忠实’</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.1 Why: “我的机器人有时还是会胡说八道”</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.2 How: 与AI一起进行Bad Case分析与策略探讨</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.3 What: 核心优化技术（分块、Top-K、重排）</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.4 Practice: 设计对比实验，优化问答效果</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.5 Challenge: 如何处理知识库的更新与冲突？</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">第三部分：强化学习——训练自主决策的AI智能体</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第14章：新范式：让机器通过“试错”来学习</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.1 Why: 思维跃迁的起点——从“回答”到“行动”</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.2 How: 与AI用“训练宠物”的类比，直观理解RL</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.3 What: 核心概念之状态、动作、奖励与策略</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/4-why-learn-rl.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.4 正面回应：AI能直接修复Bug，我们为何要学其原理？</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第15章：入门项目：训练一个动态定价机器人</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.1 Why: 为何动态定价是RL的经典入门战场？</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/2-practice-simulator.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.2 Practice (1): 指挥AI构建“电商模拟器”</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/3-how-what-q-learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.3 How/What: 与AI一起实现Q-Learning算法</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/4-practice-training-viz.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.4 Practice (2): 启动训练并让AI可视化Q-Table</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.5 Challenge: 改变环境或奖励，观察策略变化</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第16章：终极挑战：设计一个自主修复Bug的AI Agent</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.1 Why: 思想飞跃——从“模型”到“智能体(Agent)”</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/2-design-sandbox.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 设计Agent的“世界观”：构建沙盒环境</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/3-design-actions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.3 赋予Agent“行动力”：定义工具箱与求助LLM</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/4-design-rewards.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.4 注入Agent“价值观”：奖励函数设计的艺术与挑战</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/5-practice-run-agent.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.5 见证奇迹：运行Agent并观察其自主修复过程</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/6-challenge-alignment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.6 思辨：AI Alignment入门——如何防止Agent“作弊”？</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第17章 Agentic Thinking：未来十年的核心竞争力</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/1-recap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.1 回顾：你已掌握设计自主AI系统的思维框架</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/2-transfer.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.2 迁移：将Agent思想应用到其他领域</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/3-vision.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.3 展望：你的下一个Agent可以是什么？</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">终章：你的旅程才刚刚开始</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/1-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.1 总结你的成长：三次思维跃迁的回顾</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/2-ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.2 AI伦理：你手中工具的力量与责任</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/3-next-steps.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.3 下一步去向何方？</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/4-lifelong-learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.4 终身学习：与AI一起在技术浪潮中持续进化</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Appendix/A-AI-Dev-Best-Practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">附录A：AI辅助开发的最佳实践</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Appendix/B-Gradio-Components.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">附录B：Gradio核心组件用法查询</span></a>
+  <a href="../08-explainable-ai/05-challenge-global-explanation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">任务1：AI，帮我绘制模型的”决策蓝图”</span></a>
   </div>
 </li>
       </ul>
@@ -686,24 +404,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">目录</h2>
    
   <ul>
-  <li><a href="#从理论到代码ai协同的特征工程流程" id="toc-从理论到代码ai协同的特征工程流程" class="nav-link active" data-scroll-target="#从理论到代码ai协同的特征工程流程">从理论到代码：AI协同的特征工程流程</a>
+  <li><a href="#practice下达你的第一份特征工程委托书" id="toc-practice下达你的第一份特征工程委托书" class="nav-link active" data-scroll-target="#practice下达你的第一份特征工程委托书"><strong>Practice：下达你的第一份”特征工程委托书”</strong></a>
   <ul class="collapse">
-  <li><a href="#我们的目标" id="toc-我们的目标" class="nav-link" data-scroll-target="#我们的目标">我们的目标</a></li>
-  <li><a href="#ai协同工作流" id="toc-ai协同工作流" class="nav-link" data-scroll-target="#ai协同工作流">AI协同工作流</a></li>
+  <li><a href="#步骤一数据加载与准备" id="toc-步骤一数据加载与准备" class="nav-link" data-scroll-target="#步骤一数据加载与准备"><strong>步骤一：数据加载与准备</strong></a></li>
+  <li><a href="#步骤二ai辅助的文本清洗" id="toc-步骤二ai辅助的文本清洗" class="nav-link" data-scroll-target="#步骤二ai辅助的文本清洗"><strong>步骤二：AI辅助的文本清洗</strong></a></li>
+  <li><a href="#步骤三核心任务---tf-idf向量化" id="toc-步骤三核心任务---tf-idf向量化" class="nav-link" data-scroll-target="#步骤三核心任务---tf-idf向量化"><strong>步骤三：核心任务 - TF-IDF向量化</strong></a></li>
+  <li><a href="#步骤四结果分析与洞察" id="toc-步骤四结果分析与洞察" class="nav-link" data-scroll-target="#步骤四结果分析与洞察"><strong>步骤四：结果分析与洞察</strong></a></li>
   </ul></li>
-  <li><a href="#步骤一数据加载与准备" id="toc-步骤一数据加载与准备" class="nav-link" data-scroll-target="#步骤一数据加载与准备">步骤一：数据加载与准备</a></li>
-  <li><a href="#步骤二ai辅助的文本清洗" id="toc-步骤二ai辅助的文本清洗" class="nav-link" data-scroll-target="#步骤二ai辅助的文本清洗">步骤二：AI辅助的文本清洗</a></li>
-  <li><a href="#步骤三核心任务---tf-idf向量化" id="toc-步骤三核心任务---tf-idf向量化" class="nav-link" data-scroll-target="#步骤三核心任务---tf-idf向量化">步骤三：核心任务 - TF-IDF向量化</a></li>
-  <li><a href="#步骤四结果分析与洞察" id="toc-步骤四结果分析与洞察" class="nav-link" data-scroll-target="#步骤四结果分析与洞察">步骤四：结果分析与洞察</a>
+  <li><a href="#本章项目成果与总结" id="toc-本章项目成果与总结" class="nav-link" data-scroll-target="#本章项目成果与总结"><strong>本章项目成果与总结</strong></a>
   <ul class="collapse">
-  <li><a href="#探索1查看词汇表" id="toc-探索1查看词汇表" class="nav-link" data-scroll-target="#探索1查看词汇表">探索1：查看词汇表</a></li>
-  <li><a href="#探索2检查一个样本的向量" id="toc-探索2检查一个样本的向量" class="nav-link" data-scroll-target="#探索2检查一个样本的向量">探索2：检查一个样本的向量</a></li>
-  </ul></li>
-  <li><a href="#本章项目成果与总结" id="toc-本章项目成果与总结" class="nav-link" data-scroll-target="#本章项目成果与总结">本章项目成果与总结</a>
-  <ul class="collapse">
-  <li><a href="#我们的成果" id="toc-我们的成果" class="nav-link" data-scroll-target="#我们的成果">我们的成果</a></li>
-  <li><a href="#核心收获" id="toc-核心收获" class="nav-link" data-scroll-target="#核心收获">核心收获</a></li>
-  <li><a href="#展望下一章" id="toc-展望下一章" class="nav-link" data-scroll-target="#展望下一章">展望下一章</a></li>
+  <li><a href="#我们的成果" id="toc-我们的成果" class="nav-link" data-scroll-target="#我们的成果"><strong>我们的成果</strong></a></li>
+  <li><a href="#核心收获" id="toc-核心收获" class="nav-link" data-scroll-target="#核心收获"><strong>核心收获</strong></a></li>
+  <li><a href="#展望下一章" id="toc-展望下一章" class="nav-link" data-scroll-target="#展望下一章"><strong>展望下一章</strong></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -730,140 +442,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="从理论到代码ai协同的特征工程流程" class="level2">
-<h2 class="anchored" data-anchor-id="从理论到代码ai协同的特征工程流程">从理论到代码：AI协同的特征工程流程</h2>
+<section id="practice下达你的第一份特征工程委托书" class="level2">
+<h2 class="anchored" data-anchor-id="practice下达你的第一份特征工程委托书"><strong>Practice：下达你的第一份”特征工程委托书”</strong></h2>
 <p>理论知识已经完备，现在是时候将它们付诸实践了！在本节中，我们将扮演”项目总监”的角色，通过向AI助手下达一系列精确指令，来完成AIGC内容质检项目的文本特征工程。</p>
-<section id="我们的目标" class="level3">
-<h3 class="anchored" data-anchor-id="我们的目标">我们的目标</h3>
-<p>将原始的文本数据（<code>content</code>列）转换为一个高维的TF-IDF特征矩阵，为下一章的分类器训练做好准备。</p>
-</section>
-<section id="ai协同工作流" class="level3">
-<h3 class="anchored" data-anchor-id="ai协同工作流">AI协同工作流</h3>
-<p>我们将把复杂的任务分解为一系列清晰的步骤，并在每一步都与AI进行协作： 1. <strong>数据准备</strong>：加载并预处理数据。 2. <strong>文本清洗</strong>：去除噪声，为向量化做准备。 3. <strong>TF-IDF向量化</strong>：使用<code>scikit-learn</code>进行核心转换。 4. <strong>结果分析</strong>：检查并理解生成的特征矩阵。</p>
+<p>我们的目标是将原始的文本数据（<code>text</code>列）转换为一个高维的TF-IDF特征矩阵，为下一章的分类器训练做好准备。</p>
+<p>这个过程将被分解为一系列清晰的步骤，你在每一步都需要与AI进行协作。</p>
 <hr>
-</section>
-</section>
-<section id="步骤一数据加载与准备" class="level2">
-<h2 class="anchored" data-anchor-id="步骤一数据加载与准备">步骤一：数据加载与准备</h2>
+<section id="步骤一数据加载与准备" class="level3">
+<h3 class="anchored" data-anchor-id="步骤一数据加载与准备"><strong>步骤一：数据加载与准备</strong></h3>
 <p>在开始特征工程之前，我们需要准备好干净的数据。</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="AI指令模板：数据准备">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-AI指令模板：数据准备
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p><strong>👉 你的指令剧本：</strong></p>
 <p><strong># 角色</strong> 你是一位熟练使用Pandas库的Python数据科学家。</p>
-<p><strong># 上下文</strong> 我正在进行一个文本分类项目，需要从<code>aigc_content.csv</code>文件中加载数据，并为文本特征工程做准备。</p>
-<p><strong># 任务</strong> 请帮我编写一段Python代码，完成以下操作： 1. 使用Pandas加载<code>aigc_content.csv</code>文件。 2. 检查<code>content</code>列是否有缺失值（NaN）。如果有，请用一个空字符串填充它们。 3. 为了加快处理速度，请从数据集中随机抽取5000条样本（如果数据集小于5000条，则使用全部数据）。 4. 将处理后的<code>content</code>列和<code>label</code>列分别赋值给变量<code>X_text</code>和<code>y</code>。 5. 打印出<code>X_text</code>和<code>y</code>的长度，确保它们匹配。</p>
+<p><strong># 上下文</strong> 我正在进行一个文本分类项目，需要从<code>aigc_quality_data.csv</code>文件中加载数据，并为文本特征工程做准备。</p>
+<p><strong># 任务</strong> 请帮我编写一段Python代码，完成以下操作： 1. 使用Pandas加载 <code>aigc_quality_data.csv</code> 文件。 2. 检查<code>text</code>列是否有缺失值（NaN）。如果有，请用一个空字符串填充它们。 3. 为了加快处理速度，请从数据集中随机抽取5000条样本（如果数据集小于5000条，则使用全部数据）。 4. 将处理后的<code>text</code>列和<code>label</code>列分别赋值给变量<code>X_text</code>和<code>y</code>。 5. 打印出<code>X_text</code>和<code>y</code>的长度，确保它们匹配。</p>
 <p><strong># 输出格式</strong> 请提供可以直接运行的Python代码，并附上清晰的注释。</p>
-</div>
-</div>
+</blockquote>
 <hr>
 </section>
-<section id="步骤二ai辅助的文本清洗" class="level2">
-<h2 class="anchored" data-anchor-id="步骤二ai辅助的文本清洗">步骤二：AI辅助的文本清洗</h2>
+<section id="步骤二ai辅助的文本清洗" class="level3">
+<h3 class="anchored" data-anchor-id="步骤二ai辅助的文本清洗"><strong>步骤二：AI辅助的文本清洗</strong></h3>
 <p>“Garbage in, garbage out.” 高质量的特征始于高质量的文本。我们需要清洗文本，去除与语义无关的噪声。</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="AI指令模板：文本清洗函数">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-AI指令模板：文本清洗函数
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p><strong>👉 你的指令剧本：</strong></p>
 <p><strong># 角色</strong> 你是一位精通正则表达式和文本处理的Python专家。</p>
 <p><strong># 任务</strong> 请帮我编写一个名为<code>clean_text</code>的Python函数，它接收一个文本字符串作为输入，并执行以下清洗操作： 1. 将所有文本转换为小写。 2. 去除所有HTML标签。 3. 去除URL链接。 4. 去除邮箱地址。 5. 去除数字和标点符号，但保留中文字符和英文字母。 6. 去除多余的空格（例如，将多个连续空格替换为单个空格）。</p>
 <p><strong># 要求</strong> - 请大量使用正则表达式（<code>re</code>库）来完成这些任务。 - 为函数的每个步骤添加注释，解释对应的正则表达式的作用。 - 函数最终应返回一个清洗后的文本字符串。</p>
 <p><strong># 输出格式</strong> 提供完整的Python函数定义代码。</p>
-</div>
-</div>
-<p><strong>应用清洗函数：</strong> 在你拿到AI生成的<code>clean_text</code>函数后，你可以这样应用它：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设你已经有了X_text</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>cleaned_X_text <span class="op">=</span> X_text.<span class="bu">apply</span>(clean_text)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 打印清洗前后的对比</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original Text:"</span>, X_text.iloc[<span class="dv">0</span>])</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Cleaned Text:"</span>, cleaned_X_text.iloc[<span class="dv">0</span>])</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</blockquote>
+<p>在你拿到AI生成的<code>clean_text</code>函数后，你可以这样在Jupyter Notebook中应用它，并检查效果：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设AI已为你生成clean_text函数</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaned_X_text = X_text.apply(clean_text)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 打印清洗前后的对比，直观感受变化</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Original Text:", X_text.iloc[0])</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Cleaned Text:", cleaned_X_text.iloc[0])</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </section>
-<section id="步骤三核心任务---tf-idf向量化" class="level2">
-<h2 class="anchored" data-anchor-id="步骤三核心任务---tf-idf向量化">步骤三：核心任务 - TF-IDF向量化</h2>
+<section id="步骤三核心任务---tf-idf向量化" class="level3">
+<h3 class="anchored" data-anchor-id="步骤三核心任务---tf-idf向量化"><strong>步骤三：核心任务 - TF-IDF向量化</strong></h3>
 <p>现在，我们到达了本章的核心环节：将清洗后的文本转换为TF-IDF向量。我们将使用<code>scikit-learn</code>库中功能强大的<code>TfidfVectorizer</code>。</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="AI指令模板：TF-IDF向量化">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-AI指令模板：TF-IDF向量化
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p><strong>👉 你的指令剧本：</strong></p>
 <p><strong># 角色</strong> 你是一位经验丰富的机器学习工程师，擅长使用<code>scikit-learn</code>进行特征工程。</p>
 <p><strong># 上下文</strong> 我已经准备好了清洗后的文本数据（一个Pandas Series，名为<code>cleaned_X_text</code>）。现在我需要将其转换为TF-IDF特征矩阵。</p>
 <p><strong># 任务</strong> 请帮我编写一段Python代码，完成以下任务： 1. 从<code>sklearn.feature_extraction.text</code>导入<code>TfidfVectorizer</code>。 2. <strong>实例化<code>TfidfVectorizer</code></strong>，并配置以下关键参数： * <code>max_df=0.95</code>：忽略在超过95%的文档中出现的词（过滤掉语料库范围内的停用词）。 * <code>min_df=2</code>：忽略在少于2个文档中出现的词（过滤掉罕见词和可能的拼写错误）。 * <code>max_features=10000</code>：最终的词汇表大小限制为10000个特征。 * <code>stop_words='english'</code>：使用内置的英文停用词列表。 * <code>ngram_range=(1, 2)</code>：同时考虑单个词（unigram）和两个连续的词（bigram）作为特征。 3. 使用<code>.fit_transform()</code>方法拟合文本数据并将其转换为TF-IDF矩阵。将结果保存在变量<code>tfidf_matrix</code>中。 4. 打印出<code>tfidf_matrix</code>的形状（shape），让我们知道生成了多少样本和多少特征。 5. 打印出转换后特征矩阵的稀疏度。</p>
 <p><strong># 输出格式</strong> 提供可以直接运行的Python代码，并对每个参数的作用进行简要注释。</p>
-</div>
-</div>
+</blockquote>
 <hr>
 </section>
-<section id="步骤四结果分析与洞察" class="level2">
-<h2 class="anchored" data-anchor-id="步骤四结果分析与洞察">步骤四：结果分析与洞察</h2>
+<section id="步骤四结果分析与洞察" class="level3">
+<h3 class="anchored" data-anchor-id="步骤四结果分析与洞察"><strong>步骤四：结果分析与洞察</strong></h3>
 <p>仅仅生成矩阵是不够的，我们需要理解它。让我们向AI提问，来探索这个新生成的特征空间。</p>
-<section id="探索1查看词汇表" class="level3">
-<h3 class="anchored" data-anchor-id="探索1查看词汇表">探索1：查看词汇表</h3>
-<div class="callout callout-style-default callout-tip callout-titled" title="AI指令模板：查看词汇表">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-AI指令模板：查看词汇表
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="探索1查看词汇表" class="level4">
+<h4 class="anchored" data-anchor-id="探索1查看词汇表"><strong>探索1：查看词汇表</strong></h4>
+<blockquote class="blockquote">
+<p><strong>👉 你的指令剧本：</strong></p>
 <p><strong># 角色</strong> 你是我的<code>scikit-learn</code>调试助手。</p>
 <p><strong># 上下文</strong> 我已经使用<code>TfidfVectorizer</code>创建了一个名为<code>vectorizer</code>的实例，并用它生成了<code>tfidf_matrix</code>。</p>
 <p><strong># 任务</strong> 请告诉我如何： 1. 获取<code>vectorizer</code>学习到的完整词汇表（vocabulary）。 2. 随机打印出词汇表中的20个词，让我对特征有个直观感受。 3. 获取IDF（逆文档频率）权重最高的10个词和最低的10个词。</p>
 <p><strong># 输出格式</strong> 提供代码片段来完成这些任务。</p>
-</div>
-</div>
-<p><strong>预期结果分析：</strong> - <strong>IDF最高的词</strong> 应该是那些具有高度区分性的专业术语或特定领域的词汇。在我们的项目中，这可能是与”有害内容”或”优质内容”强相关的词。 - <strong>IDF最低的词</strong> 应该是那些在语料库中非常常见的词，但又没有被停用词表过滤掉的词。</p>
+</blockquote>
 </section>
-<section id="探索2检查一个样本的向量" class="level3">
-<h3 class="anchored" data-anchor-id="探索2检查一个样本的向量">探索2：检查一个样本的向量</h3>
+<section id="探索2检查一个样本的向量" class="level4">
+<h4 class="anchored" data-anchor-id="探索2检查一个样本的向量"><strong>探索2：检查一个样本的向量</strong></h4>
 <p>让我们看看单个文档是如何被表示的。</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="AI指令模板：检查单个向量">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-AI指令模板：检查单个向量
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p><strong>👉 你的指令剧本：</strong></p>
 <p><strong># 角色</strong> 你是我的<code>scikit-learn</code>和<code>pandas</code>结合使用专家。</p>
 <p><strong># 上下文</strong> 我有<code>vectorizer</code>、<code>tfidf_matrix</code>和原始文本<code>cleaned_X_text</code>。</p>
 <p><strong># 任务</strong> 请帮我编写一段代码，实现以下功能： 1. 选择<code>tfidf_matrix</code>中的第一行（代表第一个文档）。 2. 将这个稀疏向量转换为一个更易于阅读的格式，例如一个Pandas DataFrame。 3. 这个DataFrame应该有两列：<code>term</code>（词汇）和<code>tfidf_score</code>（对应的TF-IDF权重）。 4. 只显示该文档中TF-IDF分数大于0的词汇。 5. 按TF-IDF分数降序排列。 6. 最后，打印出原始的文本文档和这个排序后的TF-IDF分数表，方便我对比。</p>
 <p><strong># 输出格式</strong> 提供一个完整的、可复用的代码片段。</p>
-</div>
-</div>
-<p><strong>预期结果分析：</strong> 通过这个分析，你可以直观地看到对于一篇具体的AIGC内容，哪些词被认为是”关键词”。这对于理解模型决策和进行错误分析非常有帮助。</p>
+</blockquote>
 <hr>
 </section>
 </section>
+</section>
 <section id="本章项目成果与总结" class="level2">
-<h2 class="anchored" data-anchor-id="本章项目成果与总结">本章项目成果与总结</h2>
+<h2 class="anchored" data-anchor-id="本章项目成果与总结"><strong>本章项目成果与总结</strong></h2>
 <p>恭喜你！通过与AI的协同，我们已经成功地将非结构化的文本数据，转换为了机器学习模型可以”阅读”的结构化特征矩阵。</p>
 <section id="我们的成果" class="level3">
-<h3 class="anchored" data-anchor-id="我们的成果">我们的成果</h3>
+<h3 class="anchored" data-anchor-id="我们的成果"><strong>我们的成果</strong></h3>
 <ul>
 <li>一个经过清洗和预处理的文本数据集。</li>
 <li>一个包含10000个特征（包括unigram和bigram）的TF-IDF特征矩阵。</li>
@@ -871,7 +531,7 @@ AI指令模板：检查单个向量
 </ul>
 </section>
 <section id="核心收获" class="level3">
-<h3 class="anchored" data-anchor-id="核心收获">核心收获</h3>
+<h3 class="anchored" data-anchor-id="核心收获"><strong>核心收获</strong></h3>
 <ol type="1">
 <li><strong>任务分解</strong>：你学会了如何将一个复杂的工程任务（文本特征工程）分解为一系列可以清晰地委托给AI的子任务。</li>
 <li><strong>参数化思维</strong>：你理解了像<code>TfidfVectorizer</code>这样的工具中，各个参数（如<code>max_df</code>, <code>min_df</code>, <code>ngram_range</code>）如何影响最终的特征质量。</li>
@@ -879,7 +539,7 @@ AI指令模板：检查单个向量
 </ol>
 </section>
 <section id="展望下一章" class="level3">
-<h3 class="anchored" data-anchor-id="展望下一章">展望下一章</h3>
+<h3 class="anchored" data-anchor-id="展望下一章"><strong>展望下一章</strong></h3>
 <p>我们的数据已经准备就绪，就像为一顿大餐备好了所有食材。在下一章，我们将正式开始”烹饪”——训练我们的第一个分类器，让它学习如何从这些TF-IDF特征中识别出不同质量等级的AIGC内容。一场激动人心的模型训练之旅即将开启！</p>
 
 
@@ -1367,196 +1027,190 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../06-first-classifier/index.html" class="pagination-link" aria-label="第6章 你的第一个分类器：AI内容&quot;安检门&quot;">
-        <span class="nav-page-text"><span class="chapter-title">第6章 你的第一个分类器：AI内容”安检门”</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../05-text-to-vectors/05-challenge-beyond-tfidf.html" class="pagination-link" aria-label="5.5 动手练习与挑战：探索词袋模型的“天花板”">
+        <span class="nav-page-text"><span class="chapter-title">5.5 动手练习与挑战：探索词袋模型的“天花板”</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 5.4 Practice: 指挥AI完成文本特征工程</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## 从理论到代码：AI协同的特征工程流程</span></span>
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "5.4 Practice: 指挥AI完成文本特征工程"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>理论知识已经完备，现在是时候将它们付诸实践了！在本节中，我们将扮演"项目总监"的角色，通过向AI助手下达一系列精确指令，来完成AIGC内容质检项目的文本特征工程。</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Practice：下达你的第一份"特征工程委托书"**</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">### 我们的目标</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>将原始的文本数据（<span class="in">`content`</span>列）转换为一个高维的TF-IDF特征矩阵，为下一章的分类器训练做好准备。</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">### AI协同工作流</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>我们将把复杂的任务分解为一系列清晰的步骤，并在每一步都与AI进行协作：</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**数据准备**：加载并预处理数据。</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**文本清洗**：去除噪声，为向量化做准备。</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**TF-IDF向量化**：使用<span class="in">`scikit-learn`</span>进行核心转换。</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**结果分析**：检查并理解生成的特征矩阵。</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>理论知识已经完备，现在是时候将它们付诸实践了！在本节中，我们将扮演"项目总监"的角色，通过向AI助手下达一系列精确指令，来完成AIGC内容质检项目的文本特征工程。</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>我们的目标是将原始的文本数据（<span class="in">`text`</span>列）转换为一个高维的TF-IDF特征矩阵，为下一章的分类器训练做好准备。</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>这个过程将被分解为一系列清晰的步骤，你在每一步都需要与AI进行协作。</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">### **步骤一：数据加载与准备**</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>在开始特征工程之前，我们需要准备好干净的数据。</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## 步骤一：数据加载与准备</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>在开始特征工程之前，我们需要准备好干净的数据。</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>:::{.callout-tip title="AI指令模板：数据准备" icon="fas fa-robot"}</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>**# 角色**</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>你是一位熟练使用Pandas库的Python数据科学家。</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>**# 上下文**</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>我正在进行一个文本分类项目，需要从<span class="in">`aigc_content.csv`</span>文件中加载数据，并为文本特征工程做准备。</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>**# 任务**</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>请帮我编写一段Python代码，完成以下操作：</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>使用Pandas加载<span class="in">`aigc_content.csv`</span>文件。</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>检查<span class="in">`content`</span>列是否有缺失值（NaN）。如果有，请用一个空字符串填充它们。</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>为了加快处理速度，请从数据集中随机抽取5000条样本（如果数据集小于5000条，则使用全部数据）。</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>将处理后的<span class="in">`content`</span>列和<span class="in">`label`</span>列分别赋值给变量<span class="in">`X_text`</span>和<span class="in">`y`</span>。</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>打印出<span class="in">`X_text`</span>和<span class="in">`y`</span>的长度，确保它们匹配。</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **👉 你的指令剧本：**</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 角色**</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 你是一位熟练使用Pandas库的Python数据科学家。</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 上下文**</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 我正在进行一个文本分类项目，需要从</span><span class="in">`aigc_quality_data.csv`</span><span class="at">文件中加载数据，并为文本特征工程做准备。</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 任务**</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请帮我编写一段Python代码，完成以下操作：</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  使用Pandas加载 </span><span class="in">`aigc_quality_data.csv`</span><span class="at"> 文件。</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  检查</span><span class="in">`text`</span><span class="at">列是否有缺失值（NaN）。如果有，请用一个空字符串填充它们。</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  为了加快处理速度，请从数据集中随机抽取5000条样本（如果数据集小于5000条，则使用全部数据）。</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 4.  将处理后的</span><span class="in">`text`</span><span class="at">列和</span><span class="in">`label`</span><span class="at">列分别赋值给变量</span><span class="in">`X_text`</span><span class="at">和</span><span class="in">`y`</span><span class="at">。</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 5.  打印出</span><span class="in">`X_text`</span><span class="at">和</span><span class="in">`y`</span><span class="at">的长度，确保它们匹配。</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 输出格式**</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请提供可以直接运行的Python代码，并附上清晰的注释。</span></span>
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>**# 输出格式**</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>请提供可以直接运行的Python代码，并附上清晰的注释。</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### **步骤二：AI辅助的文本清洗**</span></span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>"Garbage in, garbage out." 高质量的特征始于高质量的文本。我们需要清洗文本，去除与语义无关的噪声。</span>
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## 步骤二：AI辅助的文本清洗</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>"Garbage in, garbage out." 高质量的特征始于高质量的文本。我们需要清洗文本，去除与语义无关的噪声。</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>:::{.callout-tip title="AI指令模板：文本清洗函数" icon="fas fa-robot"}</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>**# 角色**</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>你是一位精通正则表达式和文本处理的Python专家。</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>**# 任务**</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>请帮我编写一个名为<span class="in">`clean_text`</span>的Python函数，它接收一个文本字符串作为输入，并执行以下清洗操作：</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>将所有文本转换为小写。</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>去除所有HTML标签。</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>去除URL链接。</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>去除邮箱地址。</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>去除数字和标点符号，但保留中文字符和英文字母。</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>去除多余的空格（例如，将多个连续空格替换为单个空格）。</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>**# 要求**</span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>请大量使用正则表达式（<span class="in">`re`</span>库）来完成这些任务。</span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>为函数的每个步骤添加注释，解释对应的正则表达式的作用。</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>函数最终应返回一个清洗后的文本字符串。</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **👉 你的指令剧本：**</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 角色**</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 你是一位精通正则表达式和文本处理的Python专家。</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 任务**</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请帮我编写一个名为</span><span class="in">`clean_text`</span><span class="at">的Python函数，它接收一个文本字符串作为输入，并执行以下清洗操作：</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  将所有文本转换为小写。</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  去除所有HTML标签。</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  去除URL链接。</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 4.  去除邮箱地址。</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 5.  去除数字和标点符号，但保留中文字符和英文字母。</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 6.  去除多余的空格（例如，将多个连续空格替换为单个空格）。</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 要求**</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; -   请大量使用正则表达式（</span><span class="in">`re`</span><span class="at">库）来完成这些任务。</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; -   为函数的每个步骤添加注释，解释对应的正则表达式的作用。</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; -   函数最终应返回一个清洗后的文本字符串。</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 输出格式**</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 提供完整的Python函数定义代码。</span></span>
 <span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>**# 输出格式**</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>提供完整的Python函数定义代码。</span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>**应用清洗函数：**</span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>在你拿到AI生成的<span class="in">`clean_text`</span>函数后，你可以这样应用它：</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>在你拿到AI生成的<span class="in">`clean_text`</span>函数后，你可以这样在Jupyter Notebook中应用它，并检查效果：</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设AI已为你生成clean_text函数</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaned_X_text = X_text.apply(clean_text)</span></span>
 <span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设你已经有了X_text</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>cleaned_X_text <span class="op">=</span> X_text.<span class="bu">apply</span>(clean_text)</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="co"># 打印清洗前后的对比</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original Text:"</span>, X_text.iloc[<span class="dv">0</span>])</span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Cleaned Text:"</span>, cleaned_X_text.iloc[<span class="dv">0</span>])</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="co"># 打印清洗前后的对比，直观感受变化</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Original Text:", X_text.iloc[0])</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Cleaned Text:", cleaned_X_text.iloc[0])</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="fu">### **步骤三：核心任务 - TF-IDF向量化**</span></span>
 <span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>现在，我们到达了本章的核心环节：将清洗后的文本转换为TF-IDF向量。我们将使用<span class="in">`scikit-learn`</span>库中功能强大的<span class="in">`TfidfVectorizer`</span>。</span>
 <span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## 步骤三：核心任务 - TF-IDF向量化</span></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>现在，我们到达了本章的核心环节：将清洗后的文本转换为TF-IDF向量。我们将使用<span class="in">`scikit-learn`</span>库中功能强大的<span class="in">`TfidfVectorizer`</span>。</span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>:::{.callout-tip title="AI指令模板：TF-IDF向量化" icon="fas fa-robot"}</span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>**# 角色**</span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>你是一位经验丰富的机器学习工程师，擅长使用<span class="in">`scikit-learn`</span>进行特征工程。</span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>**# 上下文**</span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>我已经准备好了清洗后的文本数据（一个Pandas Series，名为<span class="in">`cleaned_X_text`</span>）。现在我需要将其转换为TF-IDF特征矩阵。</span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>**# 任务**</span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>请帮我编写一段Python代码，完成以下任务：</span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>从<span class="in">`sklearn.feature_extraction.text`</span>导入<span class="in">`TfidfVectorizer`</span>。</span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**实例化`TfidfVectorizer`**，并配置以下关键参数：</span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="in">`max_df=0.95`</span>：忽略在超过95%的文档中出现的词（过滤掉语料库范围内的停用词）。</span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="in">`min_df=2`</span>：忽略在少于2个文档中出现的词（过滤掉罕见词和可能的拼写错误）。</span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="in">`max_features=10000`</span>：最终的词汇表大小限制为10000个特征。</span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="in">`stop_words='english'`</span>：使用内置的英文停用词列表。</span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="in">`ngram_range=(1, 2)`</span>：同时考虑单个词（unigram）和两个连续的词（bigram）作为特征。</span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>使用<span class="in">`.fit_transform()`</span>方法拟合文本数据并将其转换为TF-IDF矩阵。将结果保存在变量<span class="in">`tfidf_matrix`</span>中。</span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>打印出<span class="in">`tfidf_matrix`</span>的形状（shape），让我们知道生成了多少样本和多少特征。</span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>打印出转换后特征矩阵的稀疏度。</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **👉 你的指令剧本：**</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 角色**</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 你是一位经验丰富的机器学习工程师，擅长使用</span><span class="in">`scikit-learn`</span><span class="at">进行特征工程。</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 上下文**</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 我已经准备好了清洗后的文本数据（一个Pandas Series，名为</span><span class="in">`cleaned_X_text`</span><span class="at">）。现在我需要将其转换为TF-IDF特征矩阵。</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 任务**</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请帮我编写一段Python代码，完成以下任务：</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  从</span><span class="in">`sklearn.feature_extraction.text`</span><span class="at">导入</span><span class="in">`TfidfVectorizer`</span><span class="at">。</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  **实例化`TfidfVectorizer`**，并配置以下关键参数：</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     *   </span><span class="in">`max_df=0.95`</span><span class="at">：忽略在超过95%的文档中出现的词（过滤掉语料库范围内的停用词）。</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     *   </span><span class="in">`min_df=2`</span><span class="at">：忽略在少于2个文档中出现的词（过滤掉罕见词和可能的拼写错误）。</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     *   </span><span class="in">`max_features=10000`</span><span class="at">：最终的词汇表大小限制为10000个特征。</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     *   </span><span class="in">`stop_words='english'`</span><span class="at">：使用内置的英文停用词列表。</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     *   </span><span class="in">`ngram_range=(1, 2)`</span><span class="at">：同时考虑单个词（unigram）和两个连续的词（bigram）作为特征。</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  使用</span><span class="in">`.fit_transform()`</span><span class="at">方法拟合文本数据并将其转换为TF-IDF矩阵。将结果保存在变量</span><span class="in">`tfidf_matrix`</span><span class="at">中。</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 4.  打印出</span><span class="in">`tfidf_matrix`</span><span class="at">的形状（shape），让我们知道生成了多少样本和多少特征。</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 5.  打印出转换后特征矩阵的稀疏度。</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 输出格式**</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 提供可以直接运行的Python代码，并对每个参数的作用进行简要注释。</span></span>
 <span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>**# 输出格式**</span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>提供可以直接运行的Python代码，并对每个参数的作用进行简要注释。</span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="fu">### **步骤四：结果分析与洞察**</span></span>
 <span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>仅仅生成矩阵是不够的，我们需要理解它。让我们向AI提问，来探索这个新生成的特征空间。</span>
 <span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="fu">## 步骤四：结果分析与洞察</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **探索1：查看词汇表**</span></span>
 <span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>仅仅生成矩阵是不够的，我们需要理解它。让我们向AI提问，来探索这个新生成的特征空间。</span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="fu">### 探索1：查看词汇表</span></span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>:::{.callout-tip title="AI指令模板：查看词汇表" icon="fas fa-robot"}</span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>**# 角色**</span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>你是我的<span class="in">`scikit-learn`</span>调试助手。</span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>**# 上下文**</span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>我已经使用<span class="in">`TfidfVectorizer`</span>创建了一个名为<span class="in">`vectorizer`</span>的实例，并用它生成了<span class="in">`tfidf_matrix`</span>。</span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>**# 任务**</span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>请告诉我如何：</span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>获取<span class="in">`vectorizer`</span>学习到的完整词汇表（vocabulary）。</span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>随机打印出词汇表中的20个词，让我对特征有个直观感受。</span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>获取IDF（逆文档频率）权重最高的10个词和最低的10个词。</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **👉 你的指令剧本：**</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 角色**</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 你是我的</span><span class="in">`scikit-learn`</span><span class="at">调试助手。</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 上下文**</span></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 我已经使用</span><span class="in">`TfidfVectorizer`</span><span class="at">创建了一个名为</span><span class="in">`vectorizer`</span><span class="at">的实例，并用它生成了</span><span class="in">`tfidf_matrix`</span><span class="at">。</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 任务**</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请告诉我如何：</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  获取</span><span class="in">`vectorizer`</span><span class="at">学习到的完整词汇表（vocabulary）。</span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  随机打印出词汇表中的20个词，让我对特征有个直观感受。</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  获取IDF（逆文档频率）权重最高的10个词和最低的10个词。</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 输出格式**</span></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 提供代码片段来完成这些任务。</span></span>
 <span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>**# 输出格式**</span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>提供代码片段来完成这些任务。</span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>**预期结果分析：**</span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**IDF最高的词** 应该是那些具有高度区分性的专业术语或特定领域的词汇。在我们的项目中，这可能是与"有害内容"或"优质内容"强相关的词。</span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**IDF最低的词** 应该是那些在语料库中非常常见的词，但又没有被停用词表过滤掉的词。</span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="fu">### 探索2：检查一个样本的向量</span></span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>让我们看看单个文档是如何被表示的。</span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>:::{.callout-tip title="AI指令模板：检查单个向量" icon="fas fa-robot"}</span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>**# 角色**</span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>你是我的<span class="in">`scikit-learn`</span>和<span class="in">`pandas`</span>结合使用专家。</span>
-<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>**# 上下文**</span>
-<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>我有<span class="in">`vectorizer`</span>、<span class="in">`tfidf_matrix`</span>和原始文本<span class="in">`cleaned_X_text`</span>。</span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>**# 任务**</span>
-<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>请帮我编写一段代码，实现以下功能：</span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>选择<span class="in">`tfidf_matrix`</span>中的第一行（代表第一个文档）。</span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>将这个稀疏向量转换为一个更易于阅读的格式，例如一个Pandas DataFrame。</span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>这个DataFrame应该有两列：<span class="in">`term`</span>（词汇）和<span class="in">`tfidf_score`</span>（对应的TF-IDF权重）。</span>
-<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>只显示该文档中TF-IDF分数大于0的词汇。</span>
-<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>按TF-IDF分数降序排列。</span>
-<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>最后，打印出原始的文本文档和这个排序后的TF-IDF分数表，方便我对比。</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **探索2：检查一个样本的向量**</span></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>让我们看看单个文档是如何被表示的。</span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **👉 你的指令剧本：**</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 角色**</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 你是我的</span><span class="in">`scikit-learn`</span><span class="at">和</span><span class="in">`pandas`</span><span class="at">结合使用专家。</span></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 上下文**</span></span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 我有</span><span class="in">`vectorizer`</span><span class="at">、</span><span class="in">`tfidf_matrix`</span><span class="at">和原始文本</span><span class="in">`cleaned_X_text`</span><span class="at">。</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 任务**</span></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请帮我编写一段代码，实现以下功能：</span></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  选择</span><span class="in">`tfidf_matrix`</span><span class="at">中的第一行（代表第一个文档）。</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  将这个稀疏向量转换为一个更易于阅读的格式，例如一个Pandas DataFrame。</span></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  这个DataFrame应该有两列：</span><span class="in">`term`</span><span class="at">（词汇）和</span><span class="in">`tfidf_score`</span><span class="at">（对应的TF-IDF权重）。</span></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 4.  只显示该文档中TF-IDF分数大于0的词汇。</span></span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 5.  按TF-IDF分数降序排列。</span></span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 6.  最后，打印出原始的文本文档和这个排序后的TF-IDF分数表，方便我对比。</span></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **# 输出格式**</span></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 提供一个完整的、可复用的代码片段。</span></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>**# 输出格式**</span>
-<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>提供一个完整的、可复用的代码片段。</span>
-<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a><span class="fu">## **本章项目成果与总结**</span></span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>恭喜你！通过与AI的协同，我们已经成功地将非结构化的文本数据，转换为了机器学习模型可以"阅读"的结构化特征矩阵。</span>
 <span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>**预期结果分析：**</span>
-<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>通过这个分析，你可以直观地看到对于一篇具体的AIGC内容，哪些词被认为是"关键词"。这对于理解模型决策和进行错误分析非常有帮助。</span>
-<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a><span class="fu">## 本章项目成果与总结</span></span>
-<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>恭喜你！通过与AI的协同，我们已经成功地将非结构化的文本数据，转换为了机器学习模型可以"阅读"的结构化特征矩阵。</span>
-<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a><span class="fu">### 我们的成果</span></span>
-<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>一个经过清洗和预处理的文本数据集。</span>
-<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>一个包含10000个特征（包括unigram和bigram）的TF-IDF特征矩阵。</span>
-<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>一套可复用的AI指令和代码，用于未来的文本特征工程任务。</span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a><span class="fu">### **我们的成果**</span></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>一个经过清洗和预处理的文本数据集。</span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>一个包含10000个特征（包括unigram和bigram）的TF-IDF特征矩阵。</span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>一套可复用的AI指令和代码，用于未来的文本特征工程任务。</span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a><span class="fu">### **核心收获**</span></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**任务分解**：你学会了如何将一个复杂的工程任务（文本特征工程）分解为一系列可以清晰地委托给AI的子任务。</span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**参数化思维**：你理解了像<span class="in">`TfidfVectorizer`</span>这样的工具中，各个参数（如<span class="in">`max_df`</span>, <span class="in">`min_df`</span>, <span class="in">`ngram_range`</span>）如何影响最终的特征质量。</span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**从生成到洞察**：你不仅生成了特征，还学会了如何通过进一步提问来分析和理解这些特征。</span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a><span class="fu">### **展望下一章**</span></span>
 <span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a><span class="fu">### 核心收获</span></span>
-<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**任务分解**：你学会了如何将一个复杂的工程任务（文本特征工程）分解为一系列可以清晰地委托给AI的子任务。</span>
-<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**参数化思维**：你理解了像<span class="in">`TfidfVectorizer`</span>这样的工具中，各个参数（如<span class="in">`max_df`</span>, <span class="in">`min_df`</span>, <span class="in">`ngram_range`</span>）如何影响最终的特征质量。</span>
-<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**从生成到洞察**：你不仅生成了特征，还学会了如何通过进一步提问来分析和理解这些特征。</span>
-<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a><span class="fu">### 展望下一章</span></span>
-<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a>我们的数据已经准备就绪，就像为一顿大餐备好了所有食材。在下一章，我们将正式开始"烹饪"——训练我们的第一个分类器，让它学习如何从这些TF-IDF特征中识别出不同质量等级的AIGC内容。一场激动人心的模型训练之旅即将开启！ </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a>我们的数据已经准备就绪，就像为一顿大餐备好了所有食材。在下一章，我们将正式开始"烹饪"——训练我们的第一个分类器，让它学习如何从这些TF-IDF特征中识别出不同质量等级的AIGC内容。一场激动人心的模型训练之旅即将开启！ </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

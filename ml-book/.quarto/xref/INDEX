@@ -292,5 +292,20 @@
   },
   "Appendix/B-Gradio-Components.qmd": {
     "B-Gradio-Components.html": "68fb6dd1"
+  },
+  "04-project-kickoff/04-challenge-data-augmentation.qmd": {
+    "04-challenge-data-augmentation.html": "66585244"
+  },
+  "05-text-to-vectors/05-challenge-beyond-tfidf.qmd": {
+    "05-challenge-beyond-tfidf.html": "6b7c4771"
+  },
+  "06-first-classifier/06-challenge-model-zoo.qmd": {
+    "06-challenge-model-zoo.html": "2806a18d"
+  },
+  "07-model-evaluation/06-challenge-hyperparameter-tuning.qmd": {
+    "06-challenge-hyperparameter-tuning.html": "91466c58"
+  },
+  "08-explainable-ai/05-challenge-global-explanation.qmd": {
+    "05-challenge-global-explanation.html": "75af627b"
   }
 }

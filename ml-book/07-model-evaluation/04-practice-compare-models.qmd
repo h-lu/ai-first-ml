@@ -14,34 +14,34 @@
 
 我们将使用`scikit-learn`中两个强大的工具：`confusion_matrix`和`classification_report`。
 
-:::{.callout-tip title="AI指令模板：生成并可视化评估报告" icon="fas fa-robot"}
-**# 角色**
-你是一位精通`scikit-learn`和数据可视化（如`seaborn`）的Python数据科学家。
-
-**# 上下文**
-我已经有了一个训练好的分类模型`model`，以及测试集的真实标签`y_test`和预测标签`y_pred`。我还保留了用于解码标签的`label_encoder`，它知道数字（0,1,2）和真实类别（"有害", "低质", "优质"）的对应关系。
-
-**# 任务**
-请帮我编写一段Python代码，完成以下任务：
-1.  **生成分类报告**:
-    *   从`sklearn.metrics`导入`classification_report`。
-    *   调用该函数，传入`y_test`和`y_pred`。
-    *   为了报告的可读性，请使用`target_names=label_encoder.classes_`来显示真实的类别名称，而不是0,1,2。
-    *   将生成的报告打印出来。
-
-2.  **生成并可视化混淆矩阵**:
-    *   从`sklearn.metrics`导入`confusion_matrix`。
-    *   调用该函数，生成混淆矩阵。
-    *   使用`seaborn.heatmap()`来创建一个美观的热力图，以可视化混淆矩阵。
-    *   在热力图上，请：
-        *   使用`annot=True`和`fmt='d'`来在每个格子里显示具体的数字。
-        *   使用`cmap='Blues'`颜色主题。
-        *   设置x轴和y轴的标签，使用`label_encoder.classes_`来显示类别名称，并分别命名为"Predicted Label"和"True Label"。
-        *   添加一个清晰的标题，例如"Confusion Matrix for AIGC Content Classification"。
-
-**# 输出格式**
-请提供可以直接运行的、结构清晰的Python代码，并为关键步骤添加注释。
-:::
+> **AI指令模板：生成并可视化评估报告**
+>
+> **# 角色**
+> 你是一位精通`scikit-learn`和数据可视化（如`seaborn`）的Python数据科学家。
+>
+> **# 上下文**
+> 我已经有了一个训练好的分类模型`model`，以及测试集的真实标签`y_test`和预测标签`y_pred`。我还保留了用于解码标签的`label_encoder`，它知道数字（0,1,2）和真实类别（"有害", "低质", "优质"）的对应关系。
+>
+> **# 任务**
+> 请帮我编写一段Python代码，完成以下任务：
+> 1.  **生成分类报告**:
+>     *   从`sklearn.metrics`导入`classification_report`。
+>     *   调用该函数，传入`y_test`和`y_pred`。
+>     *   为了报告的可读性，请使用`target_names=label_encoder.classes_`来显示真实的类别名称，而不是0,1,2。
+>     *   将生成的报告打印出来。
+>
+> 2.  **生成并可视化混淆矩阵**:
+>     *   从`sklearn.metrics`导入`confusion_matrix`。
+>     *   调用该函数，生成混淆矩阵。
+>     *   使用`seaborn.heatmap()`来创建一个美观的热力图，以可视化混淆矩阵。
+>     *   在热力图上，请：
+>         *   使用`annot=True`和`fmt='d'`来在每个格子里显示具体的数字。
+>         *   使用`cmap='Blues'`颜色主题。
+>         *   设置x轴和y轴的标签，使用`label_encoder.classes_`来显示类别名称，并分别命名为"Predicted Label"和"True Label"。
+>         *   添加一个清晰的标题，例如"Confusion Matrix for AIGC Content Classification"。
+>
+> **# 输出格式**
+> 请提供可以直接运行的、结构清晰的Python代码，并为关键步骤添加注释。
 
 ---
 
