@@ -107,6 +107,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -253,17 +282,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/02-how-what-mission.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 定义任务：将危机转化为可执行的AI指令</span></a>
+  <a href="../04-project-kickoff/02-how-exploration.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 How: 将危机转化为可执行的AI指令</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/03-practice-eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 实践：指挥AI完成首次探索性数据分析(EDA)</span></a>
+  <a href="../04-project-kickoff/03-what-text-classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 What: 将任务转化为机器语言</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/04-challenge-data-augmentation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 动手练习与挑战：AI数据增强</span></a>
+  <a href="../04-project-kickoff/04-practice-eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 实践：指挥AI完成首次探索性数据分析(EDA)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/05-challenge-data-augmentation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 动手练习与挑战：AI数据增强</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -328,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06-first-classifier/06-challenge-model-zoo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.6 动手练习与挑战：扩充你的模型“武器库”</span></a>
+  <a href="../06-first-classifier/06-challenge-model-zoo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.6 动手练习与挑战：扩充你的模型”武器库”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -363,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></a>
+  <a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.6 动手练习与挑战：成为’炼丹’艺术家——初探超参数调优</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -393,7 +427,190 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../08-explainable-ai/05-challenge-global-explanation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">任务1：AI，帮我绘制模型的”决策蓝图”</span></a>
+  <a href="../08-explainable-ai/05-challenge-global-explanation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 动手练习与挑战：从”能跑”到”好用”——项目代码重构</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">第三部分：AI对齐工程 —— 打造与人类价值观对齐的智能体</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第14章 第一步：SFT监督微调 —— 为AI注入领域知识</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/14-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.1 Why: 为何需要”岗前培训”？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/14-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.2 How: 如何进行”岗前培训”？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/14-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.3 What: 核心概念：监督微调 (SFT)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/14-4-practice-sft.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.4 Practice: 为”咖啡豆奇旅”训练金牌客服</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/14-5-toolbox.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.5 AI协同工具箱</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第15章 第二步：奖励建模 —— 教会AI拥有”品味”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/15-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.1 Why: 为何”标准答案”远远不够？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/15-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.2 How: 如何量化”品味”？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/15-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.3 What: 核心概念：奖励建模 (RM)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/15-4-practice-rm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.4 Practice: 训练”咖啡品味裁判”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/15-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.5 动手练习与挑战</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第16章 第三步：对齐进化 —— 从经典PPO到现代DPO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/16-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.1 Why: 为何需要“试错”与“探索”？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/16-2-what-ppo-vs-dpo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 What: 两条进化之路 PPO vs.&nbsp;DPO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/16-3-practice-ppo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.3 Practice: 走通经典之路PPO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/16-4-practice-dpo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.4 Practice: 驶入快车道DPO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/16-5-challenge-memo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.5 动手练习与挑战</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Agentic-Thinking/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第17章 最终评估与Agentic思维</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Agentic-Thinking/17-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.1 Why: 为何传统评估指标已”失灵”？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Agentic-Thinking/17-2-practice-arena.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.2 Practice: 搭建你的”咖啡豆AI竞技场”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Agentic-Thinking/17-3-what-agentic-thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.3 What: Agentic思维——AI的未来是”行动”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Agentic-Thinking/17-4-challenge-design-agent.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.4 动手练习与挑战</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">终章：你的旅程才刚刚开始</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18-Epilogue/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">终章：你的旅程才刚刚开始</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18-Epilogue/1-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.1 总结你的成长：三次思维跃迁的回顾</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18-Epilogue/2-ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.2 AI伦理：你手中工具的力量与责任</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18-Epilogue/3-next-steps.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.3 下一步去向何方？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18-Epilogue/4-lifelong-learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.4 终身学习：与AI一起在技术浪潮中持续进化</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">附录</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Appendix/A-AI-Dev-Best-Practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">附录A：AI辅助开发的最佳实践</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Appendix/B-Gradio-Components.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">附录B：Gradio核心组件用法查询</span></a>
   </div>
 </li>
       </ul>
@@ -453,11 +670,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>🤖 AI专家：</strong> 非常好的切入点！以业务问题为导向是定义评估指标的最佳方式。请告诉我你的两个核心问题是什么？</p>
 <p><strong>👤 你：</strong> <strong>第一个问题是关于”宁可错杀，不可放过”的。</strong> 对于”有害内容”这个类别，我希望模型尽可能地严格。我需要知道：<strong>在所有被模型标记为”有害”的内容中，到底有多少是真的有害内容？</strong> 我不希望系统错误地惩罚大量正常的创作者。</p>
 <p><strong>🤖 AI专家：</strong> 这是一个关于<strong>预测结果质量</strong>的问题。你关心的是模型做出的”有害”这个判断，有多大的<strong>精确度</strong>。恭喜你，你刚刚独立地”发现”了机器学习中一个至关重要的评估指标——<strong>精确率（Precision）</strong>。</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\text{精确率 (Precision)} = \frac{\text{真正是"有害"且被预测为"有害"的数量}}{\text{所有被预测为"有害"的总数}}
+\]</span></p>
 <p><strong>精确率</strong> 回答的是：“你预测的那些，准不准？” - <strong>高精确率</strong> 意味着模型做出的每一次”有害”判断都非常可信，误伤范围小。 - <strong>低精确率</strong> 意味着模型标记的”有害”内容中混杂了大量正常内容，会导致严重的”误杀”问题。</p>
 <p><strong>👤 你：</strong> “精确率”，这个名字很直观。我明白了。那么我的<strong>第二个问题是关于”漏网之鱼”的。</strong> 我更担心的是，有没有真正的有害内容被模型漏掉了，当成了正常内容发布了出去？我需要知道：<strong>在所有真正是”有害”的内容中，我们的模型成功识别出了多少？</strong></p>
 <p><strong>🤖 AI专家：</strong> 这个问题关注的是<strong>模型发现能力</strong>的完备性。你关心的是模型有没有把所有需要找出来的东西都找全了。这对应着另一个核心指标——<strong>召回率（Recall）</strong>，有时也被称为<strong>灵敏度（Sensitivity）</strong>。</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\text{召回率 (Recall)} = \frac{\text{真正是"有害"且被预测为"有害"的数量}}{\text{所有事实上是"有害"的总数}}
+\]</span></p>
 <p><strong>召回率</strong> 回答的是：“该找的那些，你找全了没？” - <strong>高召回率</strong> 意味着模型非常擅长发现”有害”内容，很少有”漏网之鱼”。 - <strong>低召回率</strong> 意味着大量的”有害”内容未被发现，被当成正常内容放行了，这会带来巨大的安全风险。</p>
 <section id="精确率-vs.-召回率一个永恒的权衡" class="level3">
 <h3 class="anchored" data-anchor-id="精确率-vs.-召回率一个永恒的权衡">精确率 vs.&nbsp;召回率：一个永恒的权衡</h3>
@@ -1016,9 +1237,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>**🤖 AI专家：** 这是一个关于**预测结果质量**的问题。你关心的是模型做出的"有害"这个判断，有多大的**精确度**。恭喜你，你刚刚独立地"发现"了机器学习中一个至关重要的评估指标——**精确率（Precision）**。</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>\text{精确率 (Precision)} = \frac{\text{真正是"有害"且被预测为"有害"的数量}}{\text{所有被预测为"有害"的总数}}</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>**精确率** 回答的是："你预测的那些，准不准？"</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**高精确率** 意味着模型做出的每一次"有害"判断都非常可信，误伤范围小。</span>
@@ -1028,9 +1249,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>**🤖 AI专家：** 这个问题关注的是**模型发现能力**的完备性。你关心的是模型有没有把所有需要找出来的东西都找全了。这对应着另一个核心指标——**召回率（Recall）**，有时也被称为**灵敏度（Sensitivity）**。</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>\text{召回率 (Recall)} = \frac{\text{真正是"有害"且被预测为"有害"的数量}}{\text{所有事实上是"有害"的总数}}</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>**召回率** 回答的是："该找的那些，你找全了没？"</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**高召回率** 意味着模型非常擅长发现"有害"内容，很少有"漏网之鱼"。</span>
@@ -1102,19 +1323,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>机器学习：AI驱动的学习与应用</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-<p>本书使用 Quarto 构建</p>
-</div>
-  </div>
-</footer>
 
 
 

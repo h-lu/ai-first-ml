@@ -35,7 +35,7 @@ pip install faiss-cpu
 
 现在，我们将把所有部分串联起来。这个指令将复用和整合我们之前的所有成果。
 
-:::{.callout-tip title="第二步：请求AI编写完整的索引、查询代码" icon="fas fa-cogs"}
+::: {.callout-note title="第二步：请求AI编写完整的索引、查询代码" icon="fas fa-cogs"}
 **👤 你的指令:**
 
 > "太棒了！现在请帮我编写一个完整的Python脚本。这个脚本需要整合我们之前的所有工作。
@@ -68,25 +68,31 @@ pip install faiss-cpu
 import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer
-from sklearn.text import RecursiveCharacterTextSplitter
+# 我们将使用简单的文本分割，因此不需要重量级的库
+# from sklearn.text import RecursiveCharacterTextSplitter 
 
-# === 第1步: 加载模型和准备文本分割器 ===
+# === 第1步: 加载模型 ===
 print("加载句向量模型...")
 model_name = 'all-MiniLM-L6-v2'
 embedding_model = SentenceTransformer(model_name)
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)
+# text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)
 
 # === 第2步: 准备和处理文档 ===
 print("准备和处理文档...")
 documents = [
-    """Retrieval-Augmented Generation (RAG) is a powerful technique that combines the strengths of large language models (LLMs) with external knowledge retrieval. The core idea is to retrieve relevant information from a knowledge base before generating a response. This approach helps to reduce hallucinations and improve factual accuracy.""",
-    """Python is a high-level, interpreted, general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming.""",
-    """Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn' – that is, methods that leverage data to improve performance on some set of tasks. It is seen as a part of artificial intelligence. Machine learning algorithms build a model based on sample data, known as training data, in order to make predictions or decisions without being explicitly programmed to do so."""
+    "Retrieval-Augmented Generation (RAG) is a powerful technique that combines the strengths of large language models (LLMs) with external knowledge retrieval.",
+    "The core idea of RAG is to retrieve relevant information from a knowledge base before generating a response.",
+    "This RAG approach helps to reduce hallucinations and improve factual accuracy.",
+    "Python is a high-level, interpreted, general-purpose programming language.",
+    "Its design philosophy emphasizes code readability with its notable use of significant indentation.",
+    "Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming.",
+    "Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn' – that is, methods that leverage data to improve performance on some set of tasks.",
+    "ML is seen as a part of artificial intelligence.",
+    "Machine learning algorithms build a model based on sample data, known as training data, in order to make predictions or decisions without being explicitly programmed to do so."
 ]
 
-# 将所有文档合并，然后分割成块
-all_text = " ".join(documents)
-chunks = text_splitter.split_text(all_text)
+# 在这个例子中，我们直接将每句话作为一个文档块(chunk)
+chunks = documents
 
 # 对所有文本块进行向量化
 print(f"正在将 {len(chunks)} 个文本块转换为向量...")
@@ -125,6 +131,7 @@ faiss.normalize_L2(query_embedding_np)
 k = 3
 
 # 执行搜索
+# index.search返回的是L2距离的平方
 distances, indices = index.search(query_embedding_np, k)
 
 # === 第5步: 展示结果 ===
@@ -132,10 +139,11 @@ print(f"\n查询 '{query}' 的Top {k} 个最相关的结果：")
 for i in range(k):
     retrieved_chunk_index = indices[0][i]
     retrieved_chunk = chunks[retrieved_chunk_index]
-    similarity_score = 1 - distances[0][i] # 将L2距离转换为相似度（非严格）
+    # 对于归一化向量，余弦相似度 = 1 - (L2距离的平方 / 2)
+    similarity_score = 1 - (distances[0][i] / 2)
     
     print(f"\n--- 结果 {i+1} ---")
-    print(f"相似度得分 (近似): {similarity_score:.4f}")
+    print(f"余弦相似度: {similarity_score:.4f}")
     print(f"文档块索引: {retrieved_chunk_index}")
     print(f"内容: {retrieved_chunk}")
 

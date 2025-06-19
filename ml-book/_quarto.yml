@@ -32,9 +32,10 @@ book:
         # 第4章 项目启动：我们的AIGC产品需要一个"质检员"
         - 04-project-kickoff/index.qmd
         - 04-project-kickoff/01-why-crisis.qmd
-        - 04-project-kickoff/02-how-what-mission.qmd
-        - 04-project-kickoff/03-practice-eda.qmd
-        - 04-project-kickoff/04-challenge-data-augmentation.qmd
+        - 04-project-kickoff/02-how-exploration.qmd
+        - 04-project-kickoff/03-what-text-classification.qmd
+        - 04-project-kickoff/04-practice-eda.qmd
+        - 04-project-kickoff/05-challenge-data-augmentation.qmd
         # 第5章 从文本到向量：教会机器"阅读"
         - 05-text-to-vectors/index.qmd
         - 05-text-to-vectors/01-why-machines-cant-read.qmd
@@ -65,82 +66,66 @@ book:
         - 08-explainable-ai/03-what-xai-shap-lime.qmd
         - 08-explainable-ai/04-practice-shap-plots.qmd
         - 08-explainable-ai/05-challenge-global-explanation.qmd
-    # - part: "第二部分：深度学习 —— 构建企业级LLM应用"
-    #   chapters:
-    #     # 第9章 项目启动：用RAG构建你的企业智能知识库
-    #     - 09-rag-kickoff/index.qmd
-    #     - 09-rag-kickoff/01-why-crisis.qmd
-    #     - 09-rag-kickoff/02-how-rag-blueprint.qmd
-    #     - 09-rag-kickoff/03-what-rag-concept.qmd
-    #     - 09-rag-kickoff/04-toolbox-critical-thinking.qmd
-    #     # 第10章 Embedding的魔力：让机器理解"意义"
-    #     - 10-embedding/index.qmd
-    #     - 10-embedding/01-why-embedding.qmd
-    #     - 10-embedding/02-how-embedding-geometry.qmd
-    #     - 10-embedding/03-what-word-sentence-embedding.qmd
-    #     - 10-embedding/04-practice-embedding.qmd
-    #     # 第11章 向量数据库：为你的AI建立一个"长期记忆"大脑
-    #     - 11-vector-database/index.qmd
-    #     - 11-vector-database/01-why-vector-db.qmd
-    #     - 11-vector-database/02-how-ann.qmd
-    #     - 11-vector-database/03-what-cosine-ann.qmd
-    #     - 11-vector-database/04-practice-faiss.qmd
-    #     # 第12章 串联成珠：搭建完整的RAG流程
-    #     - 12-rag-pipeline/index.qmd
-    #     - 12-rag-pipeline/1-why.qmd
-    #     - 12-rag-pipeline/2-how.qmd
-    #     - 12-rag-pipeline/3-what.qmd
-    #     - 12-rag-pipeline/4-practice.qmd
-    #     # 第13章 优化你的机器人：从"幻觉"到"忠实"
-    #     - 13-RAG-Optimization/index.qmd
-    #     - 13-RAG-Optimization/1-why.qmd
-    #     - 13-RAG-Optimization/2-how.qmd
-    #     - 13-RAG-Optimization/3-what.qmd
-    #     - 13-RAG-Optimization/4-practice.qmd
-    #     - 13-RAG-Optimization/5-challenge.qmd
-    # - part: "第三部分：强化学习——训练自主决策的AI智能体"
-    #   chapters:
-    #     - 14-RL-Intro/index.qmd
-    #     - 14-RL-Intro/1-why.qmd
-    #     - 14-RL-Intro/2-how.qmd
-    #     - 14-RL-Intro/3-what.qmd
-    #     - 14-RL-Intro/4-why-learn-rl.qmd
-        
-    #     - 15-RL-Pricing-Bot/index.qmd
-    #     - 15-RL-Pricing-Bot/1-why.qmd
-    #     - 15-RL-Pricing-Bot/2-practice-simulator.qmd
-    #     - 15-RL-Pricing-Bot/3-how-what-q-learning.qmd
-    #     - 15-RL-Pricing-Bot/4-practice-training-viz.qmd
-    #     - 15-RL-Pricing-Bot/5-challenge.qmd
-        
-    #     - 16-Agent-Bug-Fixer/index.qmd
-    #     - 16-Agent-Bug-Fixer/1-why.qmd
-    #     - 16-Agent-Bug-Fixer/2-design-sandbox.qmd
-    #     - 16-Agent-Bug-Fixer/3-design-actions.qmd
-    #     - 16-Agent-Bug-Fixer/4-design-rewards.qmd
-    #     - 16-Agent-Bug-Fixer/5-practice-run-agent.qmd
-    #     - 16-Agent-Bug-Fixer/6-challenge-alignment.qmd
+    - part: "第三部分：AI对齐工程 —— 打造与人类价值观对齐的智能体"
+      chapters:
+        # 第14章 第一步：SFT监督微调 —— 为AI注入领域知识
+        - 14-SFT/index.qmd
+        - 14-SFT/14-1-why.qmd
+        - 14-SFT/14-2-how.qmd
+        - 14-SFT/14-3-what.qmd
+        - 14-SFT/14-4-practice-sft.qmd
+        - 14-SFT/14-5-challenge.qmd
+        # 第15章 第二步：奖励建模 —— 教会AI拥有"品味"
+        - 15-Reward-Modeling/index.qmd
+        - 15-Reward-Modeling/15-1-why.qmd
+        - 15-Reward-Modeling/15-2-how.qmd
+        - 15-Reward-Modeling/15-3-what.qmd
+        - 15-Reward-Modeling/15-4-practice-rm.qmd
+        - 15-Reward-Modeling/15-5-challenge.qmd
+        # 第16章 第三步：对齐进化 —— 从经典PPO到现代DPO
+        - 16-Alignment-PPO-DPO/index.qmd
+        - 16-Alignment-PPO-DPO/16-1-why.qmd
+        - 16-Alignment-PPO-DPO/16-2-how.qmd
+        - 16-Alignment-PPO-DPO/16-3-what.qmd
+        - 16-Alignment-PPO-DPO/16-4-practice.qmd
+        - 16-Alignment-PPO-DPO/16-5-challenge.qmd
+        # 第17章 AI竞技场：科学评估你的大模型
+        - 17-Arena-Evaluation/index.qmd
+        - 17-Arena-Evaluation/17-1-why.qmd
+        - 17-Arena-Evaluation/17-2-how.qmd
+        - 17-Arena-Evaluation/17-3-what.qmd
+        - 17-Arena-Evaluation/17-4-practice-arena.qmd
+        - 17-Arena-Evaluation/17-5-challenge.qmd
+    - part: "第四部分：AI Agent —— 掌握AI的自主思考"
+      chapters:
+        # 第18章 Agent第一步：让AI拥有"手"和"脚"
+        - 18-Agent-Foundation/index.qmd
+        - 18-Agent-Foundation/18-1-why.qmd
+        - 18-Agent-Foundation/18-2-how.qmd
+        - 18-Agent-Foundation/18-3-what.qmd
+        - 18-Agent-Foundation/18-4-practice.qmd
+        - 18-Agent-Foundation/18-5-challenge.qmd
+        # 第19章 AI团队协作：构建多Agent工作流
+        - 19-Multi-Agent-Collaboration/index.qmd
+        - 19-Multi-Agent-Collaboration/19-1-why.qmd
+        - 19-Multi-Agent-Collaboration/19-2-how.qmd
+        - 19-Multi-Agent-Collaboration/19-3-what.qmd
+        - 19-Multi-Agent-Collaboration/19-4-practice.qmd
+        - 19-Multi-Agent-Collaboration/19-5-challenge.qmd
+        # 第20章 Agent的思考艺术：规划、反思与安全
+        - 20-Agent-Reasoning-Safety/index.qmd
+        - 20-Agent-Reasoning-Safety/20-1-why.qmd
+        - 20-Agent-Reasoning-Safety/20-2-how.qmd
+        - 20-Agent-Reasoning-Safety/20-3-what.qmd
+        - 20-Agent-Reasoning-Safety/20-4-practice.qmd
+        - 20-Agent-Reasoning-Safety/20-5-challenge.qmd
 
-    #     - 17-RL-Frontiers/index.qmd
-    #     - 17-RL-Frontiers/1-recap.qmd
-    #     - 17-RL-Frontiers/2-transfer.qmd
-    #     - 17-RL-Frontiers/3-vision.qmd
-        
-    #     - 18-Epilogue/index.qmd
-    #     - 18-Epilogue/1-summary.qmd
-    #     - 18-Epilogue/2-ethics.qmd
-    #     - 18-Epilogue/3-next-steps.qmd
-    #     - 18-Epilogue/4-lifelong-learning.qmd
-        
-    #     - Appendix/A-AI-Dev-Best-Practice.qmd
-    #     - Appendix/B-Gradio-Components.qmd
 
-  
-  page-footer:
-    left: |
-      机器学习：AI驱动的学习与应用
-    right: |
-      本书使用 Quarto 构建
+page-footer:
+  left: |
+    机器学习：AI驱动的学习与应用
+  right: |
+    本书使用 Quarto 构建
 
 bibliography: references.bib
 

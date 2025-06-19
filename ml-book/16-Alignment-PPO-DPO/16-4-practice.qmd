@@ -1,0 +1,97 @@
+# 16.4 Practice: 走两条路，看不同风景
+
+理论学习和方法论对比都已完成，现在是时候亲手实践，直观地感受PPO和DPO在工作流程和实际操作上的巨大差异了。
+
+我们将分两幕进行本次实践，分别扮演"传统电影导演"和"现代效率大师"。
+
+---
+
+### 第一幕：体验PPO的"电影拍摄现场"
+
+::: {.callout-caution title="资源提示"}
+PPO训练对计算资源要求较高，因为它需要同时在内存中加载和运行多个模型。强烈建议在有GPU的环境下（如Google Colab或Kaggle Notebook）运行此脚本。
+:::
+
+首先，让我们走进经典的PPO工作流。在这个实践中，我们将把SFT模型（演员）和RM模型（裁判）都请上场，通过`trl`库中的`PPOTrainer`（导演），来引导我们的"咖啡豆奇旅"客服AI实现进化。
+
+#### **一个完整的PPO训练指令剧本**
+
+##### **步骤一：请求AI编写准备代码**
+
+::: {.callout-note title="PPO准备指令" icon="fas fa-cogs"}
+**👤 你的指令:**
+
+> "你好AI。我准备使用`trl`的`PPOTrainer`为'咖啡豆奇旅'项目进行RLHF训练。请帮我编写第一部分的Python脚本，完成所有模型的加载和准备工作：
+>
+> 1.  **加载SFT模型（演员）**: 从我们之前SFT训练并保存的目录（`./sft_bean_voyage_output/final`）中，加载模型。注意，这次需要使用`AutoModelForCausalLMWithValueHead`来加载，这是一个特殊的、为PPO训练设计的模型类。
+> 2.  **加载RM模型（裁判）**: 从我们之前RM训练并保存的目录（`./rm_bean_voyage_output/final`）中，加载奖励模型。同样使用`AutoModelForCausalLMWithValueHead`来加载，并将其设置为评估模式（`.eval()`）。
+> 3.  **加载Tokenizer**: 为模型加载对应的Tokenizer。
+> 4.  **准备Prompt数据集**: 创建一个包含咖啡相关问题的列表，作为PPO训练的起始Prompts，并将其转换为Hugging Face数据集。
+>
+> 请为整个脚本提供清晰的注释。"
+:::
+
+##### **步骤二：请求AI配置并运行PPO**
+
+::: {.callout-note title="PPO运行指令" icon="fas fa-sliders-h"}
+**👤 你的指令:**
+
+> "所有模型都已就位！现在请继续编写脚本，配置并启动`PPOTrainer`：
+>
+> 1.  **配置PPO**: 创建一个`trl.PPOConfig`实例，设置学习率、批次大小等关键参数。
+> 2.  **创建PPOTrainer**: 初始化`trl.PPOTrainer`，将策略模型（演员）、奖励模型（裁判）、Tokenizer、数据集和PPO配置都传递给它。
+> 3.  **编写训练循环**: 这是PPO训练的核心。编写一个循环，在循环的每一步中：
+>     a. 从数据集中获取一个咖啡问题（query）。
+>     b. 使用`ppo_trainer.generate()`让'演员'生成回答（response）。
+>     c. 将问题和回答拼接，用'裁判'模型打分获得奖励（reward）。
+>     d. 调用`ppo_trainer.step()`方法，将问题、回答和奖励传给'导演'，完成一次优化。
+>     e. 打印出每一步的奖励均值，让我们能观察到'演员'的进步。
+"
+:::
+
+---
+
+### 第二幕：驶入DPO的"现代高速公路"
+
+在体验了PPO复杂的"摄制组"工作模式后，现在让我们立即切换角色，感受DPO的简洁与高效。
+
+在这个实践中，我们将跳过"品味裁判"（RM模型），直接使用我们精心构建的"批注剧本"（偏好数据集），来对SFT模型进行最终的对齐优化。
+
+#### **一个完整的DPO训练指令剧本**
+
+##### **步骤一：请求AI编写准备代码**
+
+::: {.callout-note title="DPO准备指令" icon="fas fa-cogs"}
+**👤 你的指令:**
+
+> "你好AI。现在我们来尝试更先进的DPO方法，为'咖啡豆奇旅'项目进行最终对齐。请帮我编写DPO训练前的准备脚本：
+>
+> 1.  **加载SFT模型**: 从我们SFT训练并保存的目录（`./sft_bean_voyage_output/final`）加载模型。
+> 2.  **加载Tokenizer**: 为模型加载对应的Tokenizer。
+> 3.  **创建偏好数据集**:
+>     -   直接复用我们为RM训练创建的"咖啡豆奇旅"偏好数据集。
+>     -   数据集是一个列表，每个元素是一个字典，包含`question`, `chosen`, 和`rejected`三个键。
+>     -   使用`datasets.from_list`将其转换为Hugging Face数据集。
+> 4.  **预处理数据集**: 编写一个预处理函数，将`question`, `chosen`和`rejected`拼接成DPO训练器需要的格式，即`prompt`, `chosen` 和 `rejected`三列。
+>
+> 请为整个脚本提供清晰的注释。"
+:::
+
+##### **步骤二：请求AI配置并启动DPO训练**
+
+::: {.callout-note title="DPO运行指令" icon="fas fa-sliders-h"}
+**👤 你的指令:**
+
+> "准备工作如此简单！现在请继续编写脚本，配置并启动`DPOTrainer`：
+>
+> 1.  **配置训练参数**: 创建一个`transformers.TrainingArguments`实例，为DPO训练设置合适的参数。
+> 2.  **创建DPOTrainer**: 初始化`trl.DPOTrainer`，将SFT模型、训练参数、Tokenizer、偏好数据集以及预处理函数等传递给它。注意，这里不再需要RM模型了！
+> 3.  **启动训练与保存**: 调用`trainer.train()`方法启动训练，并在完成后将我们最终的、经过DPO对齐的"金牌客服"模型保存下来。
+"
+:::
+
+---
+
+现在，请你打开AI编程环境，遵循这两幕的"指令剧本"，分别与AI合作完成PPO和DPO的训练。
+
+亲手操作之后，你将对它们在复杂度、资源消耗和代码量上的巨大差异，有一个无比深刻和直观的认识。 

@@ -359,7 +359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></a>
+  <a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.6 动手练习与挑战：成为’炼丹’艺术家——初探超参数调优</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -389,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../08-explainable-ai/05-challenge-global-explanation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">任务1：AI，帮我绘制模型的”决策蓝图”</span></a>
+  <a href="../08-explainable-ai/05-challenge-global-explanation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 动手练习与挑战：从”能跑”到”好用”——项目代码重构</span></a>
   </div>
 </li>
       </ul>
@@ -399,8 +399,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目录</h2>
+   
+  <ul>
+  <li><a href="#从一次性脚本到可追溯的科学实验" id="toc-从一次性脚本到可追溯的科学实验" class="nav-link active" data-scroll-target="#从一次性脚本到可追溯的科学实验">从”一次性脚本”到”可追溯的科学实验”</a></li>
+  <li><a href="#什么是实验跟踪" id="toc-什么是实验跟踪" class="nav-link" data-scroll-target="#什么是实验跟踪">什么是实验跟踪？</a></li>
+  <li><a href="#与ai协同快速搭建一个基础实验跟踪器" id="toc-与ai协同快速搭建一个基础实验跟踪器" class="nav-link" data-scroll-target="#与ai协同快速搭建一个基础实验跟踪器">与AI协同，快速搭建一个基础实验跟踪器</a>
+  <ul class="collapse">
+  <li><a href="#ai重构后的代码-预期输出" id="toc-ai重构后的代码-预期输出" class="nav-link" data-scroll-target="#ai重构后的代码-预期输出">AI重构后的代码 (预期输出)</a></li>
+  </ul></li>
+  <li><a href="#本章总结" id="toc-本章总结" class="nav-link" data-scroll-target="#本章总结">本章总结</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -424,16 +436,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-caution callout-titled" title="AI协同工具箱">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-AI协同工具箱
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <section id="从一次性脚本到可追溯的科学实验" class="level2">
 <h2 class="anchored" data-anchor-id="从一次性脚本到可追溯的科学实验">从”一次性脚本”到”可追溯的科学实验”</h2>
 <p>在上一节，我们基于分析结果，提出了多个模型迭代的假设： - 尝试新算法，如LightGBM。 - 调整模型参数。 - 使用不同的特征工程方法。 - 处理类别不平衡问题。</p>
@@ -574,13 +576,12 @@ AI协同工具箱
 <p>在本章中，你完成了一次从”初级评估”到”专业评估”的认知升级。你不再仅仅满足于一个笼统的准确率，而是学会了使用一整套工具（混淆矩阵、精确率、召回率、F1分数）来全方位地审视你的模型。</p>
 <p>更重要的是，你开始像一个真正的科学家一样思考：<strong>如何让我的实验可管理、可追溯、可复现？</strong> 你掌握了使用AI来快速搭建实验跟踪框架的技能，为你未来进行更复杂的模型优化工作铺平了道路。</p>
 <p>在下一章，我们将探讨一个同样至关重要的话题——<strong>模型的可解释性</strong>。即使一个模型性能再好，如果它是一个我们完全无法理解的”黑箱”，我们敢放心地将重要决策交托给它吗？让我们一起学习如何打开这个黑箱，让AI为它的决策提供合理的解释。</p>
-</section>
-</div>
-</div>
+<p>:::</p>
 
 
 <!-- -->
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1061,14 +1062,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html" class="pagination-link" aria-label="任务1：AI，什么是&quot;炼丹炉&quot;的&quot;旋钮&quot;？">
-        <span class="nav-page-text"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html" class="pagination-link" aria-label="7.6 动手练习与挑战：成为'炼丹'艺术家——初探超参数调优">
+        <span class="nav-page-text"><span class="chapter-title">7.6 动手练习与挑战：成为’炼丹’艺术家——初探超参数调优</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>::: {.callout-caution title="AI协同工具箱" icon="fas fa-toolbox"}</span>
+<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 7.5 AI协同工具箱：系统化你的模型实验</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu"># 7.5 AI协同工具箱：系统化你的模型实验</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>::: {.callout-caution title="AI协同工具箱：系统化你的模型实验" icon="fas fa-toolbox"}</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## 从"一次性脚本"到"可追溯的科学实验"</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -1249,8 +1250,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>更重要的是，你开始像一个真正的科学家一样思考：**如何让我的实验可管理、可追溯、可复现？** 你掌握了使用AI来快速搭建实验跟踪框架的技能，为你未来进行更复杂的模型优化工作铺平了道路。</span>
 <span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>在下一章，我们将探讨一个同样至关重要的话题——**模型的可解释性**。即使一个模型性能再好，如果它是一个我们完全无法理解的"黑箱"，我们敢放心地将重要决策交托给它吗？让我们一起学习如何打开这个黑箱，让AI为它的决策提供合理的解释。</span>
-<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>::: </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a>::: </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

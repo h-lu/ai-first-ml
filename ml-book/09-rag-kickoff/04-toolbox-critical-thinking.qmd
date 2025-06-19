@@ -19,7 +19,7 @@
 
 ### AI指令模板：挑战RAG架构
 
-:::{.callout-tip title="向AI提问：挑战RAG架构" icon="fas fa-lightbulb"}
+:::{.callout-caution title="AI协同工具箱：挑战RAG架构" icon="fas fa-toolbox"}
 
 **# 角色**
 你是一位资深的AI系统架构师。

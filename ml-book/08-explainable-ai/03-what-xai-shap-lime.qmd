@@ -2,9 +2,7 @@
 
 我们已经知道，对于无法直接看透其内心的黑箱模型，我们需要像侦探一样从外部探查其行为。LIME和SHAP就是两位大名鼎鼎的"AI侦探"，它们用不同的方法，却都能出色地完成任务。
 
-::: {.callout-tip title="核心概念：LIME与SHAP"}
-
-### LIME: 忠实的"本地模仿者"
+## LIME: 忠实的"本地模仿者"
 
 LIME的全称是 **Local Interpretable Model-agnostic Explanations**（局部可解释模型无关解释）。这个名字很长，但我们可以抓住两个关键词：
 -   **Local（局部）**: LIME只专注于解释**单次**预测，它是一个局部解释专家。
@@ -21,7 +19,7 @@ LIME的全称是 **Local Interpretable Model-agnostic Explanations**（局部可
 5.  **得出结论**: 这个简单模型学到的规律，就是LIME对大师那神之一笔的**局部近似解释**。
 
 ```{mermaid}
-%%| echo : false
+%%| echo: false
 graph TD
     subgraph "问题: 一个无法解释的决策"
         A[黑箱模型<br/>(e.g., LightGBM, 神经网络)]

@@ -34,7 +34,7 @@
 综上所述，模型可解释性（Explainable AI, XAI）远不止是一个技术问题，它是连接AI技术与人类社会方方面面的关键桥梁。
 
 ```{mermaid}
-%%| echo : false
+%%| echo: false
 graph TD
     subgraph "AI 技术世界"
         A["模型 / Model"]

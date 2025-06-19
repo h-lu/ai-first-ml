@@ -307,5 +307,173 @@
   },
   "08-explainable-ai/05-challenge-global-explanation.qmd": {
     "05-challenge-global-explanation.html": "75af627b"
+  },
+  "04-project-kickoff/02-how-exploration.qmd": {
+    "02-how-exploration.html": "e0711669"
+  },
+  "04-project-kickoff/03-what-text-classification.qmd": {
+    "03-what-text-classification.html": "5c40f51b"
+  },
+  "04-project-kickoff/04-practice-eda.qmd": {
+    "04-practice-eda.html": "01f070ed"
+  },
+  "04-project-kickoff/05-challenge-data-augmentation.qmd": {
+    "05-challenge-data-augmentation.html": "fcd3d760"
+  },
+  "14-SFT/index.qmd": {
+    "index.html": "203b8eb6"
+  },
+  "14-SFT/14-1-why.qmd": {
+    "14-1-why.html": "7edfab9c"
+  },
+  "14-SFT/14-2-how.qmd": {
+    "14-2-how.html": "732862a6"
+  },
+  "14-SFT/14-3-what.qmd": {
+    "14-3-what.html": "c0ecc6ee"
+  },
+  "14-SFT/14-4-practice-sft.qmd": {
+    "14-4-practice-sft.html": "f143389b"
+  },
+  "14-SFT/14-5-toolbox.qmd": {
+    "14-5-toolbox.html": "6132e68a"
+  },
+  "15-Reward-Modeling/index.qmd": {
+    "index.html": "0b9197a5"
+  },
+  "15-Reward-Modeling/15-1-why.qmd": {
+    "15-1-why.html": "d1128ffb"
+  },
+  "15-Reward-Modeling/15-2-how.qmd": {
+    "15-2-how.html": "e0d9dec9"
+  },
+  "15-Reward-Modeling/15-3-what.qmd": {
+    "15-3-what.html": "f5e8dd69"
+  },
+  "15-Reward-Modeling/15-4-practice-rm.qmd": {
+    "15-4-practice-rm.html": "08363423"
+  },
+  "15-Reward-Modeling/15-5-challenge.qmd": {
+    "15-5-challenge.html": "bf1699ab"
+  },
+  "16-Alignment-PPO-DPO/index.qmd": {
+    "index.html": "a7426106"
+  },
+  "16-Alignment-PPO-DPO/16-1-why.qmd": {
+    "16-1-why.html": "9b614799"
+  },
+  "16-Alignment-PPO-DPO/16-2-what-ppo-vs-dpo.qmd": {
+    "16-2-what-ppo-vs-dpo.html": "4779ddc9"
+  },
+  "16-Alignment-PPO-DPO/16-3-practice-ppo.qmd": {
+    "16-3-practice-ppo.html": "7df05473"
+  },
+  "16-Alignment-PPO-DPO/16-4-practice-dpo.qmd": {
+    "16-4-practice-dpo.html": "ca905d76"
+  },
+  "16-Alignment-PPO-DPO/16-5-challenge-memo.qmd": {
+    "16-5-challenge-memo.html": "bb5433bd"
+  },
+  "17-Arena-Agentic-Thinking/index.qmd": {
+    "index.html": "f1dad748"
+  },
+  "17-Arena-Agentic-Thinking/17-1-why.qmd": {
+    "17-1-why.html": "b35c9563"
+  },
+  "17-Arena-Agentic-Thinking/17-2-practice-arena.qmd": {
+    "17-2-practice-arena.html": "195293ed"
+  },
+  "17-Arena-Agentic-Thinking/17-3-what-agentic-thinking.qmd": {
+    "17-3-what-agentic-thinking.html": "2770ad3c"
+  },
+  "17-Arena-Agentic-Thinking/17-4-challenge-design-agent.qmd": {
+    "17-4-challenge-design-agent.html": "c941f9a4"
+  },
+  "14-SFT/14-5-challenge.qmd": {
+    "14-5-challenge.html": "e04f555f"
+  },
+  "16-Alignment-PPO-DPO/16-2-how.qmd": {
+    "16-2-how.html": "c803c764"
+  },
+  "16-Alignment-PPO-DPO/16-3-what.qmd": {
+    "16-3-what.html": "203618ca"
+  },
+  "16-Alignment-PPO-DPO/16-4-practice.qmd": {
+    "16-4-practice.html": "637b77ff"
+  },
+  "16-Alignment-PPO-DPO/16-5-challenge.qmd": {
+    "16-5-challenge.html": "edd51a9d"
+  },
+  "17-Arena-Evaluation/index.qmd": {
+    "index.html": "88464f12"
+  },
+  "17-Arena-Evaluation/17-1-why.qmd": {
+    "17-1-why.html": "92a9a7f6"
+  },
+  "17-Arena-Evaluation/17-2-how.qmd": {
+    "17-2-how.html": "8863adcb"
+  },
+  "17-Arena-Evaluation/17-3-what.qmd": {
+    "17-3-what.html": "13f4a9bc"
+  },
+  "17-Arena-Evaluation/17-4-practice-arena.qmd": {
+    "17-4-practice-arena.html": "c5b1abab"
+  },
+  "17-Arena-Evaluation/17-5-challenge.qmd": {
+    "17-5-challenge.html": "63edcfbd"
+  },
+  "18-Agent-Foundation/index.qmd": {
+    "index.html": "b1161a77"
+  },
+  "18-Agent-Foundation/18-1-why.qmd": {
+    "18-1-why.html": "0e5ffa8b"
+  },
+  "18-Agent-Foundation/18-2-how.qmd": {
+    "18-2-how.html": "34a9316f"
+  },
+  "18-Agent-Foundation/18-3-what.qmd": {
+    "18-3-what.html": "e4709337"
+  },
+  "18-Agent-Foundation/18-4-practice.qmd": {
+    "18-4-practice.html": "01bb59a3"
+  },
+  "18-Agent-Foundation/18-5-challenge.qmd": {
+    "18-5-challenge.html": "b45771a4"
+  },
+  "19-Multi-Agent-Collaboration/index.qmd": {
+    "index.html": "e816a2cf"
+  },
+  "19-Multi-Agent-Collaboration/19-1-why.qmd": {
+    "19-1-why.html": "858bb3a8"
+  },
+  "19-Multi-Agent-Collaboration/19-2-how.qmd": {
+    "19-2-how.html": "34bcbaff"
+  },
+  "19-Multi-Agent-Collaboration/19-3-what.qmd": {
+    "19-3-what.html": "67299b54"
+  },
+  "19-Multi-Agent-Collaboration/19-4-practice.qmd": {
+    "19-4-practice.html": "75103c35"
+  },
+  "19-Multi-Agent-Collaboration/19-5-challenge.qmd": {
+    "19-5-challenge.html": "c65bcc42"
+  },
+  "20-Agent-Reasoning-Safety/index.qmd": {
+    "index.html": "b5471e27"
+  },
+  "20-Agent-Reasoning-Safety/20-1-why.qmd": {
+    "20-1-why.html": "b791e5e2"
+  },
+  "20-Agent-Reasoning-Safety/20-2-how.qmd": {
+    "20-2-how.html": "7b72fdab"
+  },
+  "20-Agent-Reasoning-Safety/20-3-what.qmd": {
+    "20-3-what.html": "ddc2f499"
+  },
+  "20-Agent-Reasoning-Safety/20-4-practice.qmd": {
+    "20-4-practice.html": "7cdadd80"
+  },
+  "20-Agent-Reasoning-Safety/20-5-challenge.qmd": {
+    "20-5-challenge.html": "5fb9840b"
   }
 }

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>任务1：AI，什么是”炼丹炉”的”旋钮”？ – 机器学习：AI驱动的学习与应用</title>
+<title>7.6 动手练习与挑战：成为’炼丹’艺术家——初探超参数调优 – 机器学习：AI驱动的学习与应用</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-project-kickoff/index.html">第一部分：传统机器学习 —— AIGC时代的新应用</a></li><li class="breadcrumb-item"><a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-project-kickoff/index.html">第一部分：传统机器学习 —— AIGC时代的新应用</a></li><li class="breadcrumb-item"><a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html"><span class="chapter-title">7.6 动手练习与挑战：成为’炼丹’艺术家——初探超参数调优</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
@@ -359,7 +359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></a>
+  <a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">7.6 动手练习与挑战：成为’炼丹’艺术家——初探超参数调优</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -389,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../08-explainable-ai/05-challenge-global-explanation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">任务1：AI，帮我绘制模型的”决策蓝图”</span></a>
+  <a href="../08-explainable-ai/05-challenge-global-explanation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 动手练习与挑战：从’窥一斑’到’见全豹’——探索全局模型洞察</span></a>
   </div>
 </li>
       </ul>
@@ -405,9 +405,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-project-kickoff/index.html">第一部分：传统机器学习 —— AIGC时代的新应用</a></li><li class="breadcrumb-item"><a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-project-kickoff/index.html">第一部分：传统机器学习 —— AIGC时代的新应用</a></li><li class="breadcrumb-item"><a href="../07-model-evaluation/06-challenge-hyperparameter-tuning.html"><span class="chapter-title">7.6 动手练习与挑战：成为’炼丹’艺术家——初探超参数调优</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">任务1：AI，什么是”炼丹炉”的”旋钮”？</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">7.6 动手练习与挑战：成为’炼丹’艺术家——初探超参数调优</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
 </div>
 
 
@@ -424,19 +424,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled" title="动手练习与挑战：成为'炼丹'艺术家——初探超参数调优">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-动手练习与挑战：成为’炼丹’艺术家——初探超参数调优
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p>在上一节，我们见证了LightGBM的强大威力，它的性能远超逻辑回归。但我们所用的，只是一个”开箱即用”的、使用默认参数的LightGBM。</p>
 <p>在机器学习领域，提升模型性能的最后（也往往是最有效）一公里，常常来自于对模型<strong>超参数（Hyperparameters）</strong>的精细调整。这个过程充满了实验和探索，因此被工程师们戏称为”炼丹”。</p>
 <p>你的挑战是：在AI的指导下，扮演一回”炼丹师”，对我们的LightGBM模型进行你的第一次超参数调优。</p>
+<section id="任务1ai什么是炼丹炉的旋钮" class="level4">
+<h4 class="anchored" data-anchor-id="任务1ai什么是炼丹炉的旋钮">任务1：AI，什么是”炼丹炉”的”旋钮”？</h4>
 <p>在”炼丹”之前，你必须先理解”炼丹炉”上那些复杂旋钮的含义。</p>
 <p><strong>👉 你的指令剧本：</strong></p>
 <blockquote class="blockquote">
@@ -444,6 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>请你用一个生动的比喻（比如把模型训练比作”学生学习”），向我解释这三个超参数分别控制了学习过程的哪个方面？它们调得太高或太低，分别会有什么效果或风险（比如”学得太慢”或”死记硬背”）？</p>
 </blockquote>
 <p>理解了这些，你才能做出有根据的调整，而不是盲目尝试。</p>
+</section>
 <section id="任务2动手调参观察火焰的变化" class="level4">
 <h4 class="anchored" data-anchor-id="任务2动手调参观察火焰的变化">任务2：动手”调参”，观察火焰的变化</h4>
 <p>现在，让我们亲手拧动一个”旋钮”，看看”火焰”会发生什么变化。我们将从 <code>num_leaves</code> 开始，它控制了模型能学习到的”规则”的复杂度。</p>
@@ -473,13 +466,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </blockquote>
 <p>这个思辨将让你对模型优化有一个更成熟、更全面的认识，而不仅仅是盯着评估指标。</p>
-</section>
-</div>
-</div>
+<p>:::</p>
 
 
 <!-- -->
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -965,7 +957,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning title="动手练习与挑战：成为'炼丹'艺术家——初探超参数调优"}</span>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 7.6 动手练习与挑战：成为'炼丹'艺术家——初探超参数调优</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>在上一节，我们见证了LightGBM的强大威力，它的性能远超逻辑回归。但我们所用的，只是一个"开箱即用"的、使用默认参数的LightGBM。</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
