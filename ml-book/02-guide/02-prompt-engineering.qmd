@@ -1,6 +1,4 @@
----
-title: "2.2 如何向AI伙伴有效提问：Prompt Engineering入门"
----
+# 2.2 如何向AI伙伴有效提问：Prompt Engineering入门
 
 ## **Why：为什么"提问"是一门艺术？**
 

@@ -475,5 +475,71 @@
   },
   "20-Agent-Reasoning-Safety/20-5-challenge.qmd": {
     "20-5-challenge.html": "5fb9840b"
+  },
+  "10-embedding/05-challenge-visualize-embeddings.qmd": {
+    "05-challenge-visualize-embeddings.html": "3527a301"
+  },
+  "11-vector-database/05-challenge-explore-indexes.qmd": {
+    "05-challenge-explore-indexes.html": "5d338447"
+  },
+  "12-rag-pipeline/05-challenge-real-llm.qmd": {
+    "05-challenge-real-llm.html": "b1928a15"
+  },
+  "13-RAG-Optimization/01-why.qmd": {
+    "01-why.html": "088f7f79"
+  },
+  "13-RAG-Optimization/02-how.qmd": {
+    "02-how.html": "4aabc2bd"
+  },
+  "13-RAG-Optimization/03-what.qmd": {
+    "03-what.html": "e2b6bdeb"
+  },
+  "13-RAG-Optimization/04-practice.qmd": {
+    "04-practice.html": "daef5a93"
+  },
+  "13-RAG-Optimization/05-challenge.qmd": {
+    "05-challenge.html": "eb7a082f"
+  },
+  "07-model-evaluation/05-challenge.qmd": {
+    "05-challenge.html": "8ef4614c"
+  },
+  "06-first-classifier/05-challenge-and-toolbox.qmd": {
+    "05-challenge-and-toolbox.html": "114f8fe1"
+  },
+  "09-rag-kickoff/04-practice-eda.qmd": {
+    "04-practice-eda.html": "7c7bf4af"
+  },
+  "09-rag-kickoff/05-challenge.qmd": {
+    "05-challenge.html": "126efe38"
+  },
+  "12-rag-pipeline/12-1-why.qmd": {
+    "12-1-why.html": "8fd3c3ed"
+  },
+  "12-rag-pipeline/12-2-how.qmd": {
+    "12-2-how.html": "5f736b32"
+  },
+  "12-rag-pipeline/12-3-what.qmd": {
+    "12-3-what.html": "4581c058"
+  },
+  "12-rag-pipeline/12-4-practice.qmd": {
+    "12-4-practice.html": "45b4d739"
+  },
+  "12-rag-pipeline/12-5-challenge-real-llm.qmd": {
+    "12-5-challenge-real-llm.html": "525f3749"
+  },
+  "13-RAG-Optimization/13-1-why.qmd": {
+    "13-1-why.html": "ddc60061"
+  },
+  "13-RAG-Optimization/13-2-how.qmd": {
+    "13-2-how.html": "09464ad4"
+  },
+  "13-RAG-Optimization/13-3-what.qmd": {
+    "13-3-what.html": "604998b6"
+  },
+  "13-RAG-Optimization/13-4-practice.qmd": {
+    "13-4-practice.html": "2e181d9e"
+  },
+  "13-RAG-Optimization/13-5-challenge.qmd": {
+    "13-5-challenge.html": "bc53c8c2"
   }
 }

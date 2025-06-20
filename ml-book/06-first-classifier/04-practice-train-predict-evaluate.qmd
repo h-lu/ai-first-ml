@@ -1,6 +1,5 @@
----
-title: "6.4 Practice: 指挥AI训练、预测与评估"
----
+# 6.4 Practice: 指挥AI训练、预测与评估
+
 
 ## **Practice：指挥AI完成端到端建模**
 

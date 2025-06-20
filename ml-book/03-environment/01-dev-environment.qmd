@@ -1,6 +1,4 @@
----
-title: "3.1 你的工具清单：Python, Jupyter与VS Code"
----
+# 3.1 你的工具清单：Python, Jupyter与VS Code
 
 ## **Why：搭建我们的一体化"驾驶舱"**
 

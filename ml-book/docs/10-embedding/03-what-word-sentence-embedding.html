@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10.3 What: 核心概念之词向量与句向量 – 机器学习：AI驱动的学习与应用</title>
+<title>10.3 What: 核心概念——词嵌入与句嵌入 – 机器学习：AI驱动的学习与应用</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09-rag-kickoff/index.html">第二部分：深度学习 —— 构建企业级LLM应用</a></li><li class="breadcrumb-item"><a href="../10-embedding/03-what-word-sentence-embedding.html"><span class="chapter-title">10.3 What: 核心概念之词向量与句向量</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09-rag-kickoff/index.html">第二部分：RAG与知识工程</a></li><li class="breadcrumb-item"><a href="../10-embedding/03-what-word-sentence-embedding.html"><span class="chapter-title">10.3 What: 核心概念——词嵌入与句嵌入</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
@@ -239,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章 项目启动：AIGC产品质量危机</span></a>
+  <a href="../04-project-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章 项目启动：我们的AIGC产品需要一个”质检员”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -249,17 +249,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/02-how-what-mission.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 定义任务：将危机转化为可执行的AI指令</span></a>
+  <a href="../04-project-kickoff/02-how-exploration.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 How: 将危机转化为可执行的AI指令</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/03-practice-eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 实践：指挥AI完成首次探索性数据分析(EDA)</span></a>
+  <a href="../04-project-kickoff/03-what-text-classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 What: 将任务转化为机器语言</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/04-challenge-hypothesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 挑战：从数据洞察到可验证的假设</span></a>
+  <a href="../04-project-kickoff/04-practice-eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Practice: 危机中的第一次数据侦察</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/05-challenge-data-augmentation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.5 Challenge: AI数据增强与协同工具箱</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -269,22 +274,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-text-to-vectors/01-why-machines-cant-read.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Why: 为什么机器无法直接理解文字？</span></a>
+  <a href="../05-text-to-vectors/01-why-machines-cant-read.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Why: 我们的“厨师”不认识字</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 How: 与AI的探索之旅——从词袋到TF-IDF</span></a>
+  <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 How: 我们来”发明”TF-IDF</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-text-to-vectors/03-what-tfidf-concept.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 What: 核心概念之TF-IDF</span></a>
+  <a href="../05-text-to-vectors/03-what-tfidf-concept.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 What: TF-IDF技术手册</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-text-to-vectors/04-practice-feature-engineering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Practice: 指挥AI完成文本特征工程</span></a>
+  <a href="../05-text-to-vectors/04-practice-feature-engineering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Practice: 为”厨师”打造一副TF-IDF眼镜</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/05-challenge-beyond-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 Challenge: 探索TF-IDF的边界与工具箱升级</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -314,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06-first-classifier/05-toolbox-ai-debug.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5 AI协同工具箱：首次接触AI辅助Debug</span></a>
+  <a href="../06-first-classifier/05-challenge-and-toolbox.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5 Challenge: 扩充模型武器库与AI Debug</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -344,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07-model-evaluation/05-toolbox-experiment-tracking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.5 AI协同工具箱：系统化你的模型实验</span></a>
+  <a href="../07-model-evaluation/05-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.5 Challenge &amp; Toolbox</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -374,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../08-explainable-ai/05-challenge-refactoring.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 终极挑战：基于AI洞察重构你的项目</span></a>
+  <a href="../08-explainable-ai/05-challenge-global-explanation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 动手练习与挑战：从”能跑”到”好用”——项目代码重构</span></a>
   </div>
 </li>
       </ul>
@@ -382,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">第二部分：深度学习 —— 构建企业级LLM应用</span></a>
+ <span class="menu-text">第二部分：RAG与知识工程</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -410,12 +420,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../09-rag-kickoff/04-toolbox-critical-thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 【AI协同工具箱】用AI进行技术方案的批判性评估</span></a>
+  <a href="../09-rag-kickoff/04-practice-eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 Practice: 与我们的知识库初次相遇</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../10-embedding/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第10章 万物皆可向量化：Embedding的魔力</span></a>
+  <a href="../09-rag-kickoff/05-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.5 Challenge: 批判性思维与方案评审</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第10章：万物皆可向量化：Embedding的魔力</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -425,17 +440,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../10-embedding/02-how-embedding-geometry.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 How: 与AI探索Embedding的几何意义</span></a>
+  <a href="../10-embedding/02-how-embedding-geometry.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 How: 与AI的探索之旅——在几何空间中描绘词语的”灵魂”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../10-embedding/03-what-word-sentence-embedding.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">10.3 What: 核心概念之词向量与句向量</span></a>
+  <a href="../10-embedding/03-what-word-sentence-embedding.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">10.3 What: 核心概念——词嵌入与句嵌入</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../10-embedding/04-practice-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Practice: 指挥AI调用模型将文档转化为向量</span></a>
+  <a href="../10-embedding/04-practice-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Practice: 将文本转化为”语义坐标”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/05-challenge-visualize-embeddings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.5 动手练习与挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -445,17 +465,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../11-vector-database/01-why-vector-db.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 Why: 为何需要专门的数据库来存储向量？</span></a>
+  <a href="../11-vector-database/01-why-vector-db.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 Why: 一个无法完成的任务——在国家图书馆里暴力寻书</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../11-vector-database/02-how-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 How: 与AI探讨高效向量检索的策略</span></a>
+  <a href="../11-vector-database/02-how-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 How: 与AI的探索之旅——如何在海量向量中”大海捞针”？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../11-vector-database/03-what-cosine-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.3 What: 核心概念之相似度计算与近似最近邻(ANN)</span></a>
+  <a href="../11-vector-database/03-what-cosine-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.3 What: 核心概念——相似度度量与ANN算法</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -465,57 +485,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第12章：串联成珠：搭建完整的RAG流程</span></a>
+  <a href="../11-vector-database/05-challenge-explore-indexes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.5 动手练习与挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Why: 将所有组件组装成一个可工作的系统</span></a>
+  <a href="../12-rag-pipeline/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第12章 串联成珠：搭建完整的RAG流程</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 How: 与AI共同设计核心的Prompt模板</span></a>
+  <a href="../12-rag-pipeline/12-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Why: 将所有组件组装成一个可工作的系统</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 What: 核心概念之Prompt Engineering艺术</span></a>
+  <a href="../12-rag-pipeline/12-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 How: 与AI共同设计核心的Prompt模板</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.4 Practice: 完整的RAG“指令剧本”</span></a>
+  <a href="../12-rag-pipeline/12-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 What: 核心概念之Prompt Engineering艺术</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第13章：优化你的机器人：从’幻觉’到’忠实’</span></a>
+  <a href="../12-rag-pipeline/12-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.4 Practice: 完整的RAG”指令剧本”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.1 Why: “我的机器人有时还是会胡说八道”</span></a>
+  <a href="../12-rag-pipeline/12-5-challenge-real-llm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.5 动手练习与挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.2 How: 与AI一起进行Bad Case分析与策略探讨</span></a>
+  <a href="../13-RAG-Optimization/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第13章 优化你的机器人：从”幻觉”到”忠实”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.3 What: 核心优化技术（分块、Top-K、重排）</span></a>
+  <a href="../13-RAG-Optimization/13-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.1 Why: “我的机器人有时还是会胡说八道！”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.4 Practice: 设计对比实验，优化问答效果</span></a>
+  <a href="../13-RAG-Optimization/13-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.2 How: 与AI一起诊断和优化检索系统</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.5 Challenge: 如何处理知识库的更新与冲突？</span></a>
+  <a href="../13-RAG-Optimization/13-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.3 What: RAG优化的核心概念解析</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/13-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.4 Practice: 设计你的第一个RAG优化实验</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/13-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.5 动手练习与挑战</span></a>
   </div>
 </li>
       </ul>
@@ -523,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">第三部分：强化学习——训练自主决策的AI智能体</span></a>
+ <span class="menu-text">第三部分：AI对齐工程</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -531,147 +561,223 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第14章：新范式：让机器通过“试错”来学习</span></a>
+  <a href="../14-SFT/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第14章 第一步：SFT监督微调 —— 为AI注入领域知识</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.1 Why: 思维跃迁的起点——从“回答”到“行动”</span></a>
+  <a href="../14-SFT/14-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.1 Why: 为何需要”岗前培训”？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.2 How: 与AI用“训练宠物”的类比，直观理解RL</span></a>
+  <a href="../14-SFT/14-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.2 How: 如何进行”岗前培训”？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.3 What: 核心概念之状态、动作、奖励与策略</span></a>
+  <a href="../14-SFT/14-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.3 What: 核心概念：监督微调 (SFT)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/4-why-learn-rl.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.4 正面回应：AI能直接修复Bug，我们为何要学其原理？</span></a>
+  <a href="../14-SFT/14-4-practice-sft.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.4 Practice: 为”咖啡豆奇旅”训练金牌客服</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第15章：入门项目：训练一个动态定价机器人</span></a>
+  <a href="../14-SFT/14-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.5 动手练习与挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.1 Why: 为何动态定价是RL的经典入门战场？</span></a>
+  <a href="../15-Reward-Modeling/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第15章 第二步：奖励建模 —— 教会AI拥有”品味”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/2-practice-simulator.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.2 Practice (1): 指挥AI构建“电商模拟器”</span></a>
+  <a href="../15-Reward-Modeling/15-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.1 Why: 为何”标准答案”远远不够？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/3-how-what-q-learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.3 How/What: 与AI一起实现Q-Learning算法</span></a>
+  <a href="../15-Reward-Modeling/15-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.2 How: 如何量化”品味”？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/4-practice-training-viz.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.4 Practice (2): 启动训练并让AI可视化Q-Table</span></a>
+  <a href="../15-Reward-Modeling/15-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.3 What: 核心概念：奖励建模 (RM)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.5 Challenge: 改变环境或奖励，观察策略变化</span></a>
+  <a href="../15-Reward-Modeling/15-4-practice-rm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.4 Practice: 训练”咖啡品味裁判”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第16章：终极挑战：设计一个自主修复Bug的AI Agent</span></a>
+  <a href="../15-Reward-Modeling/15-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.5 动手练习与挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.1 Why: 思想飞跃——从“模型”到“智能体(Agent)”</span></a>
+  <a href="../16-Alignment-PPO-DPO/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第16章 第三步：对齐进化 —— 从经典PPO到现代DPO</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/2-design-sandbox.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 设计Agent的“世界观”：构建沙盒环境</span></a>
+  <a href="../16-Alignment-PPO-DPO/16-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.1 Why: 为何需要“试错”与“探索”？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/3-design-actions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.3 赋予Agent“行动力”：定义工具箱与求助LLM</span></a>
+  <a href="../16-Alignment-PPO-DPO/16-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 How: 如何驱动AI自我进化？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/4-design-rewards.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.4 注入Agent“价值观”：奖励函数设计的艺术与挑战</span></a>
+  <a href="../16-Alignment-PPO-DPO/16-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 What: 两条进化之路 PPO vs.&nbsp;DPO</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/5-practice-run-agent.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.5 见证奇迹：运行Agent并观察其自主修复过程</span></a>
+  <a href="../16-Alignment-PPO-DPO/16-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.4 Practice: 走两条路，看不同风景</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/6-challenge-alignment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.6 思辨：AI Alignment入门——如何防止Agent“作弊”？</span></a>
+  <a href="../16-Alignment-PPO-DPO/16-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.5 动手练习与挑战</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">第四部分：AI Agent工程</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Evaluation/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第17章 AI竞技场：科学评估你的大模型</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第17章 Agentic Thinking：未来十年的核心竞争力</span></a>
+  <a href="../17-Arena-Evaluation/17-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.1 Why: 当”标准答案”不再唯一的挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/1-recap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.1 回顾：你已掌握设计自主AI系统的思维框架</span></a>
+  <a href="../17-Arena-Evaluation/17-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.2 How: 与AI探讨如何设计一场公平的AI对决</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/2-transfer.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.2 迁移：将Agent思想应用到其他领域</span></a>
+  <a href="../17-Arena-Evaluation/17-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.3 What: AI竞技场与Elo评级系统</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/3-vision.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.3 展望：你的下一个Agent可以是什么？</span></a>
+  <a href="../17-Arena-Evaluation/17-4-practice-arena.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.4 Practice: 搭建你的第一个AI竞技场</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">终章：你的旅程才刚刚开始</span></a>
+  <a href="../17-Arena-Evaluation/17-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.5 Challenge: 让GPT-4成为你的AI裁判</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/1-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.1 总结你的成长：三次思维跃迁的回顾</span></a>
+  <a href="../18-Agent-Foundation/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第18章 Agent第一步：让AI拥有”手”和”脚”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/2-ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.2 AI伦理：你手中工具的力量与责任</span></a>
+  <a href="../18-Agent-Foundation/18-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.1 Why: 从”聊天机器人”到”AI员工”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/3-next-steps.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.3 下一步去向何方？</span></a>
+  <a href="../18-Agent-Foundation/18-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.2 How: 与AI一起构思Agent的”身体”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/4-lifelong-learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.4 终身学习：与AI一起在技术浪潮中持续进化</span></a>
+  <a href="../18-Agent-Foundation/18-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.3 What: LangGraph——用流程图构建AI Agent</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Appendix/A-AI-Dev-Best-Practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">附录A：AI辅助开发的最佳实践</span></a>
+  <a href="../18-Agent-Foundation/18-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.4 Practice: 构建你的第一个工具Agent</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Appendix/B-Gradio-Components.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">附录B：Gradio核心组件用法查询</span></a>
+  <a href="../18-Agent-Foundation/18-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.5 Challenge: 拓展你的Agent工具箱</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第19章 AI团队协作：构建多Agent工作流</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.1 Why: 为什么专业分工如此重要？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.2 How: 与AI一起设计团队架构</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.3 What: 多Agent协作流程图</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.4 Practice: 搭建你的第一个AI团队</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.5 Challenge: 为你的AI团队增加新成员</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第20章 Agent的思考艺术：规划、反思与安全</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.1 Why: 从”自动执行”到”可信赖的自主”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.2 How: 与AI探讨可中断的工作流</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.3 What: 顶级顾问工作流：规划、反思与人机协同</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.4 Practice: 为AI团队引入”人工审批”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.5 Challenge: 设计你自己的Agent</span></a>
   </div>
 </li>
       </ul>
@@ -681,31 +787,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">目录</h2>
-   
-  <ul>
-  <li><a href="#向量是词语的dna" id="toc-向量是词语的dna" class="nav-link active" data-scroll-target="#向量是词语的dna">向量是词语的”DNA”</a></li>
-  <li><a href="#词向量-word-embeddings" id="toc-词向量-word-embeddings" class="nav-link" data-scroll-target="#词向量-word-embeddings">词向量 (Word Embeddings)</a></li>
-  <li><a href="#句向量-sentence-embeddings" id="toc-句向量-sentence-embeddings" class="nav-link" data-scroll-target="#句向量-sentence-embeddings">句向量 (Sentence Embeddings)</a>
-  <ul class="collapse">
-  <li><a href="#rag系统中的选择" id="toc-rag系统中的选择" class="nav-link" data-scroll-target="#rag系统中的选择">RAG系统中的选择</a></li>
-  </ul></li>
-  <li><a href="#本节小结" id="toc-本节小结" class="nav-link" data-scroll-target="#本节小结">本节小结</a>
-  <ul class="collapse">
-  <li><a href="#核心收获" id="toc-核心收获" class="nav-link" data-scroll-target="#核心收获">🎯 核心收获</a></li>
-  <li><a href="#为何重要" id="toc-为何重要" class="nav-link" data-scroll-target="#为何重要">🤔 为何重要</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09-rag-kickoff/index.html">第二部分：深度学习 —— 构建企业级LLM应用</a></li><li class="breadcrumb-item"><a href="../10-embedding/03-what-word-sentence-embedding.html"><span class="chapter-title">10.3 What: 核心概念之词向量与句向量</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09-rag-kickoff/index.html">第二部分：RAG与知识工程</a></li><li class="breadcrumb-item"><a href="../10-embedding/03-what-word-sentence-embedding.html"><span class="chapter-title">10.3 What: 核心概念——词嵌入与句嵌入</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">10.3 What: 核心概念之词向量与句向量</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">10.3 What: 核心概念——词嵌入与句嵌入</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
 </div>
 
 
@@ -722,77 +812,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>我们已经直观地感受到了Embedding的魔力。现在，让我们深入一层，为这些概念下一个更精确的定义，并区分两种在实际应用中至关重要的向量：<strong>词向量 (Word Embeddings)</strong> 和 <strong>句向量 (Sentence Embeddings)</strong>。</p>
-<section id="向量是词语的dna" class="level2">
-<h2 class="anchored" data-anchor-id="向量是词语的dna">向量是词语的”DNA”</h2>
-<p>我们可以用一个非常贴切的类比来理解Embedding向量：<strong>向量，就是词语或句子的”DNA”</strong>。</p>
-<p>一段DNA（脱氧核糖核酸）是由一系列碱基（A, T, C, G）组成的序列，这个序列中蕴含了一个生物体所有的遗传信息。同样地，一个Embedding向量是由一系列数字组成的序列（例如 <code>[0.12, -0.45, 0.88, ...]</code>），这个序列中蕴含了一个词语或句子的<strong>所有语义信息</strong>。</p>
-<ul>
-<li><strong>DNA决定了生物特征</strong>: 亲缘关系近的物种（如人和黑猩猩），它们的DNA序列高度相似。</li>
-<li><strong>向量决定了语义特征</strong>: 语义关系近的词句（如”国王”和”女王”），它们的向量也高度相似。</li>
-</ul>
-<p>正是因为向量成功地将模糊的”语义”编码成了精确的”数学对象”，我们才得以对其进行计算、比较和检索。</p>
-</section>
-<section id="词向量-word-embeddings" class="level2">
-<h2 class="anchored" data-anchor-id="词向量-word-embeddings">词向量 (Word Embeddings)</h2>
-<p>我们在上一节实验中看到的，就是典型的<strong>词向量</strong>。</p>
-<ul>
-<li><strong>代表技术</strong>: Word2Vec, GloVe</li>
-<li><strong>核心思想</strong>: 为词汇表中的<strong>每一个独立的单词</strong>，都生成一个固定长度的向量。</li>
-<li><strong>优点</strong>: 能够很好地捕捉单个词语的语义，以及词与词之间的类比关系（如<code>king - man + woman ≈ queen</code>）。</li>
-<li><strong>致命弱点</strong>:
-<ol type="1">
-<li><strong>无法处理未登录词 (Out-of-Vocabulary, OOV)</strong>: 如果一个词在训练模型的词汇表中不存在，它就无法为其生成向量。</li>
-<li><strong>无法理解上下文</strong>: 它为每个词生成的向量是<strong>静态的、唯一的</strong>。它无法区分下面两句话中”苹果”的不同含义：
-<ul>
-<li>“我咬了一口<strong>苹果</strong>。” (水果)</li>
-<li>“<strong>苹果</strong>发布了新的手机。” (公司) 在Word2Vec看来，这两个”苹果”的向量是完全一样的。</li>
-</ul></li>
-<li><strong>从词到句的困难</strong>: 如何将一句话中所有词的向量，组合成一个能代表整句话语义的向量？最简单的方法是直接取平均，但这种方法会丢失语序信息，效果往往不佳。</li>
-</ol></li>
-</ul>
-<p>由于这些弱点，单纯的词向量技术已经较少直接用于像RAG这样的下游任务中。</p>
-</section>
-<section id="句向量-sentence-embeddings" class="level2">
-<h2 class="anchored" data-anchor-id="句向量-sentence-embeddings">句向量 (Sentence Embeddings)</h2>
-<p>为了解决词向量的局限性，更先进的<strong>句向量</strong>技术应运而生。</p>
-<ul>
-<li><strong>代表技术</strong>: Sentence-BERT (SBERT), <code>all-MiniLM-L6-v2</code> (我们将在实践中使用的模型)</li>
-<li><strong>核心思想</strong>: 不再满足于为单个词编码，而是直接为<strong>一整个句子、段落或文档</strong>生成一个单一的、固定长度的向量。这个向量旨在捕捉整段文本的综合语义。</li>
-<li><strong>实现原理</strong>: 这类模型通常基于强大的<strong>Transformer架构</strong>（这也是GPT系列模型的基础）。它们在处理文本时，会充分考虑句子中每个词的上下文，从而能够精准地理解语义。</li>
-<li><strong>核心优势</strong>:
-<ol type="1">
-<li><strong>上下文感知 (Context-Aware)</strong>: 它能够轻易地区分不同语境下的”苹果”，并为它们生成截然不同的向量。</li>
-<li><strong>处理任意文本</strong>: 它不依赖于固定的词汇表，可以为任何句子（哪怕包含生僻词）生成高质量的向量。</li>
-<li><strong>直接代表句子语义</strong>: 生成的向量直接代表了整句话的含义，非常适合用于计算句子或段落之间的相似度。</li>
-</ol></li>
-</ul>
-<section id="rag系统中的选择" class="level3">
-<h3 class="anchored" data-anchor-id="rag系统中的选择">RAG系统中的选择</h3>
-<p>在我们的RAG项目中，我们的目标是判断”用户的问题”和”知识库中的文本块”在语义上是否相似。这两者都是句子或段落级别的文本。</p>
-<p>因此，<strong>句向量</strong>是我们在这个场景下<strong>不二的选择</strong>。它能够将用户的查询和文档中的每一个文本块，都精准地映射到同一个语义空间中，为我们后续进行高效、准确的相似度检索奠定坚实的基础。</p>
-</section>
-</section>
-<section id="本节小结" class="level2">
-<h2 class="anchored" data-anchor-id="本节小结">本节小结</h2>
-<section id="核心收获" class="level3">
-<h3 class="anchored" data-anchor-id="核心收获">🎯 核心收获</h3>
-<ol type="1">
-<li><strong>一个核心类比</strong>: 你掌握了用”词语的DNA”来类比Embedding向量，这有助于你向他人解释其本质。</li>
-<li><strong>清晰区分两种技术</strong>: 你明确了<strong>词向量</strong>和<strong>句向量</strong>的核心区别、各自的优缺点以及代表性技术。</li>
-<li><strong>理解技术选型</strong>: 你知道了在RAG这类”文本匹配”和”语义检索”的任务中，为什么我们必须选择<strong>句向量</strong>而非传统的词向量。</li>
-</ol>
-</section>
-<section id="为何重要" class="level3">
-<h3 class="anchored" data-anchor-id="为何重要">🤔 为何重要</h3>
-<p>理解不同技术之间的演进关系和适用场景，是专业性的体现。你知道了Word2Vec的局限，也就明白了为什么需要BERT这样的Transformer模型；你知道了句向量的优势，也就明白了为什么它是所有现代语义检索系统的基石。这种对技术脉络的把握，将让你在面对未来的新技术时，能够更快地理解其创新点和价值所在。</p>
-<p>现在，理论知识已经准备就绪。在下一节，我们将进入激动人心的实践环节，亲手调用一个强大的句向量模型，将我们的第一段文本转化为它在语义空间中的”DNA”——向量。</p>
+<p>在上一节眼见为实的探索之后，我们已经对Embedding产生了直观的感受。现在，是时候为这份”魔力”下一个更精确的定义了。</p>
+<p>在实践中，Embedding主要分为两大类：我们刚刚在可视化中看到的<strong>词嵌入(Word Embedding)</strong>，以及对我们RAG项目更为关键的<strong>句嵌入(Sentence Embedding)</strong>。</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="核心概念：词嵌入 (Word Embedding)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+核心概念：词嵌入 (Word Embedding)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>词嵌入</strong>是将文本中的<strong>每一个词语</strong>，转换成一个能代表其语义的、固定长度的<strong>数字向量</strong>。</p>
+<blockquote class="blockquote">
+<p><strong>一个生动的类比：城市在地图上的坐标</strong></p>
+<p>想象一张巨大的世界地图。每一个城市都有一个独一无二的坐标（如 <code>经度: 116.4°, 纬度: 39.9°</code>）。这个坐标本身就蕴含了丰富的信息： - <strong>地理位置</strong>：我们可以从坐标直接知道它在地球上的位置。 - <strong>城市关系</strong>：我们可以通过计算不同城市坐标之间的<strong>距离</strong>，来判断它们的远近。比如，北京的坐标离天津的坐标，肯定比离纽约的坐标要近得多。</p>
+<p>词嵌入就像是为语言世界里的每一个词语，都赋予了一个高维的”语义坐标”。模型通过阅读海量文本，学会了如何为这些词语定位，使得： - <strong>语义相似的词，坐标相近</strong>：<code>国王</code> 和 <code>女王</code> 的坐标会很接近。 - <strong>存在特定语义关系的词，坐标之间有固定的平移模式</strong>：经典的 <code>坐标(国王) - 坐标(男人) + 坐标(女人) ≈ 坐标(女王)</code>，其背后是向量在空间中的平行移动。</p>
+</blockquote>
+<p>词嵌入是理解语言的基本功，但如果我们要理解一整句话的意思，就需要更强大的工具。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="核心概念：句嵌入 (Sentence Embedding)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+核心概念：句嵌入 (Sentence Embedding)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>句嵌入</strong>是将<strong>整个句子或段落</strong>，转换成一个能捕捉其<strong>整体核心意思</strong>的固定长度向量。</p>
+<blockquote class="blockquote">
+<p><strong>一个生动的类比：一篇电影评论的核心观点</strong></p>
+<p>想象一下，你读了两篇关于同一部电影的评论： 1. “这部电影的情节跌宕起伏，视觉效果令人震撼，我看得热血沸腾！” 2. “作为一部激动人心的动作大片，其惊心动魄的故事线和无与伦比的特效，绝对值回票价。”</p>
+<p>尽管这两句话的用词、句式完全不同，但它们表达的<strong>核心观点</strong>（对电影的正面评价）是高度一致的。</p>
+<p><strong>句嵌入就像是一个能读懂”弦外之音”的超级评论员</strong>，它能超越表面的文字，直接抓住这两句话背后共同的”语义核心”，从而判断出它们的向量应该是高度相似的。它能理解： - <strong>词序的重要性</strong>：“猫追老鼠”和”老鼠追猫”的向量会截然不同。 - <strong>整体意图的一致性</strong>：“今天天气真好”和”阳光明媚的一天”的向量会非常接近。</p>
+</blockquote>
+<p><strong>对于我们的RAG项目来说，句嵌入是真正的幕后英雄。</strong> 我们需要比较的是用户<strong>整个问题</strong>的意图和知识库中<strong>一整个段落</strong>的意图是否匹配。因此，我们会使用最先进的<strong>句嵌入模型</strong>（如Sentence-BERT）来为问题和文档块生成向量。这正是RAG能够实现高质量语义检索的关键。</p>
+</div>
+</div>
+<p>掌握了词嵌入和句嵌入的概念，我们就可以为机器语言理解的旅程翻开全新的篇章。在下一节，我们将亲自动手，体验如何生成这些神奇的语义向量。</p>
 
 
 <!-- -->
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1268,92 +1333,61 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../10-embedding/02-how-embedding-geometry.html" class="pagination-link" aria-label="10.2 How: 与AI探索Embedding的几何意义">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">10.2 How: 与AI探索Embedding的几何意义</span></span>
+      <a href="../10-embedding/02-how-embedding-geometry.html" class="pagination-link" aria-label="10.2 How: 与AI的探索之旅——在几何空间中描绘词语的&quot;灵魂&quot;">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">10.2 How: 与AI的探索之旅——在几何空间中描绘词语的”灵魂”</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../10-embedding/04-practice-embedding.html" class="pagination-link" aria-label="10.4 Practice: 指挥AI调用模型将文档转化为向量">
-        <span class="nav-page-text"><span class="chapter-title">10.4 Practice: 指挥AI调用模型将文档转化为向量</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../10-embedding/04-practice-embedding.html" class="pagination-link" aria-label="10.4 Practice: 将文本转化为&quot;语义坐标&quot;">
+        <span class="nav-page-text"><span class="chapter-title">10.4 Practice: 将文本转化为”语义坐标”</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 10.3 What: 核心概念之词向量与句向量</span></span>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 10.3 What: 核心概念——词嵌入与句嵌入</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>我们已经直观地感受到了Embedding的魔力。现在，让我们深入一层，为这些概念下一个更精确的定义，并区分两种在实际应用中至关重要的向量：**词向量 (Word Embeddings)** 和 **句向量 (Sentence Embeddings)**。</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>在上一节眼见为实的探索之后，我们已经对Embedding产生了直观的感受。现在，是时候为这份"魔力"下一个更精确的定义了。</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## 向量是词语的"DNA"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>在实践中，Embedding主要分为两大类：我们刚刚在可视化中看到的**词嵌入(Word Embedding)**，以及对我们RAG项目更为关键的**句嵌入(Sentence Embedding)**。</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>我们可以用一个非常贴切的类比来理解Embedding向量：**向量，就是词语或句子的"DNA"**。</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip title="核心概念：词嵌入 (Word Embedding)"}</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>一段DNA（脱氧核糖核酸）是由一系列碱基（A, T, C, G）组成的序列，这个序列中蕴含了一个生物体所有的遗传信息。同样地，一个Embedding向量是由一系列数字组成的序列（例如 <span class="in">`[0.12, -0.45, 0.88, ...]`</span>），这个序列中蕴含了一个词语或句子的**所有语义信息**。</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>**词嵌入**是将文本中的**每一个词语**，转换成一个能代表其语义的、固定长度的**数字向量**。</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**DNA决定了生物特征**: 亲缘关系近的物种（如人和黑猩猩），它们的DNA序列高度相似。</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**向量决定了语义特征**: 语义关系近的词句（如"国王"和"女王"），它们的向量也高度相似。</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>正是因为向量成功地将模糊的"语义"编码成了精确的"数学对象"，我们才得以对其进行计算、比较和检索。</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## 词向量 (Word Embeddings)</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>我们在上一节实验中看到的，就是典型的**词向量**。</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**代表技术**: Word2Vec, GloVe</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**核心思想**: 为词汇表中的**每一个独立的单词**，都生成一个固定长度的向量。</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**优点**: 能够很好地捕捉单个词语的语义，以及词与词之间的类比关系（如<span class="in">`king - man + woman ≈ queen`</span>）。</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**致命弱点**:</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">    1.  </span>**无法处理未登录词 (Out-of-Vocabulary, OOV)**: 如果一个词在训练模型的词汇表中不存在，它就无法为其生成向量。</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">    2.  </span>**无法理解上下文**: 它为每个词生成的向量是**静态的、唯一的**。它无法区分下面两句话中"苹果"的不同含义：</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>"我咬了一口**苹果**。" (水果)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>"**苹果**发布了新的手机。" (公司)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        在Word2Vec看来，这两个"苹果"的向量是完全一样的。</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">    3.  </span>**从词到句的困难**: 如何将一句话中所有词的向量，组合成一个能代表整句话语义的向量？最简单的方法是直接取平均，但这种方法会丢失语序信息，效果往往不佳。</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>由于这些弱点，单纯的词向量技术已经较少直接用于像RAG这样的下游任务中。</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## 句向量 (Sentence Embeddings)</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>为了解决词向量的局限性，更先进的**句向量**技术应运而生。</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**代表技术**: Sentence-BERT (SBERT), <span class="in">`all-MiniLM-L6-v2`</span> (我们将在实践中使用的模型)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**核心思想**: 不再满足于为单个词编码，而是直接为**一整个句子、段落或文档**生成一个单一的、固定长度的向量。这个向量旨在捕捉整段文本的综合语义。</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**实现原理**: 这类模型通常基于强大的**Transformer架构**（这也是GPT系列模型的基础）。它们在处理文本时，会充分考虑句子中每个词的上下文，从而能够精准地理解语义。</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**核心优势**:</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">    1.  </span>**上下文感知 (Context-Aware)**: 它能够轻易地区分不同语境下的"苹果"，并为它们生成截然不同的向量。</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">    2.  </span>**处理任意文本**: 它不依赖于固定的词汇表，可以为任何句子（哪怕包含生僻词）生成高质量的向量。</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">    3.  </span>**直接代表句子语义**: 生成的向量直接代表了整句话的含义，非常适合用于计算句子或段落之间的相似度。</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### RAG系统中的选择</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>在我们的RAG项目中，我们的目标是判断"用户的问题"和"知识库中的文本块"在语义上是否相似。这两者都是句子或段落级别的文本。</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>因此，**句向量**是我们在这个场景下**不二的选择**。它能够将用户的查询和文档中的每一个文本块，都精准地映射到同一个语义空间中，为我们后续进行高效、准确的相似度检索奠定坚实的基础。</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## 本节小结</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 核心收获</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**一个核心类比**: 你掌握了用"词语的DNA"来类比Embedding向量，这有助于你向他人解释其本质。</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**清晰区分两种技术**: 你明确了**词向量**和**句向量**的核心区别、各自的优缺点以及代表性技术。</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**理解技术选型**: 你知道了在RAG这类"文本匹配"和"语义检索"的任务中，为什么我们必须选择**句向量**而非传统的词向量。</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🤔 为何重要</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>理解不同技术之间的演进关系和适用场景，是专业性的体现。你知道了Word2Vec的局限，也就明白了为什么需要BERT这样的Transformer模型；你知道了句向量的优势，也就明白了为什么它是所有现代语义检索系统的基石。这种对技术脉络的把握，将让你在面对未来的新技术时，能够更快地理解其创新点和价值所在。</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>现在，理论知识已经准备就绪。在下一节，我们将进入激动人心的实践环节，亲手调用一个强大的句向量模型，将我们的第一段文本转化为它在语义空间中的"DNA"——向量。 </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **一个生动的类比：城市在地图上的坐标**</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 想象一张巨大的世界地图。每一个城市都有一个独一无二的坐标（如 </span><span class="in">`经度: 116.4°, 纬度: 39.9°`</span><span class="at">）。这个坐标本身就蕴含了丰富的信息：</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; -   **地理位置**：我们可以从坐标直接知道它在地球上的位置。</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; -   **城市关系**：我们可以通过计算不同城市坐标之间的**距离**，来判断它们的远近。比如，北京的坐标离天津的坐标，肯定比离纽约的坐标要近得多。</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 词嵌入就像是为语言世界里的每一个词语，都赋予了一个高维的"语义坐标"。模型通过阅读海量文本，学会了如何为这些词语定位，使得：</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; -   **语义相似的词，坐标相近**：</span><span class="in">`国王`</span><span class="at"> 和 </span><span class="in">`女王`</span><span class="at"> 的坐标会很接近。</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; -   **存在特定语义关系的词，坐标之间有固定的平移模式**：经典的 </span><span class="in">`坐标(国王) - 坐标(男人) + 坐标(女人) ≈ 坐标(女王)`</span><span class="at">，其背后是向量在空间中的平行移动。</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>词嵌入是理解语言的基本功，但如果我们要理解一整句话的意思，就需要更强大的工具。</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip title="核心概念：句嵌入 (Sentence Embedding)"}</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>**句嵌入**是将**整个句子或段落**，转换成一个能捕捉其**整体核心意思**的固定长度向量。</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **一个生动的类比：一篇电影评论的核心观点**</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 想象一下，你读了两篇关于同一部电影的评论：</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  "这部电影的情节跌宕起伏，视觉效果令人震撼，我看得热血沸腾！"</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  "作为一部激动人心的动作大片，其惊心动魄的故事线和无与伦比的特效，绝对值回票价。"</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 尽管这两句话的用词、句式完全不同，但它们表达的**核心观点**（对电影的正面评价）是高度一致的。</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **句嵌入就像是一个能读懂"弦外之音"的超级评论员**，它能超越表面的文字，直接抓住这两句话背后共同的"语义核心"，从而判断出它们的向量应该是高度相似的。它能理解：</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; -   **词序的重要性**："猫追老鼠"和"老鼠追猫"的向量会截然不同。</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; -   **整体意图的一致性**："今天天气真好"和"阳光明媚的一天"的向量会非常接近。</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>**对于我们的RAG项目来说，句嵌入是真正的幕后英雄。** 我们需要比较的是用户**整个问题**的意图和知识库中**一整个段落**的意图是否匹配。因此，我们会使用最先进的**句嵌入模型**（如Sentence-BERT）来为问题和文档块生成向量。这正是RAG能够实现高质量语义检索的关键。</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>掌握了词嵌入和句嵌入的概念，我们就可以为机器语言理解的旅程翻开全新的篇章。在下一节，我们将亲自动手，体验如何生成这些神奇的语义向量。</span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>机器学习：AI驱动的学习与应用</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-<p>本书使用 Quarto 构建</p>
-</div>
-  </div>
-</footer>
 
 
 

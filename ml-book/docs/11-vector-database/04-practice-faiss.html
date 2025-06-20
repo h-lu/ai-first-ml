@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../12-rag-pipeline/index.html" rel="next">
+<link href="../11-vector-database/05-challenge-explore-indexes.html" rel="next">
 <link href="../11-vector-database/03-what-cosine-ann.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09-rag-kickoff/index.html">第二部分：深度学习 —— 构建企业级LLM应用</a></li><li class="breadcrumb-item"><a href="../11-vector-database/04-practice-faiss.html"><span class="chapter-title">11.4 Practice: 指挥AI使用FAISS构建索引并查询</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09-rag-kickoff/index.html">第二部分：RAG与知识工程</a></li><li class="breadcrumb-item"><a href="../11-vector-database/04-practice-faiss.html"><span class="chapter-title">11.4 Practice: 指挥AI使用FAISS构建索引并查询</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
@@ -239,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章 项目启动：AIGC产品质量危机</span></a>
+  <a href="../04-project-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章 项目启动：我们的AIGC产品需要一个”质检员”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -249,17 +249,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/02-how-what-mission.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 定义任务：将危机转化为可执行的AI指令</span></a>
+  <a href="../04-project-kickoff/02-how-exploration.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 How: 将危机转化为可执行的AI指令</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/03-practice-eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 实践：指挥AI完成首次探索性数据分析(EDA)</span></a>
+  <a href="../04-project-kickoff/03-what-text-classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 What: 将任务转化为机器语言</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/04-challenge-hypothesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 挑战：从数据洞察到可验证的假设</span></a>
+  <a href="../04-project-kickoff/04-practice-eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Practice: 危机中的第一次数据侦察</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/05-challenge-data-augmentation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.5 Challenge: AI数据增强与协同工具箱</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -269,22 +274,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-text-to-vectors/01-why-machines-cant-read.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Why: 为什么机器无法直接理解文字？</span></a>
+  <a href="../05-text-to-vectors/01-why-machines-cant-read.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Why: 我们的“厨师”不认识字</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 How: 与AI的探索之旅——从词袋到TF-IDF</span></a>
+  <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 How: 我们来”发明”TF-IDF</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-text-to-vectors/03-what-tfidf-concept.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 What: 核心概念之TF-IDF</span></a>
+  <a href="../05-text-to-vectors/03-what-tfidf-concept.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 What: TF-IDF技术手册</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-text-to-vectors/04-practice-feature-engineering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Practice: 指挥AI完成文本特征工程</span></a>
+  <a href="../05-text-to-vectors/04-practice-feature-engineering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Practice: 为”厨师”打造一副TF-IDF眼镜</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/05-challenge-beyond-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 Challenge: 探索TF-IDF的边界与工具箱升级</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -314,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06-first-classifier/05-toolbox-ai-debug.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5 AI协同工具箱：首次接触AI辅助Debug</span></a>
+  <a href="../06-first-classifier/05-challenge-and-toolbox.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5 Challenge: 扩充模型武器库与AI Debug</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -344,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07-model-evaluation/05-toolbox-experiment-tracking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.5 AI协同工具箱：系统化你的模型实验</span></a>
+  <a href="../07-model-evaluation/05-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.5 Challenge &amp; Toolbox</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -374,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../08-explainable-ai/05-challenge-refactoring.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 终极挑战：基于AI洞察重构你的项目</span></a>
+  <a href="../08-explainable-ai/05-challenge-global-explanation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 动手练习与挑战：从”能跑”到”好用”——项目代码重构</span></a>
   </div>
 </li>
       </ul>
@@ -382,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">第二部分：深度学习 —— 构建企业级LLM应用</span></a>
+ <span class="menu-text">第二部分：RAG与知识工程</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -410,12 +420,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../09-rag-kickoff/04-toolbox-critical-thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 【AI协同工具箱】用AI进行技术方案的批判性评估</span></a>
+  <a href="../09-rag-kickoff/04-practice-eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 Practice: 与我们的知识库初次相遇</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../10-embedding/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第10章 万物皆可向量化：Embedding的魔力</span></a>
+  <a href="../09-rag-kickoff/05-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.5 Challenge: 批判性思维与方案评审</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第10章：万物皆可向量化：Embedding的魔力</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -425,17 +440,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../10-embedding/02-how-embedding-geometry.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 How: 与AI探索Embedding的几何意义</span></a>
+  <a href="../10-embedding/02-how-embedding-geometry.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 How: 与AI的探索之旅——在几何空间中描绘词语的”灵魂”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../10-embedding/03-what-word-sentence-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 What: 核心概念之词向量与句向量</span></a>
+  <a href="../10-embedding/03-what-word-sentence-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 What: 核心概念——词嵌入与句嵌入</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../10-embedding/04-practice-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Practice: 指挥AI调用模型将文档转化为向量</span></a>
+  <a href="../10-embedding/04-practice-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Practice: 将文本转化为”语义坐标”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/05-challenge-visualize-embeddings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.5 动手练习与挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -445,17 +465,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../11-vector-database/01-why-vector-db.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 Why: 为何需要专门的数据库来存储向量？</span></a>
+  <a href="../11-vector-database/01-why-vector-db.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 Why: 一个无法完成的任务——在国家图书馆里暴力寻书</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../11-vector-database/02-how-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 How: 与AI探讨高效向量检索的策略</span></a>
+  <a href="../11-vector-database/02-how-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 How: 与AI的探索之旅——如何在海量向量中”大海捞针”？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../11-vector-database/03-what-cosine-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.3 What: 核心概念之相似度计算与近似最近邻(ANN)</span></a>
+  <a href="../11-vector-database/03-what-cosine-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.3 What: 核心概念——相似度度量与ANN算法</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -465,57 +485,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第12章：串联成珠：搭建完整的RAG流程</span></a>
+  <a href="../11-vector-database/05-challenge-explore-indexes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.5 动手练习与挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Why: 将所有组件组装成一个可工作的系统</span></a>
+  <a href="../12-rag-pipeline/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第12章 串联成珠：搭建完整的RAG流程</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 How: 与AI共同设计核心的Prompt模板</span></a>
+  <a href="../12-rag-pipeline/12-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Why: 将所有组件组装成一个可工作的系统</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 What: 核心概念之Prompt Engineering艺术</span></a>
+  <a href="../12-rag-pipeline/12-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 How: 与AI共同设计核心的Prompt模板</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../12-rag-pipeline/4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.4 Practice: 完整的RAG“指令剧本”</span></a>
+  <a href="../12-rag-pipeline/12-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 What: 核心概念之Prompt Engineering艺术</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第13章：优化你的机器人：从’幻觉’到’忠实’</span></a>
+  <a href="../12-rag-pipeline/12-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.4 Practice: 完整的RAG”指令剧本”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.1 Why: “我的机器人有时还是会胡说八道”</span></a>
+  <a href="../12-rag-pipeline/12-5-challenge-real-llm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.5 动手练习与挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.2 How: 与AI一起进行Bad Case分析与策略探讨</span></a>
+  <a href="../13-RAG-Optimization/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第13章 优化你的机器人：从”幻觉”到”忠实”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.3 What: 核心优化技术（分块、Top-K、重排）</span></a>
+  <a href="../13-RAG-Optimization/13-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.1 Why: “我的机器人有时还是会胡说八道！”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.4 Practice: 设计对比实验，优化问答效果</span></a>
+  <a href="../13-RAG-Optimization/13-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.2 How: 与AI一起诊断和优化检索系统</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../13-RAG-Optimization/5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.5 Challenge: 如何处理知识库的更新与冲突？</span></a>
+  <a href="../13-RAG-Optimization/13-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.3 What: RAG优化的核心概念解析</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/13-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.4 Practice: 设计你的第一个RAG优化实验</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/13-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.5 动手练习与挑战</span></a>
   </div>
 </li>
       </ul>
@@ -523,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">第三部分：强化学习——训练自主决策的AI智能体</span></a>
+ <span class="menu-text">第三部分：AI对齐工程</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -531,147 +561,223 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第14章：新范式：让机器通过“试错”来学习</span></a>
+  <a href="../14-SFT/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第14章 第一步：SFT监督微调 —— 为AI注入领域知识</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.1 Why: 思维跃迁的起点——从“回答”到“行动”</span></a>
+  <a href="../14-SFT/14-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.1 Why: 为何需要”岗前培训”？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.2 How: 与AI用“训练宠物”的类比，直观理解RL</span></a>
+  <a href="../14-SFT/14-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.2 How: 如何进行”岗前培训”？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.3 What: 核心概念之状态、动作、奖励与策略</span></a>
+  <a href="../14-SFT/14-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.3 What: 核心概念：监督微调 (SFT)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../14-RL-Intro/4-why-learn-rl.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.4 正面回应：AI能直接修复Bug，我们为何要学其原理？</span></a>
+  <a href="../14-SFT/14-4-practice-sft.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.4 Practice: 为”咖啡豆奇旅”训练金牌客服</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第15章：入门项目：训练一个动态定价机器人</span></a>
+  <a href="../14-SFT/14-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.5 动手练习与挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.1 Why: 为何动态定价是RL的经典入门战场？</span></a>
+  <a href="../15-Reward-Modeling/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第15章 第二步：奖励建模 —— 教会AI拥有”品味”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/2-practice-simulator.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.2 Practice (1): 指挥AI构建“电商模拟器”</span></a>
+  <a href="../15-Reward-Modeling/15-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.1 Why: 为何”标准答案”远远不够？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/3-how-what-q-learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.3 How/What: 与AI一起实现Q-Learning算法</span></a>
+  <a href="../15-Reward-Modeling/15-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.2 How: 如何量化”品味”？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/4-practice-training-viz.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.4 Practice (2): 启动训练并让AI可视化Q-Table</span></a>
+  <a href="../15-Reward-Modeling/15-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.3 What: 核心概念：奖励建模 (RM)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../15-RL-Pricing-Bot/5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.5 Challenge: 改变环境或奖励，观察策略变化</span></a>
+  <a href="../15-Reward-Modeling/15-4-practice-rm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.4 Practice: 训练”咖啡品味裁判”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第16章：终极挑战：设计一个自主修复Bug的AI Agent</span></a>
+  <a href="../15-Reward-Modeling/15-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.5 动手练习与挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.1 Why: 思想飞跃——从“模型”到“智能体(Agent)”</span></a>
+  <a href="../16-Alignment-PPO-DPO/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第16章 第三步：对齐进化 —— 从经典PPO到现代DPO</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/2-design-sandbox.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 设计Agent的“世界观”：构建沙盒环境</span></a>
+  <a href="../16-Alignment-PPO-DPO/16-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.1 Why: 为何需要“试错”与“探索”？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/3-design-actions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.3 赋予Agent“行动力”：定义工具箱与求助LLM</span></a>
+  <a href="../16-Alignment-PPO-DPO/16-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 How: 如何驱动AI自我进化？</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/4-design-rewards.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.4 注入Agent“价值观”：奖励函数设计的艺术与挑战</span></a>
+  <a href="../16-Alignment-PPO-DPO/16-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 What: 两条进化之路 PPO vs.&nbsp;DPO</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/5-practice-run-agent.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.5 见证奇迹：运行Agent并观察其自主修复过程</span></a>
+  <a href="../16-Alignment-PPO-DPO/16-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.4 Practice: 走两条路，看不同风景</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../16-Agent-Bug-Fixer/6-challenge-alignment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.6 思辨：AI Alignment入门——如何防止Agent“作弊”？</span></a>
+  <a href="../16-Alignment-PPO-DPO/16-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.5 动手练习与挑战</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">第四部分：AI Agent工程</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Evaluation/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第17章 AI竞技场：科学评估你的大模型</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第17章 Agentic Thinking：未来十年的核心竞争力</span></a>
+  <a href="../17-Arena-Evaluation/17-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.1 Why: 当”标准答案”不再唯一的挑战</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/1-recap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.1 回顾：你已掌握设计自主AI系统的思维框架</span></a>
+  <a href="../17-Arena-Evaluation/17-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.2 How: 与AI探讨如何设计一场公平的AI对决</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/2-transfer.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.2 迁移：将Agent思想应用到其他领域</span></a>
+  <a href="../17-Arena-Evaluation/17-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.3 What: AI竞技场与Elo评级系统</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../17-RL-Frontiers/3-vision.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.3 展望：你的下一个Agent可以是什么？</span></a>
+  <a href="../17-Arena-Evaluation/17-4-practice-arena.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.4 Practice: 搭建你的第一个AI竞技场</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">终章：你的旅程才刚刚开始</span></a>
+  <a href="../17-Arena-Evaluation/17-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.5 Challenge: 让GPT-4成为你的AI裁判</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/1-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.1 总结你的成长：三次思维跃迁的回顾</span></a>
+  <a href="../18-Agent-Foundation/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第18章 Agent第一步：让AI拥有”手”和”脚”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/2-ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.2 AI伦理：你手中工具的力量与责任</span></a>
+  <a href="../18-Agent-Foundation/18-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.1 Why: 从”聊天机器人”到”AI员工”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/3-next-steps.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.3 下一步去向何方？</span></a>
+  <a href="../18-Agent-Foundation/18-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.2 How: 与AI一起构思Agent的”身体”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../18-Epilogue/4-lifelong-learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.4 终身学习：与AI一起在技术浪潮中持续进化</span></a>
+  <a href="../18-Agent-Foundation/18-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.3 What: LangGraph——用流程图构建AI Agent</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Appendix/A-AI-Dev-Best-Practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">附录A：AI辅助开发的最佳实践</span></a>
+  <a href="../18-Agent-Foundation/18-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.4 Practice: 构建你的第一个工具Agent</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Appendix/B-Gradio-Components.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">附录B：Gradio核心组件用法查询</span></a>
+  <a href="../18-Agent-Foundation/18-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.5 Challenge: 拓展你的Agent工具箱</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第19章 AI团队协作：构建多Agent工作流</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.1 Why: 为什么专业分工如此重要？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.2 How: 与AI一起设计团队架构</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.3 What: 多Agent协作流程图</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.4 Practice: 搭建你的第一个AI团队</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.5 Challenge: 为你的AI团队增加新成员</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第20章 Agent的思考艺术：规划、反思与安全</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.1 Why: 从”自动执行”到”可信赖的自主”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.2 How: 与AI探讨可中断的工作流</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.3 What: 顶级顾问工作流：规划、反思与人机协同</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.4 Practice: 为AI团队引入”人工审批”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.5 Challenge: 设计你自己的Agent</span></a>
   </div>
 </li>
       </ul>
@@ -702,7 +808,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09-rag-kickoff/index.html">第二部分：深度学习 —— 构建企业级LLM应用</a></li><li class="breadcrumb-item"><a href="../11-vector-database/04-practice-faiss.html"><span class="chapter-title">11.4 Practice: 指挥AI使用FAISS构建索引并查询</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09-rag-kickoff/index.html">第二部分：RAG与知识工程</a></li><li class="breadcrumb-item"><a href="../11-vector-database/04-practice-faiss.html"><span class="chapter-title">11.4 Practice: 指挥AI使用FAISS构建索引并查询</span></a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">11.4 Practice: 指挥AI使用FAISS构建索引并查询</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
 </div>
@@ -754,7 +860,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="第二幕构建索引与执行查询" class="level3">
 <h3 class="anchored" data-anchor-id="第二幕构建索引与执行查询">第二幕：构建索引与执行查询</h3>
 <p>现在，我们将把所有部分串联起来。这个指令将复用和整合我们之前的所有成果。</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="第二步：请求AI编写完整的索引、查询代码">
+<div class="callout callout-style-default callout-note callout-titled" title="第二步：请求AI编写完整的索引、查询代码">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -776,76 +882,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> faiss</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sentence_transformers <span class="im">import</span> SentenceTransformer</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.text <span class="im">import</span> RecursiveCharacterTextSplitter</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第1步: 加载模型和准备文本分割器 ===</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"加载句向量模型..."</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>model_name <span class="op">=</span> <span class="st">'all-MiniLM-L6-v2'</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>embedding_model <span class="op">=</span> SentenceTransformer(model_name)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>text_splitter <span class="op">=</span> RecursiveCharacterTextSplitter(chunk_size<span class="op">=</span><span class="dv">200</span>, chunk_overlap<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第2步: 准备和处理文档 ===</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"准备和处理文档..."</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>documents <span class="op">=</span> [</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""Retrieval-Augmented Generation (RAG) is a powerful technique that combines the strengths of large language models (LLMs) with external knowledge retrieval. The core idea is to retrieve relevant information from a knowledge base before generating a response. This approach helps to reduce hallucinations and improve factual accuracy."""</span>,</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""Python is a high-level, interpreted, general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming."""</span>,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn' – that is, methods that leverage data to improve performance on some set of tasks. It is seen as a part of artificial intelligence. Machine learning algorithms build a model based on sample data, known as training data, in order to make predictions or decisions without being explicitly programmed to do so."""</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 将所有文档合并，然后分割成块</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>all_text <span class="op">=</span> <span class="st">" "</span>.join(documents)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>chunks <span class="op">=</span> text_splitter.split_text(all_text)</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 对所有文本块进行向量化</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"正在将 </span><span class="sc">{</span><span class="bu">len</span>(chunks)<span class="sc">}</span><span class="ss"> 个文本块转换为向量..."</span>)</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>doc_embeddings <span class="op">=</span> embedding_model.encode(chunks)</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 将向量列表转换为NumPy数组，因为FAISS需要这种格式</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>doc_embeddings_np <span class="op">=</span> np.array(doc_embeddings).astype(<span class="st">'float32'</span>)</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第3步: 构建FAISS索引 ===</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"构建FAISS索引..."</span>)</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取向量的维度</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> doc_embeddings_np.shape[<span class="dv">1</span>]</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建一个基础的精确搜索索引，使用L2距离</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 对于余弦相似度，FAISS建议在使用IndexFlatL2前对向量进行归一化</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>faiss.normalize_L2(doc_embeddings_np)</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> faiss.IndexFlatL2(d)</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co"># 将向量添加到索引中</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>index.add(doc_embeddings_np)</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"索引构建完成，共包含 </span><span class="sc">{</span>index<span class="sc">.</span>ntotal<span class="sc">}</span><span class="ss"> 个向量。"</span>)</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第4步: 执行查询 ===</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">执行查询..."</span>)</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义用户问题</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"What is RAG?"</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co"># 将问题向量化并转换为NumPy数组</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>query_embedding <span class="op">=</span> embedding_model.encode([query])</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>query_embedding_np <span class="op">=</span> np.array(query_embedding).astype(<span class="st">'float32'</span>)</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co"># 对查询向量也进行归一化</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>faiss.normalize_L2(query_embedding_np)</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义要检索的近邻数量</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 我们将使用简单的文本分割，因此不需要重量级的库</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># from sklearn.text import RecursiveCharacterTextSplitter </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第1步: 加载模型 ===</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"加载句向量模型..."</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>model_name <span class="op">=</span> <span class="st">'all-MiniLM-L6-v2'</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>embedding_model <span class="op">=</span> SentenceTransformer(model_name)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第2步: 准备和处理文档 ===</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"准备和处理文档..."</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>documents <span class="op">=</span> [</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Retrieval-Augmented Generation (RAG) is a powerful technique that combines the strengths of large language models (LLMs) with external knowledge retrieval."</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The core idea of RAG is to retrieve relevant information from a knowledge base before generating a response."</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"This RAG approach helps to reduce hallucinations and improve factual accuracy."</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Python is a high-level, interpreted, general-purpose programming language."</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Its design philosophy emphasizes code readability with its notable use of significant indentation."</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming."</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn' – that is, methods that leverage data to improve performance on some set of tasks."</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ML is seen as a part of artificial intelligence."</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Machine learning algorithms build a model based on sample data, known as training data, in order to make predictions or decisions without being explicitly programmed to do so."</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co"># 在这个例子中，我们直接将每句话作为一个文档块(chunk)</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>chunks <span class="op">=</span> documents</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 对所有文本块进行向量化</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"正在将 </span><span class="sc">{</span><span class="bu">len</span>(chunks)<span class="sc">}</span><span class="ss"> 个文本块转换为向量..."</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>doc_embeddings <span class="op">=</span> embedding_model.encode(chunks)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 将向量列表转换为NumPy数组，因为FAISS需要这种格式</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>doc_embeddings_np <span class="op">=</span> np.array(doc_embeddings).astype(<span class="st">'float32'</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第3步: 构建FAISS索引 ===</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"构建FAISS索引..."</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取向量的维度</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> doc_embeddings_np.shape[<span class="dv">1</span>]</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建一个基础的精确搜索索引，使用L2距离</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co"># 对于余弦相似度，FAISS建议在使用IndexFlatL2前对向量进行归一化</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>faiss.normalize_L2(doc_embeddings_np)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> faiss.IndexFlatL2(d)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># 将向量添加到索引中</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>index.add(doc_embeddings_np)</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"索引构建完成，共包含 </span><span class="sc">{</span>index<span class="sc">.</span>ntotal<span class="sc">}</span><span class="ss"> 个向量。"</span>)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第4步: 执行查询 ===</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">执行查询..."</span>)</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义用户问题</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"What is RAG?"</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co"># 将问题向量化并转换为NumPy数组</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>query_embedding <span class="op">=</span> embedding_model.encode([query])</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>query_embedding_np <span class="op">=</span> np.array(query_embedding).astype(<span class="st">'float32'</span>)</span>
 <span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co"># 执行搜索</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>distances, indices <span class="op">=</span> index.search(query_embedding_np, k)</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co"># 对查询向量也进行归一化</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>faiss.normalize_L2(query_embedding_np)</span>
 <span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第5步: 展示结果 ===</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">查询 '</span><span class="sc">{</span>query<span class="sc">}</span><span class="ss">' 的Top </span><span class="sc">{</span>k<span class="sc">}</span><span class="ss"> 个最相关的结果："</span>)</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k):</span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    retrieved_chunk_index <span class="op">=</span> indices[<span class="dv">0</span>][i]</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    retrieved_chunk <span class="op">=</span> chunks[retrieved_chunk_index]</span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    similarity_score <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> distances[<span class="dv">0</span>][i] <span class="co"># 将L2距离转换为相似度（非严格）</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">--- 结果 </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> ---"</span>)</span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"相似度得分 (近似): </span><span class="sc">{</span>similarity_score<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"文档块索引: </span><span class="sc">{</span>retrieved_chunk_index<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"内容: </span><span class="sc">{</span>retrieved_chunk<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义要检索的近邻数量</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co"># 执行搜索</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co"># index.search返回的是L2距离的平方</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>distances, indices <span class="op">=</span> index.search(query_embedding_np, k)</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第5步: 展示结果 ===</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">查询 '</span><span class="sc">{</span>query<span class="sc">}</span><span class="ss">' 的Top </span><span class="sc">{</span>k<span class="sc">}</span><span class="ss"> 个最相关的结果："</span>)</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k):</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>    retrieved_chunk_index <span class="op">=</span> indices[<span class="dv">0</span>][i]</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>    retrieved_chunk <span class="op">=</span> chunks[retrieved_chunk_index]</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 对于归一化向量，余弦相似度 = 1 - (L2距离的平方 / 2)</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    similarity_score <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (distances[<span class="dv">0</span>][i] <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">--- 结果 </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> ---"</span>)</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"余弦相似度: </span><span class="sc">{</span>similarity_score<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"文档块索引: </span><span class="sc">{</span>retrieved_chunk_index<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"内容: </span><span class="sc">{</span>retrieved_chunk<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="本节小结" class="level2">
@@ -1345,13 +1459,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../11-vector-database/03-what-cosine-ann.html" class="pagination-link" aria-label="11.3 What: 核心概念之相似度计算与近似最近邻(ANN)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">11.3 What: 核心概念之相似度计算与近似最近邻(ANN)</span></span>
+      <a href="../11-vector-database/03-what-cosine-ann.html" class="pagination-link" aria-label="11.3 What: 核心概念——相似度度量与ANN算法">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">11.3 What: 核心概念——相似度度量与ANN算法</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../12-rag-pipeline/index.html" class="pagination-link" aria-label="第12章：串联成珠：搭建完整的RAG流程">
-        <span class="nav-page-text"><span class="chapter-title">第12章：串联成珠：搭建完整的RAG流程</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../11-vector-database/05-challenge-explore-indexes.html" class="pagination-link" aria-label="11.5 动手练习与挑战">
+        <span class="nav-page-text"><span class="chapter-title">11.5 动手练习与挑战</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -1392,7 +1506,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>现在，我们将把所有部分串联起来。这个指令将复用和整合我们之前的所有成果。</span>
 <span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>:::{.callout-tip title="第二步：请求AI编写完整的索引、查询代码" icon="fas fa-cogs"}</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="第二步：请求AI编写完整的索引、查询代码" icon="fas fa-cogs"}</span>
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>**👤 你的指令:**</span>
 <span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; "太棒了！现在请帮我编写一个完整的Python脚本。这个脚本需要整合我们之前的所有工作。</span></span>
@@ -1425,109 +1539,104 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> faiss</span>
 <span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sentence_transformers <span class="im">import</span> SentenceTransformer</span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.text <span class="im">import</span> RecursiveCharacterTextSplitter</span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第1步: 加载模型和准备文本分割器 ===</span></span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"加载句向量模型..."</span>)</span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>model_name <span class="op">=</span> <span class="st">'all-MiniLM-L6-v2'</span></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>embedding_model <span class="op">=</span> SentenceTransformer(model_name)</span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>text_splitter <span class="op">=</span> RecursiveCharacterTextSplitter(chunk_size<span class="op">=</span><span class="dv">200</span>, chunk_overlap<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第2步: 准备和处理文档 ===</span></span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"准备和处理文档..."</span>)</span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>documents <span class="op">=</span> [</span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""Retrieval-Augmented Generation (RAG) is a powerful technique that combines the strengths of large language models (LLMs) with external knowledge retrieval. The core idea is to retrieve relevant information from a knowledge base before generating a response. This approach helps to reduce hallucinations and improve factual accuracy."""</span>,</span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""Python is a high-level, interpreted, general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming."""</span>,</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn' – that is, methods that leverage data to improve performance on some set of tasks. It is seen as a part of artificial intelligence. Machine learning algorithms build a model based on sample data, known as training data, in order to make predictions or decisions without being explicitly programmed to do so."""</span></span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a><span class="co"># 将所有文档合并，然后分割成块</span></span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>all_text <span class="op">=</span> <span class="st">" "</span>.join(documents)</span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>chunks <span class="op">=</span> text_splitter.split_text(all_text)</span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="co"># 对所有文本块进行向量化</span></span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"正在将 </span><span class="sc">{</span><span class="bu">len</span>(chunks)<span class="sc">}</span><span class="ss"> 个文本块转换为向量..."</span>)</span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>doc_embeddings <span class="op">=</span> embedding_model.encode(chunks)</span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a><span class="co"># 将向量列表转换为NumPy数组，因为FAISS需要这种格式</span></span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>doc_embeddings_np <span class="op">=</span> np.array(doc_embeddings).astype(<span class="st">'float32'</span>)</span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第3步: 构建FAISS索引 ===</span></span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"构建FAISS索引..."</span>)</span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取向量的维度</span></span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> doc_embeddings_np.shape[<span class="dv">1</span>]</span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建一个基础的精确搜索索引，使用L2距离</span></span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a><span class="co"># 对于余弦相似度，FAISS建议在使用IndexFlatL2前对向量进行归一化</span></span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>faiss.normalize_L2(doc_embeddings_np)</span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> faiss.IndexFlatL2(d)</span>
-<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="co"># 将向量添加到索引中</span></span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>index.add(doc_embeddings_np)</span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"索引构建完成，共包含 </span><span class="sc">{</span>index<span class="sc">.</span>ntotal<span class="sc">}</span><span class="ss"> 个向量。"</span>)</span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第4步: 执行查询 ===</span></span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">执行查询..."</span>)</span>
-<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义用户问题</span></span>
-<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"What is RAG?"</span></span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a><span class="co"># 将问题向量化并转换为NumPy数组</span></span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>query_embedding <span class="op">=</span> embedding_model.encode([query])</span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>query_embedding_np <span class="op">=</span> np.array(query_embedding).astype(<span class="st">'float32'</span>)</span>
-<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a><span class="co"># 对查询向量也进行归一化</span></span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>faiss.normalize_L2(query_embedding_np)</span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义要检索的近邻数量</span></span>
-<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="co"># 我们将使用简单的文本分割，因此不需要重量级的库</span></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="co"># from sklearn.text import RecursiveCharacterTextSplitter </span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第1步: 加载模型 ===</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"加载句向量模型..."</span>)</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>model_name <span class="op">=</span> <span class="st">'all-MiniLM-L6-v2'</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>embedding_model <span class="op">=</span> SentenceTransformer(model_name)</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="co"># text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)</span></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第2步: 准备和处理文档 ===</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"准备和处理文档..."</span>)</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>documents <span class="op">=</span> [</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Retrieval-Augmented Generation (RAG) is a powerful technique that combines the strengths of large language models (LLMs) with external knowledge retrieval."</span>,</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The core idea of RAG is to retrieve relevant information from a knowledge base before generating a response."</span>,</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>    <span class="st">"This RAG approach helps to reduce hallucinations and improve factual accuracy."</span>,</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Python is a high-level, interpreted, general-purpose programming language."</span>,</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Its design philosophy emphasizes code readability with its notable use of significant indentation."</span>,</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming."</span>,</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn' – that is, methods that leverage data to improve performance on some set of tasks."</span>,</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ML is seen as a part of artificial intelligence."</span>,</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Machine learning algorithms build a model based on sample data, known as training data, in order to make predictions or decisions without being explicitly programmed to do so."</span></span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="co"># 在这个例子中，我们直接将每句话作为一个文档块(chunk)</span></span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>chunks <span class="op">=</span> documents</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a><span class="co"># 对所有文本块进行向量化</span></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"正在将 </span><span class="sc">{</span><span class="bu">len</span>(chunks)<span class="sc">}</span><span class="ss"> 个文本块转换为向量..."</span>)</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>doc_embeddings <span class="op">=</span> embedding_model.encode(chunks)</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a><span class="co"># 将向量列表转换为NumPy数组，因为FAISS需要这种格式</span></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>doc_embeddings_np <span class="op">=</span> np.array(doc_embeddings).astype(<span class="st">'float32'</span>)</span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第3步: 构建FAISS索引 ===</span></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"构建FAISS索引..."</span>)</span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取向量的维度</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> doc_embeddings_np.shape[<span class="dv">1</span>]</span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建一个基础的精确搜索索引，使用L2距离</span></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a><span class="co"># 对于余弦相似度，FAISS建议在使用IndexFlatL2前对向量进行归一化</span></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>faiss.normalize_L2(doc_embeddings_np)</span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> faiss.IndexFlatL2(d)</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a><span class="co"># 将向量添加到索引中</span></span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>index.add(doc_embeddings_np)</span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"索引构建完成，共包含 </span><span class="sc">{</span>index<span class="sc">.</span>ntotal<span class="sc">}</span><span class="ss"> 个向量。"</span>)</span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第4步: 执行查询 ===</span></span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">执行查询..."</span>)</span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义用户问题</span></span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"What is RAG?"</span></span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a><span class="co"># 将问题向量化并转换为NumPy数组</span></span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>query_embedding <span class="op">=</span> embedding_model.encode([query])</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>query_embedding_np <span class="op">=</span> np.array(query_embedding).astype(<span class="st">'float32'</span>)</span>
 <span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="co"># 执行搜索</span></span>
-<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>distances, indices <span class="op">=</span> index.search(query_embedding_np, k)</span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="co"># 对查询向量也进行归一化</span></span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>faiss.normalize_L2(query_embedding_np)</span>
 <span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第5步: 展示结果 ===</span></span>
-<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">查询 '</span><span class="sc">{</span>query<span class="sc">}</span><span class="ss">' 的Top </span><span class="sc">{</span>k<span class="sc">}</span><span class="ss"> 个最相关的结果："</span>)</span>
-<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k):</span>
-<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>    retrieved_chunk_index <span class="op">=</span> indices[<span class="dv">0</span>][i]</span>
-<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a>    retrieved_chunk <span class="op">=</span> chunks[retrieved_chunk_index]</span>
-<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>    similarity_score <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> distances[<span class="dv">0</span>][i] <span class="co"># 将L2距离转换为相似度（非严格）</span></span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">--- 结果 </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> ---"</span>)</span>
-<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"相似度得分 (近似): </span><span class="sc">{</span>similarity_score<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"文档块索引: </span><span class="sc">{</span>retrieved_chunk_index<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"内容: </span><span class="sc">{</span>retrieved_chunk<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a><span class="fu">## 本节小结</span></span>
-<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>恭喜你！你已经成功地搭建了一个迷你的、但功能完备的向量检索系统。</span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 核心收获</span></span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**打通了关键流程**: 你亲手将"文档"-&gt;"文本块"-&gt;"向量"-&gt;"索引"-&gt;"查询"-&gt;"检索结果"这一核心流程完全打通。</span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**掌握一个核心库**: 你学会了如何使用<span class="in">`faiss-cpu`</span>库来创建索引、添加向量，并执行<span class="in">`.search()`</span>方法。</span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**拥有了一个检索原型**: 你现在拥有了一个可以工作的代码原型。你可以轻易地将<span class="in">`documents`</span>列表替换成你自己的文本数据，来构建一个属于你自己的语义搜索引擎。</span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🤔 为何重要</span></span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>这是我们整个RAG项目的一个关键里程碑。我们已经完成了"离线处理"的全部工作，并成功验证了"在线查询"中的"检索"这一核心环节。</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义要检索的近邻数量</span></span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a><span class="co"># 执行搜索</span></span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="co"># index.search返回的是L2距离的平方</span></span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>distances, indices <span class="op">=</span> index.search(query_embedding_np, k)</span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a><span class="co"># === 第5步: 展示结果 ===</span></span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">查询 '</span><span class="sc">{</span>query<span class="sc">}</span><span class="ss">' 的Top </span><span class="sc">{</span>k<span class="sc">}</span><span class="ss"> 个最相关的结果："</span>)</span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k):</span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>    retrieved_chunk_index <span class="op">=</span> indices[<span class="dv">0</span>][i]</span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>    retrieved_chunk <span class="op">=</span> chunks[retrieved_chunk_index]</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 对于归一化向量，余弦相似度 = 1 - (L2距离的平方 / 2)</span></span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>    similarity_score <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (distances[<span class="dv">0</span>][i] <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">--- 结果 </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> ---"</span>)</span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"余弦相似度: </span><span class="sc">{</span>similarity_score<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"文档块索引: </span><span class="sc">{</span>retrieved_chunk_index<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"内容: </span><span class="sc">{</span>retrieved_chunk<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a><span class="fu">## 本节小结</span></span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>恭喜你！你已经成功地搭建了一个迷你的、但功能完备的向量检索系统。</span>
 <span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>我们现在已经能够根据用户的问题，从知识库中精准地"捞取"出最相关的几段信息。但这些信息还只是零散的"原材料"。</span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>在下一章，我们将进入RAG流程的最后，也是最激动人心的部分：**如何将这些检索到的"原材料"，与强大的LLM结合起来，精心设计一个完美的Prompt，最终"烹饪"出一道美味、智能、忠于事实的回答。** </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 核心收获</span></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**打通了关键流程**: 你亲手将"文档"-&gt;"文本块"-&gt;"向量"-&gt;"索引"-&gt;"查询"-&gt;"检索结果"这一核心流程完全打通。</span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**掌握一个核心库**: 你学会了如何使用<span class="in">`faiss-cpu`</span>库来创建索引、添加向量，并执行<span class="in">`.search()`</span>方法。</span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**拥有了一个检索原型**: 你现在拥有了一个可以工作的代码原型。你可以轻易地将<span class="in">`documents`</span>列表替换成你自己的文本数据，来构建一个属于你自己的语义搜索引擎。</span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🤔 为何重要</span></span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>这是我们整个RAG项目的一个关键里程碑。我们已经完成了"离线处理"的全部工作，并成功验证了"在线查询"中的"检索"这一核心环节。</span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>我们现在已经能够根据用户的问题，从知识库中精准地"捞取"出最相关的几段信息。但这些信息还只是零散的"原材料"。</span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>在下一章，我们将进入RAG流程的最后，也是最激动人心的部分：**如何将这些检索到的"原材料"，与强大的LLM结合起来，精心设计一个完美的Prompt，最终"烹饪"出一道美味、智能、忠于事实的回答。** </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>机器学习：AI驱动的学习与应用</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-<p>本书使用 Quarto 构建</p>
-</div>
-  </div>
-</footer>
 
 
 

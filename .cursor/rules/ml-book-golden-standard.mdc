@@ -1,0 +1,36 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+This rule outlines the "Golden Standard" for writing and refactoring all technical chapters in the ML book project. All contributions must adhere to these standards to ensure consistency in structure, narrative, and depth.
+
+For the full detailed guide, please refer to the source document: [chapter_writing_golden_standard.md](mdc:ml-book/chapter_writing_golden_standard.md).
+
+### 1. File Structure: Strict "Five-Part" Model
+
+Each technical chapter must consist of exactly five `.qmd` content files, plus an `index.qmd`.
+
+1.  `why.qmd`: The story's beginning, introducing the core problem.
+2.  `how.qmd`: Exploring solutions via a simulated dialogue with an AI.
+3.  `what.qmd`: Defining the core concepts.
+4.  `practice.qmd`: A story-driven practical exercise.
+5.  `challenge.qmd`: An extension and sublimation of the chapter's skills.
+
+### 2. `practice.qmd`: The "Problem-Solving Storyline"
+
+The `practice` file must follow a narrative arc, not a simple instruction list. The required flow is:
+1.  **A Flawed Starting Point:** Introduce an initial result that is imperfect.
+2.  **In-depth Analysis:** Use an AI prompt to generate diagnostic reports (e.g., confusion matrix, SHAP plots).
+3.  **Formulate a Hypothesis:** Based on the analysis, create a clear, testable hypothesis for improvement.
+4.  **Validate the Hypothesis:** Use a second AI prompt to run an experiment with a new model or method.
+5.  **Compare and Conclude:** Compare the results to prove or disprove the hypothesis.
+
+### 3. `challenge.qmd`: "Extension" and "Sublimation"
+
+The `challenge` file must contain two distinct sections:
+
+1.  **Hands-on Challenge:** A functional extension of the skills learned in the `practice` section.
+2.  **AI Toolbox / Project Refactoring:**
+    *   **In regular chapters:** Introduce a meta-skill for AI collaboration (e.g., "Experiment Tracking," "AI-assisted Code Review").
+    *   **In project-concluding chapters (e.g., 8, 13, 20):** Provide an AI prompt to guide the user in refactoring their scattered `practice` code into a clean, modular, and complete project script. This provides a view of the "ideal final code" without providing the code directly.
