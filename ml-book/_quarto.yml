@@ -169,6 +169,3 @@ format:
     highlight-style: github
     fig-width: 8
     fig-height: 6
-    include-in-header: mermaid-header.html
-    filters:
-      - disable-mermaid.lua

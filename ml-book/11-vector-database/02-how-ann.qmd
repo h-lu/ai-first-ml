@@ -25,29 +25,24 @@ AI助手，我们现在面临一个巨大的挑战：如果知识库有几百万
 graph TD
     subgraph "向量空间 (Vector Space)"
         subgraph "社区 C1 (Cluster 1)"
-            direction LR
-            P1((V1)) --- P2((V2))
-            P1 --- P3((V3))
-            P2 --- P3
+            P1((V1)) --- P2((V2)) & P3((V3))
         end
         subgraph "社区 C2 (Cluster 2)"
-            direction LR
             P4((V4)) --- P5((V5))
         end
         subgraph "社区 C3 (Cluster 3)"
-            direction LR
-            P6((V6)) --- P7((V7))
-            P6 --- P8((V8))
+            P6((V6)) --- P7((V7)) & P8((V8))
         end
-        C1 --- C2
-        C1 --- C3
+        C1 --- C2 & C3
     end
     
-    Q[查询向量 Q] --> C1
+    Q["查询向量 Q"] --> C1
     
-    style C1 fill:#f9f, stroke:#333, stroke-width:2px
-    style Q fill:#ccf, stroke:#333, stroke-width:2px
+    classDef cluster1 fill:#f9f, stroke:#333, stroke-width:2px
+    classDef query fill:#ccf, stroke:#333, stroke-width:2px
 
+    class C1 cluster1
+    class Q query
 ```
 
 这个过程就叫做**数据分区**或**聚类**。当一个新的查询向量（Q）进来时，我们就不需要跟广场上的每一个人（所有向量）去比对，而是执行一个更高效的两步查找：

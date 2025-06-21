@@ -89,13 +89,17 @@ graph TD
     E --> G
 
     %% Styling
-    style A fill:#f9f9f9,stroke:#333,stroke-width:1px
-    style G fill:#d4edda,stroke:#155724,stroke-width:2px,color:#155724
-    style C fill:#e3f2fd,stroke:#1565c0,stroke-width:1.5px
-    style E fill:#e3f2fd,stroke:#1565c0,stroke-width:1.5px
-    style F fill:#fafafa,stroke:#ccc,stroke-width:1px
-    style B fill:#fff3cd,stroke:#856404,stroke-width:1.5px
-    style D fill:#fff3cd,stroke:#856404,stroke-width:1.5px
+    classDef startNode fill:#f9f9f9,stroke:#333,stroke-width:1px
+    classDef finalNode fill:#d4edda,stroke:#155724,stroke-width:2px,color:#155724
+    classDef principleNode fill:#e3f2fd,stroke:#1565c0,stroke-width:1.5px
+    classDef reasonNode fill:#fafafa,stroke:#ccc,stroke-width:1px
+    classDef decisionNode fill:#fff3cd,stroke:#856404,stroke-width:1.5px
+    
+    class A startNode
+    class G finalNode
+    class C,E principleNode
+    class F reasonNode
+    class B,D decisionNode
 ```
 
 ## 本节小结

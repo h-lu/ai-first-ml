@@ -78,14 +78,15 @@ graph TD
     T -- "选择策略二" --> D
 
     %% Styling
-    style T fill:#fff3cd,stroke:#856404,stroke-width:2px
-    style A fill:#e3f2fd,stroke:#1565c0,stroke-width:1.5px
-    style B fill:#e3f2fd,stroke:#1565c0,stroke-width:1.5px
-    style C fill:#f8d7da,stroke:#721c24,stroke-width:1.5px,color:#721c24
+    classDef core fill:#fff3cd,stroke:#856404,stroke-width:2px
+    classDef recall fill:#e3f2fd,stroke:#1565c0,stroke-width:1.5px
+    classDef precision fill:#d4edda,stroke:#155724,stroke-width:1.5px
+    classDef consequence fill:#f8d7da,stroke:#721c24,stroke-width:1.5px,color:#721c24
     
-    style D fill:#d4edda,stroke:#155724,stroke-width:1.5px
-    style E fill:#d4edda,stroke:#155724,stroke-width:1.5px
-    style F fill:#f8d7da,stroke:#721c24,stroke-width:1.5px,color:#721c24
+    class T core
+    class A,B recall
+    class D,E precision
+    class C,F consequence
 ```
 
 ## "那我们到底该看哪个？"

@@ -27,25 +27,27 @@
 ```mermaid
 graph TD
     subgraph "离线处理：构建知识索引"
-        A[原始文档<br/>(PDF, DOCX, ...)] --> B(文档加载与解析<br/>Loader);
-        B --> C(文本分块<br/>Splitter);
-        C --> D(文本向量化<br/>Embedding Model);
-        D --> E[向量数据库<br/>Vector Store];
+        A["原始文档 (PDF, DOCX, ...)"] --> B("文档加载与解析\nLoader");
+        B --> C("文本分块\nSplitter");
+        C --> D("文本向量化\nEmbedding Model");
+        D --> E["向量数据库\nVector Store"];
     end
 
     subgraph "在线应答：与用户对话"
-        F[用户问题] --> G(问题向量化<br/>Embedding Model);
-        G --> H{在向量数据库中<br/>进行相似度检索};
+        F["用户问题"] --> G("问题向量化\nEmbedding Model");
+        G --> H{"在向量数据库中\n进行相似度检索"};
         E -.-> H;
-        H --> I[获取Top-K个<br/>最相关的文本块];
-        I --> J{构建Prompt<br/>(上下文+问题)};
+        H --> I["获取Top-K个\n最相关的文本块"];
+        I --> J{"构建Prompt\n(上下文+问题)"};
         F -.-> J;
-        J --> K(大语言模型 LLM<br/>生成答案);
-        K --> L[返回最终答案];
+        J --> K("大语言模型 LLM\n生成答案");
+        K --> L["返回最终答案"];
     end
 
-    style E fill:#D5F5E3,stroke:#2ECC71,stroke-width:2px
-    style K fill:#D6EAF8,stroke:#3498DB,stroke-width:2px
+    classDef vectorstore fill:#D5F5E3,stroke:#2ECC71,stroke-width:2px;
+    classDef llm fill:#D6EAF8,stroke:#3498DB,stroke-width:2px;
+    class E vectorstore;
+    class K llm;
 ```
 
 **👤 你：**
