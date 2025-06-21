@@ -134,24 +134,25 @@ book:
         - 20-Agent-Reasoning-Safety/20-3-what.qmd
         - 20-Agent-Reasoning-Safety/20-4-practice.qmd
         - 20-Agent-Reasoning-Safety/20-5-challenge.qmd
-    - part: "终章：你的第一首AI交响曲"
+    - part: "终章：AI系统重构与软件工程"
       chapters:
         - 21-conclusion/index.qmd
-        - 21-conclusion/01-journey-review.qmd
-        - 21-conclusion/02-project-refactoring.qmd
-        - 21-conclusion/03-future-outlook.qmd
-        - 21-conclusion/04-epilogue.qmd
+        - 21-conclusion/why.qmd
+        - 21-conclusion/how.qmd
+        - 21-conclusion/what.qmd
+        - 21-conclusion/practice.qmd
+        - 21-conclusion/challenge.qmd
     - part: "附录"
       chapters:
-        - references.qmd
+        - appendix-glossary.qmd
+        - appendix-resources.qmd
+        - appendix-cheatsheet.qmd
 
 page-footer:
   left: |
     机器学习：AI驱动的学习与应用
   right: |
     本书使用 Quarto 构建
-
-bibliography: references.bib
 
 lang: zh
 

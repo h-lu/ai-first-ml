@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.14">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>实践：AI辅助重构多Agent系统 – 机器学习：AI驱动的学习与应用</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../21-conclusion/challenge.html" rel="next">
+<link href="../21-conclusion/what.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-6189859f80153d0aeab70023af215a12.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fcd936e632799e4065e87e69e2f5862c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../21-conclusion/index.html">终章：AI系统重构与软件工程</a></li><li class="breadcrumb-item"><a href="../21-conclusion/practice.html"><span class="chapter-title">实践：AI辅助重构多Agent系统</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">机器学习：AI驱动的学习与应用</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="搜索"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">欢迎踏上《机器学习：AI驱动的学习与应用》之旅</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">序章：新世界的生存法则</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-welcome/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第1章 欢迎来到AI-First时代</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-welcome/01-not-another-ml-book.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1 这不是另一本机器学习教科书</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-welcome/02-ai-conductor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.2 告别代码搬运工，成为AI指挥家</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-welcome/03-learning-philosophy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.3 本书的学习哲学：AI协同与探索式学习</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-welcome/04-what-you-will-get.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.4 你将获得的四大部分核心能力</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-guide/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第2章 本书使用指南与AI协同的艺术</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-guide/01-golden-circle.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.1 “机器学习黄金圈”：我们的学习罗盘</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-guide/02-prompt-engineering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.2 如何向AI伙伴有效提问：Prompt Engineering入门</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-guide/03-first-ai-task.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.3 你的第一个AI协同任务：让AI帮你解释一个概念</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-guide/04-ai-learning-coach.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.4 【AI协同工具箱】用AI做你的私人学习教练</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-environment/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第3章 搭建你的AI协同开发环境</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-environment/01-dev-environment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.1 你的工具清单：Python, Jupyter与VS Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-environment/02-ai-copilot-config.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.2 AI协同配置：让Copilot成为你的副驾驶</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-environment/03-install-libraries.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.3 AI辅助安装核心库</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">第一部分：传统机器学习 —— AIGC时代的新应用</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章 项目启动：我们的AIGC产品需要一个“质检员”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/01-why-crisis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.1 Why: AIGC的机遇与“胡说八道”的风险</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/02-how-exploration.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 How: 将危机转化为可执行的AI指令</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/03-what-text-classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 What: 将任务转化为机器语言</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/04-practice-eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Practice: 危机中的第一次数据侦察</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-project-kickoff/05-challenge-data-augmentation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.5 Challenge: AI数据增强与协同工具箱</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第5章 从文本到向量：教会机器“阅读”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/01-why-machines-cant-read.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Why: 我们的“厨师”不认识字</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 How: 我们来“发明”TF-IDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/03-what-tfidf-concept.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 What: TF-IDF技术手册</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/04-practice-feature-engineering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Practice: 为“厨师”打造一副TF-IDF眼镜</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05-text-to-vectors/05-challenge-beyond-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 Challenge: 探索TF-IDF的边界与工具箱升级</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第6章 你的第一个分类器：AI内容“安检门”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/01-why-first-inspector.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.1 Why: 是时候让第一个“质检员”上岗了</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/02-how-choose-model.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.2 How: 与AI对话，选择合适的入门模型</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/03-what-logistic-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.3 What: 核心概念之逻辑回归</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/04-practice-train-predict-evaluate.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.4 Practice: 指挥AI训练、预测与评估</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-first-classifier/05-challenge-and-toolbox.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5 Challenge: 扩充模型武器库与AI Debug</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第7章 “我的模型不够好？”——精通评估与迭代</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/01-why-metrics-matter.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.1 Why: 当准确率“说谎”时</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/02-how-precision-recall.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.2 How: 与AI对话，探寻更真实的评估尺度</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/03-what-confusion-matrix-f1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.3 What: 核心概念之混淆矩阵、精确率、召回率与F1分数</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/04-practice-compare-models.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.4 Practice: 指挥AI生成并解读多维度评估报告</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07-model-evaluation/05-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.5 Challenge &amp; Toolbox</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第8章 打开黑箱：让AI解释它的决策</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/01-why-explainability.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.1 Why: 我们为什么需要信任AI的决策？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/02-how-exploring-predictions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 How: 与AI对话，探寻“决策”背后的蛛丝马迹</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/03-what-xai-shap-lime.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.3 What: 核心概念之LIME与SHAP</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/04-practice-shap-plots.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.4 Practice: 指挥AI用SHAP绘制模型解释图</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08-explainable-ai/05-challenge-global-explanation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 Challenge: 从“能跑”到“好用”——项目代码重构</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">第二部分：RAG与知识工程</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-rag-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第9章 项目启动：在海量文档中“海底捞针”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-rag-kickoff/01-why-crisis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Why: 企业知识库的困境与LLM带来的曙光</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-rag-kickoff/02-how-rag-blueprint.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 How: 与AI一起绘制RAG系统蓝图</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-rag-kickoff/03-what-rag-concept.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 What: 核心概念之检索增强生成 (RAG)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-rag-kickoff/04-practice-eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 Practice: 与我们的知识库初次相遇</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09-rag-kickoff/05-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.5 Challenge: 批判性思维与方案评审</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第10章：万物皆可向量化：Embedding的魔力</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/01-why-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.1 Why: 超越TF-IDF，捕捉文本的深层语义</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/02-how-embedding-geometry.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 How: 与AI的探索之旅——在几何空间中描绘词语的“灵魂”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/03-what-word-sentence-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 What: 核心概念——词嵌入与句嵌入</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/04-practice-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Practice: 将文本转化为”语义坐标”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10-embedding/05-challenge-visualize-embeddings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.5 Challenge: 可视化语义空间</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11-vector-database/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第11章 构建你的记忆宫殿：向量数据库</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11-vector-database/01-why-vector-db.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 Why: 一个无法完成的任务——在国家图书馆里暴力寻书</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11-vector-database/02-how-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 How: 与AI的探索之旅——如何在海量向量中“大海捞针”？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11-vector-database/03-what-cosine-ann.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.3 What: 核心概念——相似度度量与ANN算法</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11-vector-database/04-practice-faiss.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.4 Practice: 指挥AI使用FAISS构建索引并查询</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11-vector-database/05-challenge-explore-indexes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.5 Challenge: 探索更快的FAISS索引</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../12-rag-pipeline/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第12章 串联成珠：搭建完整的RAG流程</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../12-rag-pipeline/12-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Why: 将所有组件组装成一个可工作的系统</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../12-rag-pipeline/12-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 How: 与AI共同设计核心的Prompt模板</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../12-rag-pipeline/12-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 What: 核心概念之Prompt Engineering艺术</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../12-rag-pipeline/12-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.4 Practice: 完整的RAG“指令剧本”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../12-rag-pipeline/12-5-challenge-real-llm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.5 Challenge: 连接真实LLM，打通端到端流程</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第13章 优化你的机器人：从“幻觉”到“忠实”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/13-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.1 Why: “我的机器人有时还是会胡说八道！”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/13-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.2 How: 与AI一起诊断和优化检索系统</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/13-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.3 What: RAG优化的核心概念解析</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/13-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.4 Practice: 设计你的第一个RAG优化实验</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13-RAG-Optimization/13-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.5 Challenge: 将你的RAG实验代码重构为可交付的项目</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">第三部分：AI对齐工程</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第14章 第一步：SFT监督微调 —— 为AI注入领域知识</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/14-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.1 Why: 为何需要“岗前培训”？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/14-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.2 How: 如何进行“岗前培训”？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/14-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.3 What: 核心概念：监督微调 (SFT)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/14-4-practice-sft.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.4 Practice: 为”咖啡豆奇旅”训练金牌客服</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14-SFT/14-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.5 Challenge: 为模型注入“拒绝”的能力</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第15章 第二步：奖励建模 —— 教会AI拥有“品味”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/15-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.1 Why: 为何“标准答案”远远不够？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/15-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.2 How: 如何量化“品味”？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/15-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.3 What: 核心概念：奖励建模 (RM)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/15-4-practice-rm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.4 Practice: 训练”咖啡品味裁判”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15-Reward-Modeling/15-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.5 Challenge: 设计一个更多维度的“品味裁判”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第16章 第三步：对齐进化 —— 从经典PPO到现代DPO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/16-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.1 Why: 为何需要“试错”与“探索”？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/16-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 How: 如何驱动AI自我进化？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/16-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 What: 两条进化之路 PPO vs.&nbsp;DPO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/16-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.4 Practice: 走两条路，看不同风景</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16-Alignment-PPO-DPO/16-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.5 Challenge: 撰写PPO与DPO技术选型备忘录</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">第四部分：AI Agent工程</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Evaluation/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第17章 AI竞技场：科学评估你的大模型</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Evaluation/17-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.1 Why: 当“标准答案”不再唯一的挑战</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Evaluation/17-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.2 How: 与AI探讨如何设计一场公平的AI对决</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Evaluation/17-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.3 What: AI竞技场与Elo评级系统</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Evaluation/17-4-practice-arena.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.4 Practice: 搭建你的第一个AI竞技场</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17-Arena-Evaluation/17-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.5 Challenge: 让GPT-4成为你的AI裁判</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18-Agent-Foundation/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第18章 Agent第一步：让AI拥有“手”和“脚”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18-Agent-Foundation/18-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.1 Why: 从“聊天机器人”到“AI员工”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18-Agent-Foundation/18-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.2 How: 与AI一起构思Agent的”身体”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18-Agent-Foundation/18-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.3 What: LangGraph——用流程图构建AI Agent</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18-Agent-Foundation/18-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.4 Practice: 构建你的第一个工具Agent</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18-Agent-Foundation/18-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.5 Challenge: 拓展你的Agent工具箱</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第19章 AI团队协作：构建多Agent工作流</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.1 Why: 为什么专业分工如此重要？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.2 How: 与AI一起设计团队架构</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.3 What: 多Agent协作流程图</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.4 Practice: 搭建你的第一个AI团队</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19-Multi-Agent-Collaboration/19-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.5 Challenge: 为你的AI团队增加新成员</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第20章 Agent的思考艺术：规划、反思与安全</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-1-why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.1 Why: 从”自动执行”到”可信赖的自主”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-2-how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.2 How: 与AI探讨可中断的工作流</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-3-what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.3 What: 顶级顾问工作流：规划、反思与人机协同</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-4-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.4 Practice: 为AI团队引入”人工审批”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20-Agent-Reasoning-Safety/20-5-challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.5 Challenge: 设计你自己的Agent</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">终章：AI系统重构与软件工程</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../21-conclusion/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">终章 AI系统重构与软件工程</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../21-conclusion/why.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">为什么我的代码无法交付？—— 直面“原型债”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../21-conclusion/how.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">如何将原型转化为产品？—— 与AI探讨软件工程最佳实践</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../21-conclusion/what.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">什么是AI项目的软件工程？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../21-conclusion/practice.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">实践：AI辅助重构多Agent系统</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../21-conclusion/challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">挑战：发布你的AI应用并展望未来</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">附录</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="展开或折叠此栏">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix-glossary.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">附录A：关键术语表 (Glossary)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix-resources.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">附录B：推荐学习资源 (Further Reading)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix-cheatsheet.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">附录C：核心工具速查手册 (Tooling Quick Reference)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目录</h2>
+   
+  <ul>
+  <li><a href="#我们的起点一个强大的大泥球" id="toc-我们的起点一个强大的大泥球" class="nav-link active" data-scroll-target="#我们的起点一个强大的大泥球">我们的起点：一个强大的“大泥球”</a></li>
+  <li><a href="#第一步让ai成为你的架构师" id="toc-第一步让ai成为你的架构师" class="nav-link" data-scroll-target="#第一步让ai成为你的架构师">第一步：让AI成为你的架构师</a></li>
+  <li><a href="#第二步假设驱动的代码搬家" id="toc-第二步假设驱动的代码搬家" class="nav-link" data-scroll-target="#第二步假设驱动的代码搬家">第二步：假设驱动的“代码搬家”</a></li>
+  <li><a href="#第三步与ai结对修复bug" id="toc-第三步与ai结对修复bug" class="nav-link" data-scroll-target="#第三步与ai结对修复bug">第三步：与AI结对修复Bug</a></li>
+  <li><a href="#本节小结" id="toc-本节小结" class="nav-link" data-scroll-target="#本节小结">本节小结</a>
+  <ul class="collapse">
+  <li><a href="#核心收获" id="toc-核心收获" class="nav-link" data-scroll-target="#核心收获">🎯 核心收获</a></li>
+  <li><a href="#下一步的思考" id="toc-下一步的思考" class="nav-link" data-scroll-target="#下一步的思考">🤔 下一步的思考</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../21-conclusion/index.html">终章：AI系统重构与软件工程</a></li><li class="breadcrumb-item"><a href="../21-conclusion/practice.html"><span class="chapter-title">实践：AI辅助重构多Agent系统</span></a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">实践：AI辅助重构多Agent系统</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>理论学习已经结束，现在，让我们卷起袖子，将之前章节创建的多Agent系统原型，进行一次彻底的“升级改造”。这将是你作为“AI指挥家”的毕业作品。</p>
+<section id="我们的起点一个强大的大泥球" class="level2">
+<h2 class="anchored" data-anchor-id="我们的起点一个强大的大泥球">我们的起点：一个强大的“大泥球”</h2>
+<p>我们的起点，是一个功能已经验证、但代码结构混乱的Jupyter Notebook文件。我们假设这个文件名为<code>multi_agent_prototype.ipynb</code>，其中包含了我们之前章节编写的所有代码： - 模型和工具的初始化 - Supervisor, Customer Service, Finance等多个Agent的定义和Prompt - LangGraph工作流的构建和编译 - 最后，一个调用工作流并打印结果的单元格</p>
+<p>这是一个典型的“大泥球”，虽然能滚，但又大又重又丑陋。</p>
+</section>
+<section id="第一步让ai成为你的架构师" class="level2">
+<h2 class="anchored" data-anchor-id="第一步让ai成为你的架构师">第一步：让AI成为你的架构师</h2>
+<p>我们自己动手去拆分这个大泥球，很容易出错或遗漏。不如先让我们的AI副驾驶，为我们生成一份清晰的“重构蓝图”。</p>
+<div id="c8942ce6" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 这是一个模拟的AI Prompt，你可以在一个空的Jupyter Notebook或者直接在你的Copilot Chat中运行它</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 在实际操作中，你需要将"""..."""中的内容替换为你自己的multi_agent_prototype.ipynb中的全部代码</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>refactoring_prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">我有一个Jupyter Notebook，里面包含了构建一个多Agent系统的全部代码。</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">这个系统包含一个Supervisor Agent，一个Customer Service Agent和一个Finance Agent。</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">它使用了一些工具，比如查询订单信息。</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">它使用了LangGraph来构建工作流。</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">现在我想把它重构成一个专业的Python项目。</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">请为我完成以下任务：</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">1.  为这个项目设计一个清晰的目录结构。</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">2.  告诉我每个文件具体应该包含哪些代码（以Python代码块的形式给出）。</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">3.  特别注意，要将所有的密钥和模型名称等配置信息，都提取到一个单独的`config.py`文件中。</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">4.  创建一个`main.py`作为主入口，它应该能接收用户输入，并运行整个工作流。</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">5.  创建一个`requirements.txt`文件，列出可能的核心依赖。</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">这是我的全部代码：</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ch">\"\"\"</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">[把你multi_agent_prototype.ipynb中的所有代码粘贴到这里]</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ch">\"\"\"</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># print(refactoring_prompt) # 在实际使用中，你会将这个prompt发送给AI</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>运行这个Prompt后，AI会给你一份非常详细的重构方案，它几乎完成了80%的思考工作！它会告诉你<code>agents/finance_agent.py</code>里应该放什么，<code>main.py</code>应该如何组织，<code>config.py</code>里应该有哪些变量。</p>
+</section>
+<section id="第二步假设驱动的代码搬家" class="level2">
+<h2 class="anchored" data-anchor-id="第二步假设驱动的代码搬家">第二步：假设驱动的“代码搬家”</h2>
+<p>现在，我们有了一份完美的蓝图。我们的假设是：<strong>如果严格遵循AI生成的蓝图进行代码迁移，我们就能得到一个结构清晰、易于维护的项目。</strong></p>
+<p>验证这个假设的过程，就像是“按图索骥”式的代码搬家：</p>
+<ol type="1">
+<li><strong>创建目录和文件</strong>：根据AI建议的目录结构，在你的文件系统中创建对应的文件夹和空的<code>.py</code>文件。</li>
+<li><strong>复制粘贴</strong>：将AI为每个文件生成的代码块，准确地复制粘贴到对应的空文件中。</li>
+<li><strong>微调与验证</strong>：
+<ul>
+<li><strong>检查import</strong>：确保每个文件都正确地导入了它所需要的其他模块和库。例如，在<code>main.py</code>中，你需要从<code>agents.finance_agent</code>导入<code>FinanceAgent</code>类。</li>
+<li><strong>填充配置</strong>：打开<code>config.py</code>，将你的真实API密钥等信息填入其中。</li>
+<li><strong>运行检查</strong>：在终端中，进入项目根目录，运行 <code>python main.py</code>。它很可能会报错！但别担心，这是正常的。</li>
+</ul></li>
+</ol>
+</section>
+<section id="第三步与ai结对修复bug" class="level2">
+<h2 class="anchored" data-anchor-id="第三步与ai结对修复bug">第三步：与AI结对修复Bug</h2>
+<p>第一次运行时，几乎一定会因为一些路径问题、循环导入问题或环境问题而报错。这正是我们训练“AI协同解决Bug”能力的最佳时机。</p>
+<p><strong>不要自己去Google错误！</strong> 将完整的错误信息复制下来，粘贴到与AI的对话框中，问它：</p>
+<blockquote class="blockquote">
+<p>我在运行重构后的<code>main.py</code>时，遇到了这个错误，请帮我分析原因并修复它。</p>
+<pre><code>[粘贴你的完整错误信息]</code></pre>
+</blockquote>
+<p>通过几轮这样的“结对编程”，你将能快速修复所有问题，直到你的<code>main.py</code>成功运行，并像之前的Notebook一样，正确地处理用户请求。</p>
+</section>
+<section id="本节小结" class="level2">
+<h2 class="anchored" data-anchor-id="本节小结">本节小结</h2>
+<section id="核心收获" class="level3">
+<h3 class="anchored" data-anchor-id="核心收获">🎯 核心收获</h3>
+<ul>
+<li><strong>AI辅助架构设计</strong>：学会了如何利用AI来分析现有代码，并生成清晰、专业的重构蓝图。</li>
+<li><strong>软件工程实践</strong>：将一个复杂的AI原型，成功重构为一个遵循模块化、单一职责原则的、可维护的Python项目。</li>
+<li><strong>AI协同调试</strong>：掌握了与AI结对编程，快速定位并修复工程化过程中遇到的Bug的核心技能。</li>
+<li><strong>价值认知升维</strong>：深刻体会了软件工程在AI项目从“能用”到“好用”乃至“可交付”过程中的核心价值。</li>
+</ul>
+</section>
+<section id="下一步的思考" class="level3">
+<h3 class="anchored" data-anchor-id="下一步的思考">🤔 下一步的思考</h3>
+<p>我们的项目现在拥有了清晰的结构，但它还只是一个能在后台运行的脚本。我们如何能让它像一个真正的软件一样，方便地被用户调用和交互呢？这正是我们在<code>challenge.qmd</code>中要去解决的下一个问题。</p>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../21-conclusion/what.html" class="pagination-link" aria-label="什么是AI项目的软件工程？">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">什么是AI项目的软件工程？</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../21-conclusion/challenge.html" class="pagination-link" aria-label="挑战：发布你的AI应用并展望未来">
+        <span class="nav-page-text"><span class="chapter-title">挑战：发布你的AI应用并展望未来</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 实践：AI辅助重构多Agent系统</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>理论学习已经结束，现在，让我们卷起袖子，将之前章节创建的多Agent系统原型，进行一次彻底的“升级改造”。这将是你作为“AI指挥家”的毕业作品。</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## 我们的起点：一个强大的“大泥球”</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>我们的起点，是一个功能已经验证、但代码结构混乱的Jupyter Notebook文件。我们假设这个文件名为<span class="in">`multi_agent_prototype.ipynb`</span>，其中包含了我们之前章节编写的所有代码：</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>模型和工具的初始化</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Supervisor, Customer Service, Finance等多个Agent的定义和Prompt</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>LangGraph工作流的构建和编译</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>最后，一个调用工作流并打印结果的单元格</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>这是一个典型的“大泥球”，虽然能滚，但又大又重又丑陋。</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第一步：让AI成为你的架构师</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>我们自己动手去拆分这个大泥球，很容易出错或遗漏。不如先让我们的AI副驾驶，为我们生成一份清晰的“重构蓝图”。</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 这是一个模拟的AI Prompt，你可以在一个空的Jupyter Notebook或者直接在你的Copilot Chat中运行它</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 在实际操作中，你需要将"""..."""中的内容替换为你自己的multi_agent_prototype.ipynb中的全部代码</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>refactoring_prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="st">我有一个Jupyter Notebook，里面包含了构建一个多Agent系统的全部代码。</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="st">这个系统包含一个Supervisor Agent，一个Customer Service Agent和一个Finance Agent。</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="st">它使用了一些工具，比如查询订单信息。</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="st">它使用了LangGraph来构建工作流。</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="st">现在我想把它重构成一个专业的Python项目。</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="st">请为我完成以下任务：</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="st">1.  为这个项目设计一个清晰的目录结构。</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="st">2.  告诉我每个文件具体应该包含哪些代码（以Python代码块的形式给出）。</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="st">3.  特别注意，要将所有的密钥和模型名称等配置信息，都提取到一个单独的`config.py`文件中。</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="st">4.  创建一个`main.py`作为主入口，它应该能接收用户输入，并运行整个工作流。</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="st">5.  创建一个`requirements.txt`文件，列出可能的核心依赖。</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="st">这是我的全部代码：</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="ch">\"\"\"</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="st">[把你multi_agent_prototype.ipynb中的所有代码粘贴到这里]</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="ch">\"\"\"</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co"># print(refactoring_prompt) # 在实际使用中，你会将这个prompt发送给AI</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>运行这个Prompt后，AI会给你一份非常详细的重构方案，它几乎完成了80%的思考工作！它会告诉你<span class="in">`agents/finance_agent.py`</span>里应该放什么，<span class="in">`main.py`</span>应该如何组织，<span class="in">`config.py`</span>里应该有哪些变量。</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第二步：假设驱动的“代码搬家”</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>现在，我们有了一份完美的蓝图。我们的假设是：**如果严格遵循AI生成的蓝图进行代码迁移，我们就能得到一个结构清晰、易于维护的项目。**</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>验证这个假设的过程，就像是“按图索骥”式的代码搬家：</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**创建目录和文件**：根据AI建议的目录结构，在你的文件系统中创建对应的文件夹和空的<span class="in">`.py`</span>文件。</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**复制粘贴**：将AI为每个文件生成的代码块，准确地复制粘贴到对应的空文件中。</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**微调与验证**：</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>**检查import**：确保每个文件都正确地导入了它所需要的其他模块和库。例如，在<span class="in">`main.py`</span>中，你需要从<span class="in">`agents.finance_agent`</span>导入<span class="in">`FinanceAgent`</span>类。</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>**填充配置**：打开<span class="in">`config.py`</span>，将你的真实API密钥等信息填入其中。</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>**运行检查**：在终端中，进入项目根目录，运行 <span class="in">`python main.py`</span>。它很可能会报错！但别担心，这是正常的。</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第三步：与AI结对修复Bug</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>第一次运行时，几乎一定会因为一些路径问题、循环导入问题或环境问题而报错。这正是我们训练“AI协同解决Bug”能力的最佳时机。</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>**不要自己去Google错误！** 将完整的错误信息复制下来，粘贴到与AI的对话框中，问它：</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 我在运行重构后的</span><span class="in">`main.py`</span><span class="at">时，遇到了这个错误，请帮我分析原因并修复它。</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ```</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">粘贴你的完整错误信息</span><span class="co">]</span></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ```</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>通过几轮这样的“结对编程”，你将能快速修复所有问题，直到你的<span class="in">`main.py`</span>成功运行，并像之前的Notebook一样，正确地处理用户请求。</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## 本节小结</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 核心收获</span></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**AI辅助架构设计**：学会了如何利用AI来分析现有代码，并生成清晰、专业的重构蓝图。</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**软件工程实践**：将一个复杂的AI原型，成功重构为一个遵循模块化、单一职责原则的、可维护的Python项目。</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**AI协同调试**：掌握了与AI结对编程，快速定位并修复工程化过程中遇到的Bug的核心技能。</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**价值认知升维**：深刻体会了软件工程在AI项目从“能用”到“好用”乃至“可交付”过程中的核心价值。</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🤔 下一步的思考</span></span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>我们的项目现在拥有了清晰的结构，但它还只是一个能在后台运行的脚本。我们如何能让它像一个真正的软件一样，方便地被用户调用和交互呢？这正是我们在<span class="in">`challenge.qmd`</span>中要去解决的下一个问题。</span>
+</code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

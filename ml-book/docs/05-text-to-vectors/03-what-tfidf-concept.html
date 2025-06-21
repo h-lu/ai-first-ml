@@ -271,12 +271,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章 项目启动：我们的AIGC产品需要一个”质检员”</span></a>
+  <a href="../04-project-kickoff/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章 项目启动：我们的AIGC产品需要一个“质检员”</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04-project-kickoff/01-why-crisis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.1 Why: AIGC的机遇与”胡说八道”的风险</span></a>
+  <a href="../04-project-kickoff/01-why-crisis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.1 Why: AIGC的机遇与“胡说八道”的风险</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -311,7 +311,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 How: 我们来”发明”TF-IDF</span></a>
+  <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 How: 我们来“发明”TF-IDF</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -910,18 +910,18 @@ window.Quarto = {
 
 <section id="what解构tf-idf" class="level2">
 <h2 class="anchored" data-anchor-id="what解构tf-idf"><strong>What：解构TF-IDF</strong></h2>
-<p>在上一节，我们和AI一起通过对话”发明”了TF-IDF的核心思想。现在，是时候戴上”工程师”的帽子，将这个思想蓝图，转化为一本可以随时查阅、包含所有实现细节的<strong>技术手册</strong>了。</p>
+<p>在上一节，我们和AI一起通过对话“发明”了TF-IDF的核心思想。现在，是时候戴上“工程师”的帽子，将这个思想蓝图，转化为一本可以随时查阅、包含所有实现细节的<strong>技术手册</strong>了。</p>
 <p>本节的目标是：<strong>让你对TF-IDF是什么、它有哪些计算变种、以及它为什么有效，有一个透彻、深入的理解。</strong></p>
 <hr>
 <section id="核心思想回顾为何是tf-x-idf" class="level3">
 <h3 class="anchored" data-anchor-id="核心思想回顾为何是tf-x-idf"><strong>核心思想回顾：为何是TF x IDF？</strong></h3>
-<p>在我们深入细节之前，请再次牢记TF-IDF的核心洞察：<strong>一个词的重要性，由它在”局部”（本文档）的重要性和在”全局”（所有文档）的稀缺性，共同决定。</strong></p>
+<p>在我们深入细节之前，请再次牢记TF-IDF的核心洞察：<strong>一个词的重要性，由它在“局部”（本文档）的重要性和在“全局”（所有文档）的稀缺性，共同决定。</strong></p>
 <p><span class="math display">\[
 \text{重要性} = \text{局部重要性 (TF)} \times \text{全局稀缺性 (IDF)}
 \]</span></p>
 <ul>
-<li><strong>TF (Term Frequency, 词频)</strong>: 回答”这个词在<strong>本篇文章</strong>中有多重要？”</li>
-<li><strong>IDF (Inverse Document Frequency, 逆向文档频率)</strong>: 回答”这个词在<strong>所有文章</strong>中有多独特？”</li>
+<li><strong>TF (Term Frequency, 词频)</strong>: 回答“这个词在<strong>本篇文章</strong>中有多重要？”</li>
+<li><strong>IDF (Inverse Document Frequency, 逆向文档频率)</strong>: 回答“这个词在<strong>所有文章</strong>中有多独特？”</li>
 </ul>
 <hr>
 </section>
@@ -961,13 +961,13 @@ window.Quarto = {
 <li><strong>方案D：对数缩放 (Logarithmic Scaling)</strong>
 <ul>
 <li><strong>公式</strong>: <span class="math inline">\(\log(1 + f_{t,d})\)</span></li>
-<li><strong>目的</strong>: <strong>平滑词频的影响</strong>。一个词出现10次和出现100次，其重要性的差异可能并不呈线性关系。对数可以”抑制”高频词的过度影响力。</li>
+<li><strong>目的</strong>: <strong>平滑词频的影响</strong>。一个词出现10次和出现100次，其重要性的差异可能并不呈线性关系。对数可以“抑制”高频词的过度影响力。</li>
 </ul></li>
 </ul>
 </section>
 <section id="idf-逆向文档频率-的计算方案" class="level4">
 <h4 class="anchored" data-anchor-id="idf-逆向文档频率-的计算方案"><strong>2. IDF (逆向文档频率) 的计算方案</strong></h4>
-<p>IDF的目的是衡量一个词的”全局稀缺性”。</p>
+<p>IDF的目的是衡量一个词的“全局稀缺性”。</p>
 <ul>
 <li><strong>标准IDF (Standard IDF)</strong>
 <ul>
@@ -1002,12 +1002,12 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="为什么tf-idf在当时是革命性的"><strong>为什么TF-IDF在当时是革命性的？</strong></h3>
 <p>虽然现在有了BERT、GPT等更先进的文本表示方法，但在它被提出的时代，TF-IDF是一个巨大的飞跃。相比于简单的词袋模型，它：</p>
 <ul>
-<li><strong>抑制了通用词的噪音</strong>：有效降低了”的”、“是”等停用词的影响。</li>
+<li><strong>抑制了通用词的噪音</strong>：有效降低了“的”、“是”等停用词的影响。</li>
 <li><strong>突出了关键词的信号</strong>：让那些真正能代表文档主题的词汇脱颖而出。</li>
 <li><strong>保留了计算效率</strong>：整个计算过程不涉及复杂的模型训练，速度很快。</li>
 <li><strong>拥有良好的解释性</strong>：我们可以很容易地查到一个词在某篇文档中的TF-IDF分数，从而理解模型为什么会关注它。</li>
 </ul>
-<p>更重要的是，理解TF-IDF这种”<strong>局部信息(TF) × 全局信息(IDF)</strong>”的设计哲学，将为你后续理解更复杂的AI模型（如注意力机制）打下坚实的基础。</p>
+<p>更重要的是，理解TF-IDF这种“<strong>局部信息(TF) × 全局信息(IDF)</strong>”的设计哲学，将为你后续理解更复杂的AI模型（如注意力机制）打下坚实的基础。</p>
 <p>现在，理论知识已经储备完毕。在下一节，我们将卷起袖子，指挥AI将这些公式应用到我们的真实数据上。</p>
 
 
@@ -1469,8 +1469,8 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="pagination-link" aria-label="5.2 How: 我们来&quot;发明&quot;TF-IDF">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">5.2 How: 我们来”发明”TF-IDF</span></span>
+      <a href="../05-text-to-vectors/02-how-exploration-tfidf.html" class="pagination-link" aria-label="5.2 How: 我们来“发明”TF-IDF">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">5.2 How: 我们来“发明”TF-IDF</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -1483,7 +1483,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## **What：解构TF-IDF**</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>在上一节，我们和AI一起通过对话"发明"了TF-IDF的核心思想。现在，是时候戴上"工程师"的帽子，将这个思想蓝图，转化为一本可以随时查阅、包含所有实现细节的**技术手册**了。</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>在上一节，我们和AI一起通过对话“发明”了TF-IDF的核心思想。现在，是时候戴上“工程师”的帽子，将这个思想蓝图，转化为一本可以随时查阅、包含所有实现细节的**技术手册**了。</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>本节的目标是：**让你对TF-IDF是什么、它有哪些计算变种、以及它为什么有效，有一个透彻、深入的理解。**</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
@@ -1491,14 +1491,14 @@ window.Quarto = {
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">### **核心思想回顾：为何是TF x IDF？**</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>在我们深入细节之前，请再次牢记TF-IDF的核心洞察：**一个词的重要性，由它在"局部"（本文档）的重要性和在"全局"（所有文档）的稀缺性，共同决定。**</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>在我们深入细节之前，请再次牢记TF-IDF的核心洞察：**一个词的重要性，由它在“局部”（本文档）的重要性和在“全局”（所有文档）的稀缺性，共同决定。**</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>\text{重要性} = \text{局部重要性 (TF)} \times \text{全局稀缺性 (IDF)}</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**TF (Term Frequency, 词频)**: 回答"这个词在**本篇文章**中有多重要？"</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**IDF (Inverse Document Frequency, 逆向文档频率)**: 回答"这个词在**所有文章**中有多独特？"</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**TF (Term Frequency, 词频)**: 回答“这个词在**本篇文章**中有多重要？”</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**IDF (Inverse Document Frequency, 逆向文档频率)**: 回答“这个词在**所有文章**中有多独特？”</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
@@ -1527,11 +1527,11 @@ window.Quarto = {
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**方案D：对数缩放 (Logarithmic Scaling)**</span>
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>**公式**: $\log(1 + f_{t,d})$</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>**目的**: **平滑词频的影响**。一个词出现10次和出现100次，其重要性的差异可能并不呈线性关系。对数可以"抑制"高频词的过度影响力。</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>**目的**: **平滑词频的影响**。一个词出现10次和出现100次，其重要性的差异可能并不呈线性关系。对数可以“抑制”高频词的过度影响力。</span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **2. IDF (逆向文档频率) 的计算方案**</span></span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>IDF的目的是衡量一个词的"全局稀缺性"。</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>IDF的目的是衡量一个词的“全局稀缺性”。</span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**标准IDF (Standard IDF)**</span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>**公式**: $\log(\frac{N}{n_t})$</span>
@@ -1590,12 +1590,12 @@ window.Quarto = {
 <span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>虽然现在有了BERT、GPT等更先进的文本表示方法，但在它被提出的时代，TF-IDF是一个巨大的飞跃。相比于简单的词袋模型，它：</span>
 <span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**抑制了通用词的噪音**：有效降低了"的"、"是"等停用词的影响。</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**抑制了通用词的噪音**：有效降低了“的”、“是”等停用词的影响。</span>
 <span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**突出了关键词的信号**：让那些真正能代表文档主题的词汇脱颖而出。</span>
 <span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**保留了计算效率**：整个计算过程不涉及复杂的模型训练，速度很快。</span>
 <span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**拥有良好的解释性**：我们可以很容易地查到一个词在某篇文档中的TF-IDF分数，从而理解模型为什么会关注它。</span>
 <span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>更重要的是，理解TF-IDF这种"**局部信息(TF) × 全局信息(IDF)**"的设计哲学，将为你后续理解更复杂的AI模型（如注意力机制）打下坚实的基础。</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>更重要的是，理解TF-IDF这种“**局部信息(TF) × 全局信息(IDF)**”的设计哲学，将为你后续理解更复杂的AI模型（如注意力机制）打下坚实的基础。</span>
 <span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>现在，理论知识已经储备完毕。在下一节，我们将卷起袖子，指挥AI将这些公式应用到我们的真实数据上。 </span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>

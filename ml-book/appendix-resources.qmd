@@ -1,0 +1,23 @@
+# 附录B：推荐学习资源 (Further Reading)
+
+本书为你打开了AI应用开发的大门，但学海无涯，真正的探索才刚刚开始。以下资源是我们为你精心筛选的“藏宝图”，希望能帮助你在未来的道路上走得更远、更深。
+
+### 必读论文
+
+-   **[Attention Is All You Need (2017)](https://arxiv.org/abs/1706.03762)**: 这篇论文是现代AI的分水岭，它提出了Transformer架构，是所有大型语言模型（包括GPT系列）的基石。理解它，就是理解了我们这个时代的AI的核心。
+-   **[Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (2022)](https://arxiv.org/abs/2201.11903)**: 揭示了如何通过“思维链”提示，显著提升LLM的复杂推理能力，是提示工程领域最重要的里程碑之一。
+-   **[Training language models to follow instructions with human feedback (InstructGPT) (2022)](https://arxiv.org/abs/2203.02155)**: OpenAI的经典论文，详细阐述了如何通过基于人类反馈的强化学习（RLHF），将一个普通的语言模型，训练成能够理解并遵循人类指令的、更有用的AI助手。本书的“对齐工程”部分，正是基于此思想。
+-   **[ReAct: Synergizing Reasoning and Acting in Language Models (2022)](https://arxiv.org/abs/2210.03629)**: 提出了ReAct框架，将推理（Reasoning）和行动（Acting）相结合，是现代AI Agent设计范式的理论基础。
+
+### 权威博客与课程
+
+-   **Lilian Weng - [Lil'Log](https://lilianweng.github.io/)**: OpenAI应用研究负责人Lilian Weng的个人博客，内容兼具深度与广度，尤其是关于LLM、Agent和对齐技术的文章，是业内公认的必读经典。
+-   **Andrej Karpathy's [Blog](https://karpathy.ai/) & [YouTube Channel](https://www.youtube.com/c/AndrejKarpathy)**: 特斯拉前AI总监，OpenAI创始成员之一。他的博客和“Neural Networks: Zero to Hero”系列视频，以其无与伦比的清晰和直观，被誉为“从零开始理解神经网络的最佳教程”。
+-   **Hugging Face [Blog](https://huggingface.co/blog) & [Course](https://huggingface.co/learn/nlp-course)**: Hugging Face不仅是模型和数据集的集散地，其官方博客和免费课程也是学习NLP和Transformer技术的最佳资源之一。
+-   **[LangChain](https://python.langchain.com/) & [LangGraph](https://python.langchain.com/docs/langgraph) Official Documentation**: 最权威、最及时的学习资源。当你想要实现某个具体功能时，官方文档永远是你的第一选择。
+
+### 核心开源项目
+
+-   **[LangChain](https://github.com/langchain-ai/langchain)**: 探索这个项目，不仅是为了使用它，更是为了学习它如何将复杂的LLM应用抽象化、组件化。阅读其源代码，是提升AI工程能力的捷径。
+-   **[Transformers (by Hugging Face)](https://github.com/huggingface/transformers)**: 学习如何直接使用和微调各种开源的Transformer模型。
+-   **[FAISS (by Meta AI)](https://github.com/facebookresearch/faiss)**: 一个用于高效相似性搜索和稠密向量聚类的库。如果你想深入理解向量数据库的底层原理，FAISS是一个很好的起点。 
