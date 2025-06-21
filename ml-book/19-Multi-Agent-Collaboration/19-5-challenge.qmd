@@ -1,6 +1,6 @@
 # 19.5 Challenge: 为你的AI团队增加新成员
 
-::: {.callout-warning title="动手练习与挑战"}
+::: {.callout-warning}
 
 你已经成功地构建并指挥了一个由多个AI Agent组成的团队，这是一个巨大的进步！你已经从一个"员工管理者"晋升为了"团队架构师"。
 

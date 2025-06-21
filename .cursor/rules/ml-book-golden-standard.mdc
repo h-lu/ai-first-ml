@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 This rule outlines the "Golden Standard" for writing and refactoring all technical chapters in the ML book project. All contributions must adhere to these standards to ensure consistency in structure, narrative, and depth.
 

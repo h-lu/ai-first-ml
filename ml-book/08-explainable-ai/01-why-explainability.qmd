@@ -34,35 +34,51 @@
 综上所述，模型可解释性（Explainable AI, XAI）远不止是一个技术问题，它是连接AI技术与人类社会方方面面的关键桥梁。
 
 ```{mermaid}
-%%| echo: false
+#| code-fold: false
+#| fig-cap: "XAI：连接技术与社会的价值之桥"
 graph TD
-    subgraph "AI 技术世界"
-        A["模型 / Model"]
-        B["数据 / Data"]
-        C["性能指标 / Metrics"]
+    subgraph " "
+        direction LR
+        subgraph "<b>AI技术世界 (黑箱)</b>"
+            direction TB
+            A["<b>模型</b><br/>(e.g. LightGBM)"]
+            B["<b>数据</b><br/>(e.g. 文本特征)"]
+            C["<b>性能</b><br/>(e.g. 95%准确率)"]
+        end
+
+        subgraph "<b>人类社会 (需求)</b>"
+            direction TB
+            D["<b>用户信任</b><br/>为何我的内容被判违规?"]
+            E["<b>业务决策</b><br/>为何财经内容易被误判?"]
+            F["<b>开发者调试</b><br/>模型为何效果突然下降?"]
+            G["<b>法律合规</b><br/>如何证明模型没有偏见?"]
+        end
+    end
+
+    subgraph "XAI价值之桥"
+        XAI((<b style='font-size:1.2em'>XAI<br/>可解释性</b>))
     end
     
-    subgraph "人类社会"
-        D["业务决策 / Business"]
-        E["用户信任 / User Trust"]
-        F["开发者调试 / Debugging"]
-        G["法律合规 / Regulation"]
-    end
+    A -- 提供解释 --> XAI
+    B -- 提供解释 --> XAI
+    C -- 提供解释 --> XAI
+
+    XAI -- "建立" --> D
+    XAI -- "辅助" --> E
+    XAI -- "赋能" --> F
+    XAI -- "保障" --> G
     
-    H((XAI <br> 可解释性))
+    %% Styling
+    style A fill:#f5f5f5,stroke:#333
+    style B fill:#f5f5f5,stroke:#333
+    style C fill:#f5f5f5,stroke:#333
     
-    %% 从 AI 世界到 XAI 的连接
-    A --> H
-    B --> H
-    C --> H
-    
-    %% 从 XAI 到人类社会的连接
-    H --> D
-    H --> E
-    H --> F
-    H --> G
-    
-    style H fill:#b2dfdb,stroke:#00796b,stroke-width:2px,font-weight:bold
+    style D fill:#e3f2fd,stroke:#1565c0
+    style E fill:#e3f2fd,stroke:#1565c0
+    style F fill:#e3f2fd,stroke:#1565c0
+    style G fill:#e3f2fd,stroke:#1565c0
+
+    style XAI fill:#dcedc8,stroke:#33691e,stroke-width:2px,font-weight:bold
 ```
 
 ### 可解释性为我们带来的核心价值：

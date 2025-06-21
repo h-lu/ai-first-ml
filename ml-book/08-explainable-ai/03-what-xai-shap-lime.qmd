@@ -19,52 +19,40 @@ LIME的全称是 **Local Interpretable Model-agnostic Explanations**（局部可
 5.  **得出结论**: 这个简单模型学到的规律，就是LIME对大师那神之一笔的**局部近似解释**。
 
 ```{mermaid}
-%%| echo: false
+#| code-fold: false
+#| fig-cap: "LIME工作流示意图：四步完成一次局部解释"
+
 graph TD
-    subgraph "问题: 一个无法解释的决策"
-        A[黑箱模型<br/>(e.g., LightGBM, 神经网络)]
-        B(决策结果<br/>文章被判定为"有害")
-        Need{我们为什么得到这个结果?}
+    subgraph "输入"
+        A["<b>待解释样本</b><br/>e.g., 一篇具体的文章"]
+        B["<b>黑箱模型</b><br/>e.g., 已训练的LightGBM"]
     end
 
-    A -- 做出决策 --> B
-    B -- 引发疑问 --> Need
-
-    subgraph "解决方案: LIME的工作原理"
-        Input("原始样本<br/>'这篇文章'")
-        Step1[1. 生成扰动样本<br/>(e.g., 随机移除/替换词语)]
-        Step2[2. 用黑箱模型预测扰动样本]
-        Step3[3. 根据与原始样本的距离进行加权]
-        Step4[4. 训练一个简单的<br/>可解释<b>代理模型</b><br/>(e.g., 线性回归)]
+    subgraph "LIME核心流程"
+        C["<b>Step 1: 生成扰动样本</b><br/>在原始样本周围<br/>随机增删部分词语"]
+        D["<b>Step 2: 获取预测结果</b><br/>用黑箱模型预测<br/>所有扰动样本的'有害'概率"]
+        E["<b>Step 3: 计算样本权重</b><br/>根据扰动样本与原始样本的相似度<br/>为每个样本赋予权重"]
+        F["<b>Step 4: 训练可解释的代理模型</b><br/>使用加权的扰动样本<br/>训练一个简单的线性回归模型"]
     end
 
-    Need -- "为了回答这个问题, 我们使用LIME" --> Input
-    Input --> Step1 --> Step2 --> Step3 --> Step4
-
-    subgraph "结果: 生成局部可解释性"
-        Result(生成可解释的结果)
-        Explanation["对于这篇文章:<br/>'暴富' 的贡献是 <b>+0.7</b><br/>'投资' 的贡献是 <b>+0.4</b><br/>'学习' 的贡献是 <b>-0.2</b>"]
+    subgraph "输出"
+        G["<b>局部解释报告</b><br/>'暴富'的贡献是 +0.7<br/>'投资'的贡献是 +0.4<br/>'学习'的贡献是 -0.2"]
     end
+
+    A --> C
+    B --> D
+    C --> D --> E --> F --> G
     
-    Step4 -- "代理模型提供了..." --> Result
-    Result -- 具体解释 --> Explanation
+    %% Styling
+    style A fill:#f9f9f9,stroke:#333
+    style B fill:#212121,color:#fff,stroke:#000,stroke-width:2px
+    
+    style C fill:#e3f2fd,stroke:#1565c0
+    style D fill:#e3f2fd,stroke:#1565c0
+    style E fill:#e3f2fd,stroke:#1565c0
+    style F fill:#e3f2fd,stroke:#1565c0
 
-    %% --- 样式定义 ---
-    %% 问题区域
-    style A fill:#212121,color:#fff,stroke:#000,stroke-width:2px
-    style B fill:#ffebee,stroke:#c62828
-    style Need fill:#fffde7,stroke:#f57f17
-
-    %% 解决方案区域
-    style Input fill:#e0f2f1,stroke:#00695c
-    style Step1 fill:#e3f2fd,stroke:#1565c0
-    style Step2 fill:#e3f2fd,stroke:#1565c0
-    style Step3 fill:#e3f2fd,stroke:#1565c0
-    style Step4 fill:#dcedc8,stroke:#33691e,stroke-width:2px,font-weight:bold
-
-    %% 结果区域
-    style Result fill:#e8f5e9,stroke:#2e7d32
-    style Explanation fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px
+    style G fill:#d4edda,stroke:#155724,stroke-width:2px,color:#155724
 ```
 
 **LIME的优点**:
@@ -92,6 +80,54 @@ SHAP的全称是 **SHapley Additive exPlanations**。它的理论基础来源于
 -   再来一个技术（A），项目价值从30万到100万。（A的边际贡献是70万）
 
 为了公平，SHAP会**模拟所有可能的人员加入顺序**（所有特征的组合），计算每种顺序下每个成员的边际贡献，然后将这些边际贡献**取平均值**。这个平均值，就是这位成员（这个特征）应得的贡献值，即**SHAP值（SHAP Value）**。
+
+```{mermaid}
+#| code-fold: false
+#| fig-cap: "SHAP值计算思想示意图：公平的贡献分配"
+graph TD
+    subgraph "目标：计算特征'A'的贡献"
+        A["特征'A'<br/>(e.g., '暴富')"]
+    end
+
+    subgraph "场景一：在已有特征'B'的情况下加入'A'"
+        direction LR
+        B["模型(仅有特征'B')<br/>预测概率 = 0.3"] -- "加入特征'A'" --> BA["模型(有特征'A'和'B')<br/>预测概率 = 0.8"]
+        BA -- "减去" --> B
+        subgraph " "
+            M1["特征'A'的边际贡献 = 0.5"]
+        end
+        BA -.-> M1
+    end
+
+    subgraph "场景二：在已有特征'C'的情况下加入'A'"
+        direction LR
+        C["模型(仅有特征'C')<br/>预测概率 = 0.2"] -- "加入特征'A'" --> CA["模型(有特征'A'和'C')<br/>预测概率 = 0.6"]
+        CA -- "减去" --> C
+        subgraph " "
+            M2["特征'A'的边际贡献 = 0.4"]
+        end
+        CA -.-> M2
+    end
+    
+    subgraph "结论"
+        Z["<b>SHAP值</b><br/>= 平均(在所有可能组合下的边际贡献)<br/>= 平均(0.5, 0.4, ... 其他组合)"]
+    end
+    
+    A --> B
+    A --> C
+    M1 --> Z
+    M2 --> Z
+    
+    %% Styling
+    style A fill:#fff3cd,stroke:#856404,stroke-width:2px
+    style B fill:#f5f5f5,stroke:#333
+    style C fill:#f5f5f5,stroke:#333
+    style BA fill:#e3f2fd,stroke:#1565c0
+    style CA fill:#e3f2fd,stroke:#1565c0
+    style M1 fill:#e8f5e9,stroke:#2e7d32
+    style M2 fill:#e8f5e9,stroke:#2e7d32
+    style Z fill:#d4edda,stroke:#155724,stroke-width:2px,color:#155724
+```
 
 \[
 \text{最终预测值} = \text{基础值（全体成员的平均表现）} + \sum (\text{每个成员的SHAP值})

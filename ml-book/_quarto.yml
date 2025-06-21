@@ -134,6 +134,16 @@ book:
         - 20-Agent-Reasoning-Safety/20-3-what.qmd
         - 20-Agent-Reasoning-Safety/20-4-practice.qmd
         - 20-Agent-Reasoning-Safety/20-5-challenge.qmd
+    - part: "终章：你的第一首AI交响曲"
+      chapters:
+        - 21-conclusion/index.qmd
+        - 21-conclusion/01-journey-review.qmd
+        - 21-conclusion/02-project-refactoring.qmd
+        - 21-conclusion/03-future-outlook.qmd
+        - 21-conclusion/04-epilogue.qmd
+    - part: "附录"
+      chapters:
+        - references.qmd
 
 page-footer:
   left: |
@@ -159,5 +169,6 @@ format:
     highlight-style: github
     fig-width: 8
     fig-height: 6
-    mermaid:
-      theme: default
+    include-in-header: mermaid-header.html
+    filters:
+      - disable-mermaid.lua

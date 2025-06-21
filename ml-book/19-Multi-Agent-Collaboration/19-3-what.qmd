@@ -10,23 +10,57 @@
 
 ```{mermaid}
 #| code-fold: false
-#| fig-cap: "多Agent协作流程图"
+#| fig-cap: "多Agent协作架构图：以主管为核心的智能路由"
 
 graph TD
-    A[用户请求: "我要退款"] --> B{主管Agent决策};
-    B -- "需与用户沟通" --> C[客服Agent: 澄清问题];
-    B -- "需查询订单" --> D[订单Agent: 调用get_order_history];
-    B -- "需执行退款" --> E[财务Agent: 调用process_refund];
-    B -- "任务已完成" --> F((向用户报告结果));
-    
-    C --> B;
-    D --> B;
-    E --> B;
-
-    subgraph "专业工具箱"
-        D -.-> D_Tool(get_order_history);
-        E -.-> E_Tool(process_refund);
+    subgraph "输入层"
+        A["👤 用户请求<br/>'我要退款'"]
     end
+
+    subgraph "决策层"
+        B{"🧠 主管Agent (Router)<br/>分析请求，决定下一步"}
+    end
+
+    subgraph "执行层 (专员Agents)"
+        C["🛠️ 客服Agent<br/>澄清用户问题"]
+        D["🛠️ 订单Agent<br/>查询订单历史"]
+        E["🛠️ 财务Agent<br/>执行退款操作"]
+    end
+    
+    subgraph "输出层"
+        F["🏁 任务完成<br/>向用户报告结果"]
+    end
+    
+    subgraph "能力层 (工具)"
+        T1["get_order_history()"]
+        T2["process_refund()"]
+    end
+
+    A --> B
+    B -- "路由至客服" --> C
+    B -- "路由至订单" --> D
+    B -- "路由至财务" --> E
+    B -- "任务完成" --> F
+    
+    C -- "结果反馈" --> B
+    D -- "结果反馈" --> B
+    E -- "结果反馈" --> B
+    
+    D -.-> T1
+    E -.-> T2
+    
+    %% Styling
+    style A fill:#f9f9f9,stroke:#333
+    style B fill:#fff3cd,stroke:#856404,stroke-width:2px
+    
+    style C fill:#e3f2fd,stroke:#1565c0
+    style D fill:#e3f2fd,stroke:#1565c0
+    style E fill:#e3f2fd,stroke:#1565c0
+    
+    style F fill:#d4edda,stroke:#155724
+    
+    style T1 fill:#f5f5f5,stroke:#999,stroke-dasharray: 5 5
+    style T2 fill:#f5f5f5,stroke:#999,stroke-dasharray: 5 5
 ```
 
 从这张图中我们可以清晰地看到：

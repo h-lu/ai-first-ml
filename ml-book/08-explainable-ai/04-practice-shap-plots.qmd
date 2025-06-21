@@ -1,5 +1,14 @@
 # 8.4 Practice: 指挥AI用SHAP绘制模型解释图
 
+::: {.callout-caution title="依赖项安装" icon="fas fa-download"}
+本次实践的核心库是 `shap`。如果你的环境中尚未安装，请运行以下命令：
+
+```bash
+#| eval: false
+pip install shap
+```
+:::
+
 ## 让黑箱开口说话
 
 理论学习已经结束，是时候拿起SHAP这个强大的"扳手"，撬开我们模型（比如LightGBM）的黑箱了。在本节中，你将亲手生成局部和全局的解释图，并学会如何解读它们。

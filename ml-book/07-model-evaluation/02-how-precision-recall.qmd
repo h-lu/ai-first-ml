@@ -55,15 +55,37 @@ $$
 这个权衡关系，我们称之为**精确率-召回率权衡（Precision-Recall Trade-off）**。
 
 ```{mermaid}
-%%| echo: false
+#| code-fold: false
+#| fig-cap: "精确率-召回率权衡仪表盘"
 graph TD
-    subgraph "决策阈值调整"
+    subgraph "策略一：追求高召回率 (宁可错杀，不可放过)"
         direction LR
-        A["提高阈值 (更严格)"] --> C["精确率 (Precision) ⬆️"]
-        A --> D["召回率 (Recall) ⬇️"]
-        B["降低阈值 (更宽松)"] --> E["精确率 (Precision) ⬇️"]
-        B --> F["召回率 (Recall) ⬆️"]
+        A["<b>策略：</b><br/>降低决策阈值<br/>(安检门调至最灵敏)"] -- "导致" --> B["<b>结果：</b><br/>召回率 (Recall) ⬆️<br/>精确率 (Precision) ⬇️"]
+        B -- "业务影响" --> C["后果：<br/><b>漏报少，但误杀多</b><br/>(几乎所有危险品都被发现，<br/>但大量无辜者也被拦下)"]
     end
+
+    subgraph "策略二：追求高精确率 (宁可放过，不可错杀)"
+        direction LR
+        D["<b>策略：</b><br/>提高决策阈值<br/>(安检门调至最不灵敏)"] -- "导致" --> E["<b>结果：</b><br/>精确率 (Precision) ⬆️<br/>召回率 (Recall) ⬇️"]
+        E -- "业务影响" --> F["后果：<br/><b>误杀少，但漏报多</b><br/>(被拦下的几乎都是危险品，<br/>但很多危险品会溜走)"]
+    end
+
+    subgraph "核心"
+      T{"<b style='font-size:1.2em'>决策旋钮</b><br/>如何权衡?"}
+    end
+
+    T -- "选择策略一" --> A
+    T -- "选择策略二" --> D
+
+    %% Styling
+    style T fill:#fff3cd,stroke:#856404,stroke-width:2px
+    style A fill:#e3f2fd,stroke:#1565c0,stroke-width:1.5px
+    style B fill:#e3f2fd,stroke:#1565c0,stroke-width:1.5px
+    style C fill:#f8d7da,stroke:#721c24,stroke-width:1.5px,color:#721c24
+    
+    style D fill:#d4edda,stroke:#155724,stroke-width:1.5px
+    style E fill:#d4edda,stroke:#155724,stroke-width:1.5px
+    style F fill:#f8d7da,stroke:#721c24,stroke-width:1.5px,color:#721c24
 ```
 
 ## "那我们到底该看哪个？"

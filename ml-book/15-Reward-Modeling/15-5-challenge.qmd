@@ -1,4 +1,4 @@
-# 15.5 动手练习与挑战
+# 15.5 Challenge: 设计一个更多维度的"品味裁判"
 
 ::: {.callout-warning title="动手练习与挑战"}
 

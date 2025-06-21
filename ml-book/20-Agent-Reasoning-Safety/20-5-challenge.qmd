@@ -1,6 +1,6 @@
 # 20.5 Challenge: 设计你自己的Agent
 
-::: {.callout-warning title="终极挑战：设计一个"新品研发助理Agent""}
+::: {.callout-warning}
 
 恭喜你！你已经掌握了构建从简单到复杂、从单体到团队、从纯自动到人机协同的AI Agent的全套核心技能。
 

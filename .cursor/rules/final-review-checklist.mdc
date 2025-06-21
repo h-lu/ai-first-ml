@@ -1,0 +1,62 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 书稿最终审查清单 (Final Review Checklist)
+
+这是在最终发布前，为确保《机器学习：AI驱动的学习与应用》书稿质量而设计的一份清单。它主要关注全局一致性、叙事连贯性和技术鲁棒性。
+
+## 1. 全局一致性与"人设"强化
+
+本书的核心是"AI指挥家"和"与AI的探索之旅"。
+
+*   **"AI助手"口吻一致性**:
+    *   检查所有章节的 `::: {.callout-note title="与AI的探索之旅"}` 部分。
+    *   确保"AI助手"的回答风格始终如一：专业、耐心、善于使用类比，并且总是能引导读者思考下一步。
+
+*   **"指令剧本"格式统一**:
+    *   在 `practice` 和 `challenge` 部分，检查所有"指令剧本"的视觉呈现。
+    *   确保它们都使用了类似 `icon="fas fa-cogs"` 或 `icon="fas fa-tools"` 这样的图标，并且排版风格一致，提供可预期的体验。
+
+## 2. 内容连贯性与叙事流
+
+加强各部分之间的衔接，形成完整的叙事流。
+
+*   **承上启下**:
+    *   在每个部分的开篇 `index.qmd` 中，简单回顾上一部分的核心成果，并引出下一阶段的必要性。
+    *   相关文件示例：
+        *   Part 1: `[04-project-kickoff/index.qmd](mdc:ml-book/04-project-kickoff/index.qmd)`
+        *   Part 2: `[09-rag-kickoff/index.qmd](mdc:ml-book/09-rag-kickoff/index.qmd)`
+        *   Part 3: `[14-SFT/index.qmd](mdc:ml-book/14-SFT/index.qmd)`
+        *   Part 4: `[17-Arena-Evaluation/index.qmd](mdc:ml-book/17-Arena-Evaluation/index.qmd)`
+
+*   **首尾呼应**:
+    *   可以考虑在全书最后，增加一个简短的跋（Conclusion），呼应 `[ml-book/index.qmd](mdc:ml-book/index.qmd)` 中的序言，再次强调"AI指挥家"的核心思想。
+
+## 3. 代码与实践的鲁棒性
+
+保证技术实践部分的读者体验。
+
+*   **依赖项明确性**:
+    *   在每个部分开篇，或首次遇到新库的 `practice.qmd` 文件中，使用 `::: {.callout-caution}` 明确告知读者本部分需要安装哪些新的核心库。
+
+*   **实践总结明确性 (Practice Summary Clarity)**:
+    *   检查每个 `practice.qmd` 文件。
+    *   确保文件末尾有一个明确的"本节小结"部分，回顾本节的核心收获 (`### 🎯 核心收获`)，并自然地引出下一章或下一节 `challenge` 的内容 (`### 🤔 下一步的思考`)。
+    *   参考范例: `[06-first-classifier/04-practice-train-predict-evaluate.qmd](mdc:ml-book/06-first-classifier/04-practice-train-predict-evaluate.qmd)`
+
+*   **挑战（Challenge）难度曲线**:
+    *   快速评估，确保每个 `challenge` 的难度都是基于前一节 `practice` 的合理延伸。
+
+## 4. 最终"健康检查"
+
+最后的全局检查。
+
+*   **全局文本校对**:
+    *   进行一次彻底的错别字和语法校对。
+
+*   **本地完整渲染**:
+    *   执行 `quarto render` 命令。
+    *   在浏览器中从头到尾检查渲染后的HTML，确保没有链接失效、图片无法显示或Mermaid图表渲染错误。
+    *   配置文件：`[ml-book/_quarto.yml](mdc:ml-book/_quarto.yml)`
